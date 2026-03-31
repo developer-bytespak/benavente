@@ -16,15 +16,15 @@ export default function FeaturedPost() {
           <div>
             <div className="aspect-[16/10] bg-gradient-to-br from-cream-deeper to-cream-dark rounded-[2px] overflow-hidden cursor-pointer" />
             <div className="flex items-center gap-3 mt-5">
-              <span className="text-gold text-[9.5px] uppercase tracking-[0.2em] font-sans">{featured.date}</span>
-              <span className="text-[9.5px] uppercase tracking-[0.12em] font-sans text-slate-light border border-slate-light/20 px-2 py-0.5 rounded-[2px]">
+              <span className="text-gold text-[11px] uppercase tracking-[0.2em] font-sans">{featured.date}</span>
+              <span className="text-[11px] uppercase tracking-[0.12em] font-sans text-slate-light border border-slate-light/20 px-2 py-0.5 rounded-[2px]">
                 {featured.category}
               </span>
             </div>
             <h2 className="font-serif text-[clamp(26px,3vw,36px)] text-navy mt-3 leading-[1.2]">
               {featured.title}
             </h2>
-            <p className="font-sans font-light text-[14px] text-slate mt-3 leading-[1.75]">
+            <p className="font-sans font-light text-[18px] text-slate mt-3 leading-[1.75]">
               {featured.excerpt}
             </p>
             <div className="mt-5">
@@ -36,7 +36,7 @@ export default function FeaturedPost() {
         {/* Sidebar */}
         <RevealOnScroll delay={0.15}>
           <div>
-            <h3 className="font-sans font-medium text-[9px] uppercase tracking-[0.25em] text-slate-light mb-6">
+            <h3 className="font-sans font-medium text-[11px] uppercase tracking-[0.25em] text-slate-light mb-6">
               Recent Articles
             </h3>
             {sidebar.map((post, i) => (
@@ -44,8 +44,8 @@ export default function FeaturedPost() {
                 key={post.id}
                 className={`pb-5 mb-5 ${i < sidebar.length - 1 ? 'border-b border-gold/10' : ''}`}
               >
-                <span className="text-gold text-[9.5px] uppercase tracking-[0.2em] font-sans">{post.date}</span>
-                <h4 className="font-serif text-[16px] text-navy mt-1.5 leading-[1.3]">{post.title}</h4>
+                <span className="text-gold text-[11px] uppercase tracking-[0.2em] font-sans">{post.date}</span>
+                <h4 className="font-serif text-[18px] text-navy mt-1.5 leading-[1.3]">{post.title}</h4>
                 <div className="mt-2">
                   <MicroCTA href="/blog">Read More</MicroCTA>
                 </div>

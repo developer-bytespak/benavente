@@ -5,7 +5,7 @@ interface SectionLabelProps {
 
 export default function SectionLabel({ children, variant = 'dark' }: SectionLabelProps) {
   return (
-    <div className={`flex items-center gap-[10px] text-[9.5px] font-medium tracking-[0.3em] uppercase mb-4 ${variant === 'light' ? 'text-gold-light' : 'text-gold'}`}>
+    <div className={`flex items-center gap-[10px] text-[11px] font-medium tracking-[0.25em] uppercase mb-4 ${variant === 'light' ? 'text-gold-light' : 'text-gold'}`}>
       <span className={`w-[22px] h-px flex-shrink-0 ${variant === 'light' ? 'bg-gold-light' : 'bg-gold'}`} />
       {children}
     </div>

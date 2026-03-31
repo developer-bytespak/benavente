@@ -31,9 +31,9 @@ export default function MissionPillars() {
           {pillars.map((pillar, i) => (
             <RevealOnScroll key={pillar.number} delay={i * 0.08}>
               <div className="bg-white border border-gold/15 p-7 rounded-[2px] h-full">
-                <span className="text-gold font-serif text-[11px] tracking-[0.2em]">{pillar.number}</span>
-                <h3 className="font-serif text-[20px] text-navy mt-3">{pillar.name}</h3>
-                <p className="font-sans font-light text-[13px] text-slate mt-2 leading-[1.7]">{pillar.desc}</p>
+                <span className="text-gold font-serif text-[12px] tracking-[0.2em]">{pillar.number}</span>
+                <h3 className="font-serif text-[22px] text-navy mt-3">{pillar.name}</h3>
+                <p className="font-sans font-light text-[15px] text-slate mt-2 leading-[1.7]">{pillar.desc}</p>
               </div>
             </RevealOnScroll>
           ))}

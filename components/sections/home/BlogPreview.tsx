@@ -13,12 +13,12 @@ export default function BlogPreview() {
       {/* Header */}
       <div className="max-w-[1280px] mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-end border-b border-gold/20 pb-5 mb-10 gap-4">
         <div>
-          <SectionLabel>Insights</SectionLabel>
+          <SectionLabel>BLOGS</SectionLabel>
           <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
             Latest <span className="italic text-gold">Analysis</span>
           </h2>
         </div>
-        <MicroCTA href="/blog">Read Insights</MicroCTA>
+        <MicroCTA href="/blog">Read Blogs</MicroCTA>
       </div>
 
       {/* Grid */}
@@ -27,11 +27,11 @@ export default function BlogPreview() {
           <RevealOnScroll key={post.id} delay={index * 0.08}>
             <div className="group cursor-pointer">
               <div className="aspect-video bg-gradient-to-br from-cream-deeper to-cream-dark rounded-[2px] overflow-hidden mb-5" />
-              <span className="text-gold text-[9.5px] uppercase tracking-[0.2em] font-sans">{post.date}</span>
-              <h3 className="font-serif text-[21px] text-navy mt-2 group-hover:text-gold transition-colors duration-300 leading-[1.25]">
+              <span className="text-gold text-[11px] uppercase tracking-[0.2em] font-sans">{post.date}</span>
+              <h3 className="font-serif text-[22px] text-navy mt-2 group-hover:text-gold transition-colors duration-300 leading-[1.25]">
                 {post.title}
               </h3>
-              <p className="font-sans font-light text-[13px] text-slate mt-2 leading-[1.7] line-clamp-2">
+              <p className="font-sans font-light text-[15px] text-slate mt-2 leading-[1.7] line-clamp-2">
                 {post.excerpt}
               </p>
               <div className="mt-4">

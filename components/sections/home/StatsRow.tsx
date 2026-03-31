@@ -20,7 +20,7 @@ export default function StatsRow() {
               <div className="font-serif font-light text-[52px] text-white leading-none">
                 <CountUp target={stat.number} suffix={stat.suffix} />
               </div>
-              <div className="text-[9.5px] tracking-[0.2em] uppercase text-white/[0.38] font-sans mt-1">
+              <div className="text-[11px] tracking-[0.2em] uppercase text-white/[0.38] font-sans mt-1">
                 {stat.label}
               </div>
             </div>

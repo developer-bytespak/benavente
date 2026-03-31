@@ -23,7 +23,7 @@ export default function GalleryFilters({ active, onFilter }: GalleryFiltersProps
           <button
             key={f.key}
             onClick={() => onFilter(f.key)}
-            className={`px-4 py-2 text-[11px] font-sans uppercase tracking-[0.12em] transition-all duration-300 whitespace-nowrap ${
+            className={`px-4 py-2 text-[13px] font-sans uppercase tracking-[0.12em] transition-all duration-300 whitespace-nowrap ${
               active === f.key
                 ? 'text-navy border-b-2 border-gold'
                 : 'text-slate-light hover:text-navy'

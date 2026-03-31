@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -16,17 +17,17 @@ const navLinks = [
       { label: 'Coverage Areas', href: '/about' },
     ],
   },
-  {
-    label: 'Services', href: '/contact',
-    children: [
-      { label: 'Commercial Appraisal', href: '/contact' },
-      { label: 'Residential Valuation', href: '/contact' },
-      { label: 'Market Analysis', href: '/contact' },
-      { label: 'Litigation Support', href: '/contact' },
-      { label: 'Consulting', href: '/contact' },
-      { label: 'Pacific Region', href: '/contact' },
-    ],
-  },
+  // {
+  //   label: 'Services', href: '/contact',
+  //   children: [
+  //     { label: 'Commercial Appraisal', href: '/contact' },
+  //     { label: 'Residential Valuation', href: '/contact' },
+  //     { label: 'Market Analysis', href: '/contact' },
+  //     { label: 'Litigation Support', href: '/contact' },
+  //     { label: 'Consulting', href: '/contact' },
+  //     { label: 'Pacific Region', href: '/contact' },
+  //   ],
+  // },
   {
     label: 'Gallery', href: '/gallery',
     children: [
@@ -38,7 +39,7 @@ const navLinks = [
       { label: 'Pacific Region', href: '/gallery' },
     ],
   },
-  { label: 'Insights', href: '/blog' },
+  { label: 'BLOG', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -94,13 +95,22 @@ export default function Navbar() {
       >
         <div className="max-w-[1400px] mx-auto px-[4.5%] h-full flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <span className={`font-serif text-[20px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
-              The Benavente Group
-            </span>
-            <span className="text-gold text-[8.5px] tracking-[0.2em] uppercase font-sans">
-              Real Estate Appraisers &amp; Consultants
-            </span>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/images/hero/logo.png"
+              alt="The Benavente Group"
+              width={48}
+              height={48}
+              className="w-10 h-10 object-contain"
+            />
+            <div className="flex flex-col">
+              <span className={`font-serif text-[20px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
+                The Benavente Group
+              </span>
+              <span className={`text-[10px] tracking-[0.15em] uppercase font-sans transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-slate'}`}>
+                Hawaii Based Real Estate Appraisers &amp; Consultants
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
@@ -114,7 +124,7 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={`text-[12px] font-sans font-medium tracking-[0.06em] uppercase transition-colors duration-300 ${textColor} hover:text-gold ${
+                  className={`text-[14px] font-sans font-medium tracking-[0.06em] uppercase transition-colors duration-300 ${textColor} hover:text-gold ${
                     pathname === link.href ? 'text-gold' : ''
                   }`}
                 >
@@ -136,7 +146,7 @@ export default function Navbar() {
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block px-5 py-2 text-[11.5px] font-sans text-navy/70 hover:text-gold hover:bg-cream transition-colors duration-200"
+                          className="block px-5 py-2 text-[14px] font-sans text-navy/70 hover:text-gold hover:bg-cream transition-colors duration-200"
                         >
                           {child.label}
                         </Link>
@@ -192,7 +202,7 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className={`block py-3 text-[13px] font-sans font-medium tracking-[0.06em] uppercase text-navy hover:text-gold transition-colors border-b border-gold/10 ${
+                      className={`block py-3 text-[14px] font-sans font-medium tracking-[0.06em] uppercase text-navy hover:text-gold transition-colors border-b border-gold/10 ${
                         pathname === link.href ? 'text-gold' : ''
                       }`}
                     >
@@ -205,7 +215,7 @@ export default function Navbar() {
                             key={child.label}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="block py-1.5 text-[11.5px] font-sans text-slate hover:text-gold transition-colors"
+                            className="block py-1.5 text-[14px] font-sans text-slate hover:text-gold transition-colors"
                           >
                             {child.label}
                           </Link>

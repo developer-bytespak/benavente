@@ -24,7 +24,7 @@ export default function GalleryPage() {
               Featured <span className="italic text-gold">Projects</span><br />
               &amp; Assignments
             </h1>
-            <p className="text-slate text-[14.5px] font-light leading-[1.85] max-w-[560px] mt-5">
+            <p className="text-slate text-[16px] font-light leading-[1.85] max-w-[560px] mt-5">
               A sampling of prior studies and services across Hawai&#8216;i, Guam, Saipan, the Marshall Islands, and other Pacific Islands.
             </p>
             <div className="flex flex-wrap gap-5 mt-7">

@@ -21,7 +21,7 @@ export default function ContactPage() {
             <h1 className="font-serif text-[clamp(44px,6vw,72px)] text-white leading-[1.08]">
               Request a <span className="italic text-gold-light">Consultation</span>
             </h1>
-            <p className="text-white/[0.58] text-[14.5px] font-light leading-[1.85] max-w-[560px] mt-5">
+            <p className="text-white/[0.58] text-[16px] font-light leading-[1.85] max-w-[560px] mt-5">
               Our team is ready to discuss your real estate appraisal, valuation, or consulting needs. Let&apos;s talk.
             </p>
             <div className="flex flex-wrap gap-5 mt-7">
