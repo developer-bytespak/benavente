@@ -22,8 +22,8 @@ export default function RegionsCoverage() {
                 key={region.name}
                 className={`px-5 py-4 ${i < regions.length - 1 ? 'lg:border-r border-gold/15' : ''} ${i < regions.length - 2 ? 'border-b lg:border-b-0 border-gold/15' : ''}`}
               >
-                <div className="font-serif text-[18px] text-navy">{region.name}</div>
-                <div className="font-sans font-light text-[12px] text-slate mt-1">{region.note}</div>
+                <div className="font-serif text-[20px] text-navy">{region.name}</div>
+                <div className="font-sans font-light text-[14px] text-slate mt-1">{region.note}</div>
               </div>
             ))}
           </div>

@@ -18,7 +18,7 @@ function TickerRow() {
     <div className="flex items-center gap-6 shrink-0">
       {items.map((item, i) => (
         <div key={i} className="flex items-center gap-6 shrink-0">
-          <span className="text-[11px] font-sans text-slate tracking-[0.08em] uppercase whitespace-nowrap">
+          <span className="text-[13px] font-sans text-slate tracking-[0.08em] uppercase whitespace-nowrap">
             {item}
           </span>
           <span className="w-1 h-1 rounded-full bg-gold/40 shrink-0" />

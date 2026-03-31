@@ -14,14 +14,14 @@ export default function NewsletterCta() {
           <h2 className="font-serif text-[clamp(30px,4vw,42px)] text-white leading-[1.15]">
             Get the Latest Market <span className="italic text-gold">Insights</span>
           </h2>
-          <p className="text-white/[0.52] text-[14px] font-light mt-4">
+          <p className="text-white/[0.52] text-[16px] font-light mt-4">
             Subscribe for periodic analysis on Hawai&#8216;i and Pacific real estate markets.
           </p>
           <form className="flex gap-3 mt-8" onSubmit={(e) => e.preventDefault()}>
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 bg-white/10 border border-white/15 focus:border-gold focus:outline-none px-4 py-3 text-[13px] font-sans text-white placeholder:text-white/30 rounded-[2px]"
+              className="flex-1 bg-white/10 border border-white/15 focus:border-gold focus:outline-none px-4 py-3 text-[15px] font-sans text-white placeholder:text-white/30 rounded-[2px]"
             />
             <Button variant="gold" type="submit">Subscribe</Button>
           </form>

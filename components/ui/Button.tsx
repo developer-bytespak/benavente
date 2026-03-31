@@ -18,7 +18,7 @@ const variantStyles = {
 }
 
 export default function Button({ href, variant = 'solid', children, className = '', type = 'button', onClick }: ButtonProps) {
-  const styles = `inline-flex items-center justify-center px-7 py-3 text-[11.5px] font-sans font-medium tracking-[0.12em] uppercase transition-all duration-300 ease-smooth rounded-[2px] ${variantStyles[variant]} ${className}`
+  const styles = `inline-flex items-center justify-center px-7 py-3 text-[13px] font-sans font-medium tracking-[0.1em] uppercase transition-all duration-300 ease-smooth rounded-[2px] ${variantStyles[variant]} ${className}`
 
   if (href) {
     return <Link href={href} className={styles}>{children}</Link>

@@ -14,7 +14,7 @@ export default function PageHero() {
             Experts Rooted in<br />
             <span className="italic text-gold">Hawai&#8216;i &amp; the Pacific</span>
           </h1>
-          <p className="text-slate text-[14.5px] font-light leading-[1.85] max-w-[560px] mt-5">
+          <p className="text-slate text-[16px] font-light leading-[1.85] max-w-[560px] mt-5">
             A team of credentialed professionals with over 50 years of combined experience in real estate economics, valuation, and market analysis.
           </p>
           <div className="flex flex-wrap gap-5 mt-7">

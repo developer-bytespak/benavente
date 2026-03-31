@@ -27,15 +27,15 @@ export default function ServicesGrid() {
               {/* Hover border */}
               <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gold transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
 
-              <span className="text-gold font-serif text-[11px] tracking-[0.2em]">{service.number}</span>
+              <span className="text-gold font-serif text-[12px] tracking-[0.2em]">{service.number}</span>
 
               {/* Icon placeholder */}
               <div className="w-10 h-10 border border-gold/20 rounded-full flex items-center justify-center mt-4 mb-5">
                 <span className="w-2 h-2 rounded-full bg-gold/40" />
               </div>
 
-              <h3 className="font-serif text-[22px] text-navy">{service.name}</h3>
-              <p className="font-sans font-light text-[13px] text-slate mt-2 leading-[1.7]">{service.shortDesc}</p>
+              <h3 className="font-serif text-[24px] text-navy">{service.name}</h3>
+              <p className="font-sans font-light text-[15px] text-slate mt-2 leading-[1.7]">{service.shortDesc}</p>
               <div className="mt-5">
                 <MicroCTA href="/contact">Learn More</MicroCTA>
               </div>

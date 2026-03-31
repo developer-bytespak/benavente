@@ -33,8 +33,8 @@ export default function GalleryPreview() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-cream-deeper to-cream-dark" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                <span className="text-gold text-[9.5px] uppercase tracking-[0.2em] font-sans">{project.type}</span>
-                <span className="text-white font-serif text-[20px] mt-1">{project.title}</span>
+                <span className="text-gold text-[11px] uppercase tracking-[0.2em] font-sans">{project.type}</span>
+                <span className="text-white font-serif text-[22px] mt-1">{project.title}</span>
               </div>
             </div>
           ))}

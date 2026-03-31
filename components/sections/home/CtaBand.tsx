@@ -15,7 +15,7 @@ export default function CtaBand() {
             Ready for <span className="italic text-gold">Credible,</span><br />
             Timely Results?
           </h2>
-          <p className="text-white/[0.52] text-[14.5px] font-light leading-[1.8] mt-5">
+          <p className="text-white/[0.52] text-[16px] font-light leading-[1.8] mt-5">
             Whether you need a commercial appraisal, litigation support, or market analysis, our team is ready to deliver the expertise your project demands.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
@@ -24,7 +24,7 @@ export default function CtaBand() {
           </div>
           <div className="flex flex-wrap justify-center gap-8 mt-12">
             <MicroCTA href="/about" variant="light">Discover Our Approach</MicroCTA>
-            <MicroCTA href="/blog" variant="light">Read Insights</MicroCTA>
+            <MicroCTA href="/blog" variant="light">Read Blogs</MicroCTA>
             <MicroCTA href="/gallery" variant="light">See Full Portfolio</MicroCTA>
           </div>
         </div>
