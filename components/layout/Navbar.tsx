@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -94,13 +95,22 @@ export default function Navbar() {
       >
         <div className="max-w-[1400px] mx-auto px-[4.5%] h-full flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <span className={`font-serif text-[20px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
-              The Benavente Group
-            </span>
-            <span className="text-gold text-[8.5px] tracking-[0.2em] uppercase font-sans">
-              Real Estate Appraisers &amp; Consultants
-            </span>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/images/hero/logo.png"
+              alt="The Benavente Group"
+              width={48}
+              height={48}
+              className="w-10 h-10 object-contain"
+            />
+            <div className="flex flex-col">
+              <span className={`font-serif text-[20px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
+                The Benavente Group
+              </span>
+              <span className={`text-[10px] tracking-[0.15em] uppercase font-sans transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-slate'}`}>
+                Hawaii Based Real Estate Appraisers &amp; Consultants
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
