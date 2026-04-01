@@ -12,12 +12,6 @@ export default function TestimonialPull() {
             The Benavente Group provided an exceptionally thorough valuation report that withstood intense scrutiny during litigation proceedings. Their market expertise is unmatched in Hawaii.
           </p>
           <div className="w-9 h-px bg-gold mx-auto mt-8 mb-6" />
-          <div className="font-sans font-medium text-[14px] tracking-[0.14em] uppercase text-navy">
-            DAVID K. MATSUMOTO
-          </div>
-          <div className="font-sans font-light text-[14px] text-slate-light mt-1">
-            Real Estate Attorney, Honolulu
-          </div>
         </div>
       </RevealOnScroll>
     </section>
