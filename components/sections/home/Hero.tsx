@@ -1,36 +1,55 @@
 'use client'
 
 import { useRef, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 
-const videos = ['/images/hero/video-1.mp4', '/images/hero/video-2.mp4']
+const videos = [
+  'https://06muo7mgariygms2.public.blob.vercel-storage.com/video-1.mp4',
+  'https://06muo7mgariygms2.public.blob.vercel-storage.com/video-3.mp4',
+  'https://06muo7mgariygms2.public.blob.vercel-storage.com/video-4.mp4',
+  'https://06muo7mgariygms2.public.blob.vercel-storage.com/video-2.mp4',
+]
 
 export default function Hero() {
   const [active, setActive] = useState(0)
   const ref0 = useRef<HTMLVideoElement>(null)
   const ref1 = useRef<HTMLVideoElement>(null)
-  const refs = [ref0, ref1]
+  const ref2 = useRef<HTMLVideoElement>(null)
+  const ref3 = useRef<HTMLVideoElement>(null)
+  const refs = [ref0, ref1, ref2, ref3]
 
   // Start first video on mount
   useEffect(() => {
     const vid = refs[0].current
     if (vid) {
-      vid.playbackRate = 2
+      vid.playbackRate = 1
       vid.play().catch(() => {})
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // When active changes, play the new one and pause the old
+  // When active changes, play the new one
   useEffect(() => {
+    let timer: NodeJS.Timeout
     refs.forEach((ref, i) => {
       const vid = ref.current
       if (!vid) return
-      vid.playbackRate = 2
+      const src = videos[i]
+      vid.playbackRate = (src.includes('video-3') || src.includes('video-4')) ? 1.5 : 1
       if (i === active) {
         vid.currentTime = 0
         vid.play().catch(() => {})
+        // Skip video-1 and video-2 after 3 seconds
+        if (src.includes('video-1') || src.includes('video-2')) {
+          timer = setTimeout(() => {
+            setActive((active + 1) % videos.length)
+          }, 3000)
+        }
       }
     })
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
   const handleEnded = (index: number) => {
@@ -63,24 +82,25 @@ export default function Hero() {
 
       {/* Content — centered */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-[4.5%]">
-        <div className="flex items-center gap-2.5 mb-6">
-          <span className="w-[26px] h-px bg-gold" />
-          <span className="text-gold text-[11px] tracking-[0.25em] uppercase font-sans font-medium">
-            Hawai&#8216;i &amp; Pacific Islands
-          </span>
-          <span className="w-[26px] h-px bg-gold" />
-        </div>
-
-        <h1 className="font-serif font-medium text-[clamp(48px,6vw,84px)] leading-[1.05] text-white">
-          Real Estate<br />
-          <span className="italic text-gold-light">Valuation</span><br />
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
+          className="font-serif font-medium text-[clamp(48px,6vw,84px)] leading-[1.05] text-white"
+        >
+          Real Estate <span className="italic text-gold-light">Valuation</span><br />
           &amp; Advisory
-        </h1>
+        </motion.h1>
 
-        <div className="flex flex-wrap justify-center gap-4 mt-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 0.7 }}
+          className="flex flex-wrap justify-center gap-4 mt-8"
+        >
           <Button href="/contact" variant="gold">Request a Consultation</Button>
           <Button href="/gallery" variant="outline-light">View Our Work</Button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scroll Indicator */}

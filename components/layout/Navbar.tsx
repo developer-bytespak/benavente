@@ -7,15 +7,15 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from '@/components/ui/Button'
 
-const navLinks = [
+const navLinks: { label: string; href: string; children?: { label: string; href: string }[] }[] = [
   { label: 'Home', href: '/' },
   {
     label: 'About', href: '/about',
-    children: [
-      { label: 'Our Story', href: '/about' },
-      { label: 'Leadership', href: '/about' },
-      { label: 'Coverage Areas', href: '/about' },
-    ],
+    // children: [
+    //   { label: 'Our Story', href: '/about' },
+    //   { label: 'Leadership', href: '/about' },
+    //   { label: 'Coverage Areas', href: '/about' },
+    // ],
   },
   // {
   //   label: 'Services', href: '/contact',
@@ -30,14 +30,14 @@ const navLinks = [
   // },
   {
     label: 'Gallery', href: '/gallery',
-    children: [
-      { label: 'All Projects', href: '/gallery' },
-      { label: 'Commercial', href: '/gallery' },
-      { label: 'Resort & Hospitality', href: '/gallery' },
-      { label: 'Residential', href: '/gallery' },
-      { label: 'Industrial', href: '/gallery' },
-      { label: 'Pacific Region', href: '/gallery' },
-    ],
+    // children: [
+    //   { label: 'All Projects', href: '/gallery' },
+    //   { label: 'Commercial', href: '/gallery' },
+    //   { label: 'Resort & Hospitality', href: '/gallery' },
+    //   { label: 'Residential', href: '/gallery' },
+    //   { label: 'Industrial', href: '/gallery' },
+    //   { label: 'Pacific Region', href: '/gallery' },
+    // ],
   },
   { label: 'BLOG', href: '/blog' },
   { label: 'Contact', href: '/contact' },
@@ -45,7 +45,8 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname()
-  const isHome = pathname === '/'
+  // const isHome = pathname === '/'
+  const hasDarkHero = ['/', '/about', '/gallery', '/blog', '/contact'].includes(pathname)
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -68,7 +69,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const isTransparent = isHome && !scrolled
+  const isTransparent = hasDarkHero && !scrolled
   const textColor = isTransparent ? 'text-white' : 'text-navy'
   const logoColor = isTransparent ? 'text-white' : 'text-navy'
 
@@ -88,8 +89,8 @@ export default function Navbar() {
           hidden ? '-translate-y-full' : 'translate-y-0'
         } ${
           isTransparent
-            ? 'bg-transparent'
-            : 'bg-white/95 backdrop-blur-md border-b border-gold/20'
+            ? 'bg-navy/10 backdrop-blur-sm'
+            : 'bg-white/90 backdrop-blur-sm border-b border-gold/20'
         }`}
         style={{ height: isTransparent ? 76 : 68 }}
       >
@@ -151,6 +152,7 @@ export default function Navbar() {
                           {child.label}
                         </Link>
                       ))}
+
                     </motion.div>
                   )}
                 </AnimatePresence>

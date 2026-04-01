@@ -16,20 +16,20 @@ export default function GalleryPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-cream border-b border-gold/15 pt-[160px] pb-[80px] px-[4.5%]">
+      <section className="bg-navy pt-[160px] pb-[80px] px-[4.5%]">
         <RevealOnScroll>
           <div className="max-w-[1280px] mx-auto">
-            <SectionLabel>Portfolio</SectionLabel>
-            <h1 className="font-serif text-[clamp(44px,6vw,72px)] text-navy leading-[1.08]">
-              Featured <span className="italic text-gold">Projects</span><br />
+            <SectionLabel variant="light">Portfolio</SectionLabel>
+            <h1 className="font-serif text-[clamp(44px,6vw,72px)] text-white leading-[1.08]">
+              Featured <span className="italic text-gold-light">Projects</span><br />
               &amp; Assignments
             </h1>
-            <p className="text-slate text-[16px] font-light leading-[1.85] max-w-[560px] mt-5">
+            <p className="text-white/[0.58] text-[16px] font-light leading-[1.85] max-w-[560px] mt-5">
               A sampling of prior studies and services across Hawai&#8216;i, Guam, Saipan, the Marshall Islands, and other Pacific Islands.
             </p>
             <div className="flex flex-wrap gap-5 mt-7">
-              <MicroCTA href="/contact">Start a Project</MicroCTA>
-              <MicroCTA href="/about">Our Expertise</MicroCTA>
+              <MicroCTA href="/contact" variant="light">Start a Project</MicroCTA>
+              <MicroCTA href="/about" variant="light">Our Expertise</MicroCTA>
             </div>
           </div>
         </RevealOnScroll>

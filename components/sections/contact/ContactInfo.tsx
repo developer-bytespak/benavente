@@ -2,9 +2,9 @@ import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 
 const contactDetails = [
-  { label: 'Office Location', value: 'Honolulu, Hawai\u2018i', sub: 'Serving all Hawaiian Islands & Pacific' },
-  { label: 'Phone', value: '(808) 555-0100' },
-  { label: 'Email', value: 'info@benaventegroup.com' },
+  { label: 'Office Location', value: 'Pauahi Tower, 1003 Bishop Street, Honolulu, HI 96813', sub: 'Serving Hawai\u2018i, Guam, Saipan & the Pacific Islands' },
+  { label: 'Phone', value: '(808) 784-4320' },
+  { label: 'Email', value: 'Mail@BenaventeGroup.com' },
   { label: 'Hours', value: 'Monday \u2013 Friday, 8:00 AM \u2013 5:00 PM HST' },
   { label: 'Service Regions', value: 'Hawai\u2018i \u00B7 Guam \u00B7 Saipan \u00B7 Marshall Islands \u00B7 Pacific Islands' },
 ]
@@ -32,7 +32,7 @@ export default function ContactInfo() {
 
       {/* Map Placeholder */}
       <div className="mt-8 h-[240px] bg-cream border border-gold/15 rounded-[2px] flex items-center justify-center">
-        <span className="text-slate-light text-[14px] font-sans">Map &mdash; Honolulu, HI</span>
+        <span className="text-slate-light text-[14px] font-sans">Map &mdash; 1003 Bishop Street, Honolulu, HI 96813</span>
       </div>
 
       <div className="mt-8 flex flex-col gap-3">

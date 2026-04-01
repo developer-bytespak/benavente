@@ -1,7 +1,7 @@
 import Hero from '@/components/sections/home/Hero'
 import Ticker from '@/components/sections/home/Ticker'
 import IntroSplit from '@/components/sections/home/IntroSplit'
-import ServicesGrid from '@/components/sections/home/ServicesGrid'
+
 import StatsRow from '@/components/sections/home/StatsRow'
 import GalleryPreview from '@/components/sections/home/GalleryPreview'
 import TestimonialPull from '@/components/sections/home/TestimonialPull'
@@ -14,7 +14,7 @@ export default function HomePage() {
       <Hero />
       <Ticker />
       <IntroSplit />
-      <ServicesGrid />
+
       <StatsRow />
       <GalleryPreview />
       <TestimonialPull />

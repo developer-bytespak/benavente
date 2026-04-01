@@ -30,27 +30,9 @@ export default function ContactForm() {
         Send Us a Message
       </h3>
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <input type="text" placeholder="First Name" className={inputClass} required />
-          <input type="text" placeholder="Last Name" className={inputClass} required />
-        </div>
+        <input type="text" placeholder="Name" className={inputClass} required />
         <input type="email" placeholder="Email Address" className={inputClass} required />
-        <input type="tel" placeholder="Phone Number" className={inputClass} />
-        <select className={inputClass} defaultValue="">
-          <option value="" disabled>Service Needed</option>
-          <option>Commercial Appraisal</option>
-          <option>Residential Valuation</option>
-          <option>Market Analysis</option>
-          <option>Litigation Support</option>
-          <option>Property Tax Appeal</option>
-          <option>Consulting</option>
-          <option>Pacific Region Work</option>
-          <option>Other</option>
-        </select>
-        <input type="text" placeholder="Property Type / Description" className={inputClass} />
-        <input type="text" placeholder="Intended Use of Appraisal" className={inputClass} />
-        <input type="text" placeholder="Timeline / Deadline" className={inputClass} />
-        <textarea placeholder="Message / Additional Details" className={`${inputClass} min-h-[130px] resize-y`} />
+        <textarea placeholder="Comment" className={`${inputClass} min-h-[130px] resize-y`} required />
         <Button type="submit" variant="solid" className="w-full mt-2">Submit Inquiry</Button>
       </form>
       <p className="text-[13px] text-slate-light mt-3">
