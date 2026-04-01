@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from 'react'
 import Button from '@/components/ui/Button'
 
-const videos = ['/images/hero/video-1.mov', '/images/hero/video-2.mov']
+const videos = ['/images/hero/video-1.mp4', '/images/hero/video-2.mp4']
 
 export default function Hero() {
   const [active, setActive] = useState(0)
