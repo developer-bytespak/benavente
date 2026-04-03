@@ -57,17 +57,26 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY
-      setScrolled(y > 60)
-      if (y > 200 && y > lastScrollY.current) {
-        setHidden(true)
-      } else {
+      const heroBottom = window.innerHeight - 100 // hero is full viewport
+      const inHero = hasDarkHero && y < heroBottom
+
+      if (inHero) {
+        // In hero zone: always transparent blur, never hidden
+        setScrolled(false)
         setHidden(false)
+      } else {
+        setScrolled(true)
+        if (y > lastScrollY.current) {
+          setHidden(true)
+        } else {
+          setHidden(false)
+        }
       }
       lastScrollY.current = y
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [hasDarkHero])
 
   const isTransparent = hasDarkHero && !scrolled
   const textColor = isTransparent ? 'text-white' : 'text-navy'
