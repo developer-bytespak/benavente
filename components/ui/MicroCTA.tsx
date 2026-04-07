@@ -14,7 +14,7 @@ interface MicroCTAProps {
 const variantStyles = {
   dark: 'text-navy hover:text-gold border-gold',
   light: 'text-white/70 hover:text-gold-light border-gold/40',
-  gold: 'text-gold hover:text-navy border-gold hover:border-navy',
+  gold: 'text-gold hover:text-gold-light border-gold hover:border-gold-light',
 }
 
 export default function MicroCTA({ href, children, variant = 'dark', className = '' }: MicroCTAProps) {

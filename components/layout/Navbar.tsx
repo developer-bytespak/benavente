@@ -117,7 +117,7 @@ export default function Navbar() {
               <span className={`font-serif text-[26px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
                 The Benavente Group
               </span>
-              <span className={`text-[11px] tracking-[0.18em] uppercase font-sans transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-slate'}`}>
+              <span className={`text-[11px] tracking-[0.18em] uppercase font-sans font-medium transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-slate'}`}>
                 Hawaii Based Real Estate Appraisers &amp; Consultants
               </span>
             </div>
