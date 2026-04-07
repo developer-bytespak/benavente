@@ -19,17 +19,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr] gap-10 lg:gap-13">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Image
                 src="/images/hero/logo.png"
                 alt="The Benavente Group"
-                width={44}
-                height={44}
-                className=""
+                width={50}
+                height={50}
+                className="w-[50px] h-[50px] object-contain"
               />
               <div>
-                <h3 className="font-serif text-[21px] text-white leading-tight">The Benavente Group</h3>
-                <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-sans">
+                <h3 className="font-serif text-[24px] text-white leading-tight">The Benavente Group</h3>
+                <p className="text-gold text-[11.5px] tracking-[0.2em] uppercase font-sans mt-0.5">
                   Real Estate Appraisers &amp; Consultants
                 </p>
               </div>

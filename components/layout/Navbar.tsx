@@ -101,30 +101,30 @@ export default function Navbar() {
             ? 'bg-navy/10 backdrop-blur-sm'
             : 'bg-white/90 backdrop-blur-sm border-b border-gold/20'
         }`}
-        style={{ height: isTransparent ? 76 : 68 }}
+        style={{ height: isTransparent ? 96 : 80 }}
       >
         <div className="max-w-[1400px] mx-auto px-[4.5%] h-full flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-4">
             <Image
               src="/images/hero/logo.png"
               alt="The Benavente Group"
-              width={48}
-              height={48}
-              className="w-10 h-10 object-contain"
+              width={56}
+              height={56}
+              className="w-14 h-14 object-contain"
             />
             <div className="flex flex-col">
-              <span className={`font-serif text-[20px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
+              <span className={`font-serif text-[26px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
                 The Benavente Group
               </span>
-              <span className={`text-[10px] tracking-[0.15em] uppercase font-sans transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-slate'}`}>
+              <span className={`text-[11px] tracking-[0.18em] uppercase font-sans font-medium transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-slate'}`}>
                 Hawaii Based Real Estate Appraisers &amp; Consultants
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <div
                 key={link.label}
@@ -134,7 +134,7 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={`text-[14px] font-sans font-medium tracking-[0.06em] uppercase transition-colors duration-300 ${textColor} hover:text-gold ${
+                  className={`text-[15px] font-sans font-medium tracking-[0.08em] uppercase transition-colors duration-300 ${textColor} hover:text-gold ${
                     pathname === link.href ? 'text-gold' : ''
                   }`}
                 >
@@ -171,11 +171,6 @@ export default function Navbar() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <div className="hidden md:block">
-              <Button href="/contact" variant={isTransparent ? 'outline-light' : 'outline'}>
-                Request Consultation
-              </Button>
-            </div>
             <button
               className="md:hidden flex flex-col gap-[5px] p-2"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -236,8 +231,8 @@ export default function Navbar() {
                   </div>
                 ))}
                 <div className="mt-6">
-                  <Button href="/contact" variant="gold" className="w-full">
-                    Request Consultation
+                  <Button href="/about" variant="gold" className="w-full">
+                    Who We Are
                   </Button>
                 </div>
               </div>

@@ -1,6 +1,5 @@
 'use client'
 
-import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import Button from '@/components/ui/Button'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
@@ -10,7 +9,6 @@ export default function CtaBand() {
     <section className="bg-navy py-[100px] px-[4.5%]">
       <RevealOnScroll>
         <div className="max-w-[620px] mx-auto text-center">
-          <SectionLabel variant="light">Get Started</SectionLabel>
           <h2 className="font-serif text-[clamp(34px,4.5vw,50px)] text-white leading-[1.15]">
             Ready for <span className="italic text-gold">Credible,</span><br />
             Timely Results?

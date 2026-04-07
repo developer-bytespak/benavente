@@ -1,6 +1,5 @@
 'use client'
 
-import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import Button from '@/components/ui/Button'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
@@ -10,7 +9,6 @@ export default function NewsletterCta() {
     <section className="bg-navy py-[80px] px-[4.5%]">
       <RevealOnScroll>
         <div className="max-w-[520px] mx-auto text-center">
-          <SectionLabel variant="light">Stay Informed</SectionLabel>
           <h2 className="font-serif text-[clamp(30px,4vw,42px)] text-white leading-[1.15]">
             Get the Latest Market <span className="italic text-gold">Insights</span>
           </h2>

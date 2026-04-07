@@ -89,7 +89,7 @@ export default function Hero() {
           className="font-serif font-medium text-[clamp(48px,6vw,84px)] leading-[1.05] text-white"
         >
           Real Estate <span className="italic text-gold-light">Valuation</span><br />
-          &amp; Advisory
+          &amp; Consultancy
         </motion.h1>
 
         <motion.div
@@ -98,7 +98,7 @@ export default function Hero() {
           transition={{ duration: 1, ease: 'easeOut', delay: 0.7 }}
           className="flex flex-wrap justify-center gap-4 mt-8"
         >
-          <Button href="/contact" variant="gold">Request a Consultation</Button>
+          <Button href="/about" variant="gold">Who We Are</Button>
           <Button href="/gallery" variant="outline-light">View Our Work</Button>
         </motion.div>
       </div>
