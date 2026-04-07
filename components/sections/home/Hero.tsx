@@ -23,7 +23,7 @@ export default function Hero() {
   useEffect(() => {
     const vid = refs[0].current
     if (vid) {
-      vid.playbackRate = 1
+      vid.playbackRate = 3
       vid.play().catch(() => {})
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,12 +36,16 @@ export default function Hero() {
       const vid = ref.current
       if (!vid) return
       const src = videos[i]
-      vid.playbackRate = (src.includes('video-3') || src.includes('video-4')) ? 1.5 : 1
+      vid.playbackRate = src.includes('video-1') ? 2.5 : (src.includes('video-3') || src.includes('video-4')) ? 1.5 : 1
       if (i === active) {
         vid.currentTime = 0
         vid.play().catch(() => {})
-        // Skip video-1 and video-2 after 3 seconds
-        if (src.includes('video-1') || src.includes('video-2')) {
+        // Skip video-1 after 15 seconds, video-2 after 3 seconds
+        if (src.includes('video-1')) {
+          timer = setTimeout(() => {
+            setActive((active + 1) % videos.length)
+          }, 4000)
+        } else if (src.includes('video-2')) {
           timer = setTimeout(() => {
             setActive((active + 1) % videos.length)
           }, 3000)
