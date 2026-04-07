@@ -3,6 +3,7 @@ import PageHero from '@/components/sections/about/PageHero'
 import StorySection from '@/components/sections/about/StorySection'
 import MissionPillars from '@/components/sections/about/MissionPillars'
 import RegionsCoverage from '@/components/sections/about/RegionsCoverage'
+import MeetTeam from '@/components/sections/about/MeetTeam'
 import CtaBand from '@/components/sections/home/CtaBand'
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function AboutPage() {
       <StorySection />
       <MissionPillars />
       <RegionsCoverage />
+      <MeetTeam />
       <CtaBand />
     </>
   )
