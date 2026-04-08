@@ -23,7 +23,7 @@ export default function MicroCTA({ href, children, variant = 'dark', className =
   return (
     <Link
       href={href}
-      className={`text-[13px] font-sans font-medium tracking-[0.1em] uppercase inline-flex items-center border-b pb-0.5 transition-all duration-300 ${variantStyles[variant]} ${className}`}
+      className={`text-[14px] font-serif font-medium tracking-[0.1em] uppercase inline-flex items-center border-b pb-0.5 transition-all duration-300 ${variantStyles[variant]} ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ gap: isHovered ? '13px' : '7px' }}

@@ -27,11 +27,11 @@ export default function BlogPreview() {
           <RevealOnScroll key={post.id} delay={index * 0.08}>
             <div className="group cursor-pointer">
               <div className="aspect-video bg-gradient-to-br from-cream-deeper to-cream-dark rounded-[2px] overflow-hidden mb-5" />
-              <span className="text-gold text-[11px] uppercase tracking-[0.2em] font-sans">{post.date}</span>
+              <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">{post.date}</span>
               <h3 className="font-serif text-[22px] text-navy mt-2 group-hover:text-gold transition-colors duration-300 leading-[1.25]">
                 {post.title}
               </h3>
-              <p className="font-sans font-light text-[15px] text-slate mt-2 leading-[1.7] line-clamp-2">
+              <p className="font-serif font-light text-[17px] text-navy mt-2 leading-[1.7] line-clamp-2">
                 {post.excerpt}
               </p>
               <div className="mt-4">

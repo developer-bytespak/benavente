@@ -16,23 +16,23 @@ export default function ContactInfo() {
       <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
         Let&apos;s Start a <span className="italic text-gold">Conversation</span>
       </h2>
-      <p className="text-slate text-[16px] font-light leading-[1.85] mt-5">
+      <p className="text-navy text-[18px] font-light leading-[1.85] mt-5">
         Whether your project is a single-family home or a large commercial complex, we&apos;re here to help.
       </p>
 
       <div className="mt-8 flex flex-col gap-5">
         {contactDetails.map((item) => (
           <div key={item.label}>
-            <span className="text-[10px] text-gold uppercase tracking-[0.2em] font-sans block">{item.label}</span>
-            <span className="text-navy text-[16px] font-sans block mt-1">{item.value}</span>
-            {item.sub && <span className="text-slate text-[14px] font-sans block">{item.sub}</span>}
+            <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif block">{item.label}</span>
+            <span className="text-navy text-[18px] font-serif block mt-1">{item.value}</span>
+            {item.sub && <span className="text-navy text-[16px] font-serif block">{item.sub}</span>}
           </div>
         ))}
       </div>
 
       {/* Map Placeholder */}
       <div className="mt-8 h-[240px] bg-cream border border-gold/15 rounded-[2px] flex items-center justify-center">
-        <span className="text-slate-light text-[14px] font-sans">Map &mdash; 1003 Bishop Street, Honolulu, HI 96813</span>
+        <span className="text-slate-light text-[16px] font-serif">Map &mdash; 1003 Bishop Street, Honolulu, HI 96813</span>
       </div>
 
       <div className="mt-8 flex flex-col gap-3">

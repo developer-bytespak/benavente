@@ -40,7 +40,7 @@ export default function MeetTeam() {
             <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-white leading-[1.15]">
               Meet the <span className="italic text-gold">Team</span>
             </h2>
-            <p className="text-white/[0.52] text-[16px] font-light leading-[1.85] mt-4">
+            <p className="text-white/[0.52] text-[18px] font-light leading-[1.85] mt-4">
               Experienced professionals dedicated to delivering credible valuations across Hawai&#8216;i and the Pacific.
             </p>
           </div>
@@ -79,7 +79,7 @@ export default function MeetTeam() {
                 <h3 className="font-serif text-[22px] text-white transition-colors duration-300 group-hover:text-gold">
                   {member.name}
                 </h3>
-                <p className="font-sans font-light text-[13px] text-white/50 tracking-[0.08em] uppercase mt-1">
+                <p className="font-serif font-light text-[14px] text-white/50 tracking-[0.08em] uppercase mt-1">
                   {member.role}
                 </p>
 

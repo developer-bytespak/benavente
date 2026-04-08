@@ -23,7 +23,7 @@ export default function BlogPage() {
               Real Estate <span className="italic text-gold-light">Analysis</span><br />
               &amp; Commentary
             </h1>
-            <p className="text-white/[0.58] text-[16px] font-light leading-[1.85] max-w-[560px] mt-5">
+            <p className="text-white/[0.58] text-[18px] font-light leading-[1.85] max-w-[560px] mt-5">
               In-depth perspectives on Hawai&#8216;i&apos;s real estate market, valuation methodology, and Pacific region property trends.
             </p>
             <div className="flex flex-wrap gap-5 mt-7">

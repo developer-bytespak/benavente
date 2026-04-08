@@ -23,9 +23,9 @@ export default function GalleryGrid({ projects }: GalleryGridProps) {
             <div className="group relative overflow-hidden rounded-[2px] cursor-pointer aspect-[4/3]">
               <div className="absolute inset-0 bg-gradient-to-br from-cream-deeper to-cream-dark" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                <span className="text-gold text-[13px] uppercase tracking-[0.2em] font-sans">{project.type}</span>
+                <span className="text-gold text-[14px] uppercase tracking-[0.2em] font-serif">{project.type}</span>
                 <span className="text-white font-serif text-[22px] mt-1">{project.title}</span>
-                <span className="text-white/50 text-[13px] font-sans mt-1">{project.location}</span>
+                <span className="text-white/50 text-[14px] font-serif mt-1">{project.location}</span>
               </div>
             </div>
           </motion.div>

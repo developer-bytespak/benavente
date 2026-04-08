@@ -106,18 +106,20 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-[4.5%] h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4">
-            <Image
-              src="/images/hero/logo.png"
-              alt="The Benavente Group"
-              width={56}
-              height={56}
-              className="w-14 h-14 object-contain"
-            />
+            <span className="flex items-center justify-center w-[69px] h-[69px] rounded-full border border-white/30 transition-colors duration-500">
+              <Image
+                src="/images/hero/logo.png"
+                alt="The Benavente Group"
+                width={52}
+                height={52}
+                className="w-[52px] h-[52px] object-contain"
+              />
+            </span>
             <div className="flex flex-col">
               <span className={`font-serif text-[26px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
                 The Benavente Group
               </span>
-              <span className={`text-[11px] tracking-[0.18em] uppercase font-sans font-medium transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-slate'}`}>
+              <span className={`text-[12px] tracking-[0.18em] uppercase font-serif font-bold transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-navy/70'}`}>
                 Hawaii Based Real Estate Appraisers &amp; Consultants
               </span>
             </div>
@@ -134,7 +136,7 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={`text-[15px] font-sans font-medium tracking-[0.08em] uppercase transition-colors duration-300 ${textColor} hover:text-gold ${
+                  className={`text-[15px] font-serif font-bold tracking-[0.08em] uppercase transition-colors duration-300 ${textColor} hover:text-gold ${
                     pathname === link.href ? 'text-gold' : ''
                   }`}
                 >
@@ -156,7 +158,7 @@ export default function Navbar() {
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block px-5 py-2 text-[14px] font-sans text-navy/70 hover:text-gold hover:bg-cream transition-colors duration-200"
+                          className="block px-5 py-2 text-[14px] font-serif text-navy/70 hover:text-gold hover:bg-cream transition-colors duration-200"
                         >
                           {child.label}
                         </Link>
@@ -208,7 +210,7 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className={`block py-3 text-[14px] font-sans font-medium tracking-[0.06em] uppercase text-navy hover:text-gold transition-colors border-b border-gold/10 ${
+                      className={`block py-3 text-[14px] font-serif font-medium tracking-[0.06em] uppercase text-navy hover:text-gold transition-colors border-b border-gold/10 ${
                         pathname === link.href ? 'text-gold' : ''
                       }`}
                     >
@@ -221,7 +223,7 @@ export default function Navbar() {
                             key={child.label}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className="block py-1.5 text-[14px] font-sans text-slate hover:text-gold transition-colors"
+                            className="block py-1.5 text-[14px] font-serif text-slate hover:text-gold transition-colors"
                           >
                             {child.label}
                           </Link>

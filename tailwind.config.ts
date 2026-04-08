@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         navy: { DEFAULT: '#0B1F3A', light: '#152D52', dark: '#07152A' },
         gold: { DEFAULT: '#B8935A', light: '#CFA96E', dark: '#9A7840' },
+        ocean: { DEFAULT: '#1565C0', light: '#4A90D9', dark: '#0D47A1' },
         cream: { DEFAULT: '#F8F4EE', dark: '#F0EAE0', deeper: '#E8E0D4' },
         slate: { DEFAULT: '#5C6478', light: '#8E97A8' },
         ivory: '#FDFBF8',
