@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${cormorant.variable} ${dmSans.variable} font-sans antialiased`}
+        className={`${cormorant.variable} ${dmSans.variable} font-serif antialiased`}
       >
         <Navbar />
         <main>{children}</main>

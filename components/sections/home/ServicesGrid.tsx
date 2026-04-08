@@ -35,7 +35,7 @@ export default function ServicesGrid() {
               </div>
 
               <h3 className="font-serif text-[24px] text-navy">{service.name}</h3>
-              <p className="font-sans font-light text-[15px] text-slate mt-2 leading-[1.7]">{service.shortDesc}</p>
+              <p className="font-serif font-light text-[17px] text-navy mt-2 leading-[1.7]">{service.shortDesc}</p>
               <div className="mt-5">
                 <MicroCTA href="/contact">Learn More</MicroCTA>
               </div>

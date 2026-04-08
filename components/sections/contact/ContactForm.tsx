@@ -22,11 +22,11 @@ export default function ContactForm() {
     )
   }
 
-  const inputClass = "w-full bg-cream border border-navy/10 focus:border-gold focus:outline-none px-4 py-3 text-[15px] font-sans text-navy placeholder:text-slate-light/60 rounded-[2px] transition-colors duration-300"
+  const inputClass = "w-full bg-cream border border-navy/10 focus:border-gold focus:outline-none px-4 py-3 text-[16px] font-serif text-navy placeholder:text-slate-light/60 rounded-[2px] transition-colors duration-300"
 
   return (
     <div>
-      <h3 className="text-[13px] uppercase tracking-[0.2em] text-slate-light font-sans font-medium mb-6">
+      <h3 className="text-[14px] uppercase tracking-[0.2em] text-slate-light font-serif font-medium mb-6">
         Send Us a Message
       </h3>
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">

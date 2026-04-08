@@ -20,21 +20,23 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-4">
-              <Image
-                src="/images/hero/logo.png"
-                alt="The Benavente Group"
-                width={50}
-                height={50}
-                className="w-[50px] h-[50px] object-contain"
-              />
+              <span className="flex items-center justify-center w-[72px] h-[72px] rounded-full border border-white/30 shrink-0">
+                <Image
+                  src="/images/hero/logo.png"
+                  alt="The Benavente Group"
+                  width={48}
+                  height={48}
+                  className="w-[48px] h-[48px] object-contain"
+                />
+              </span>
               <div>
                 <h3 className="font-serif text-[24px] text-white leading-tight">The Benavente Group</h3>
-                <p className="text-gold text-[11.5px] tracking-[0.2em] uppercase font-sans mt-0.5">
+                <p className="text-gold text-[12.5px] tracking-[0.2em] uppercase font-serif mt-0.5">
                   Real Estate Appraisers &amp; Consultants
                 </p>
               </div>
             </div>
-            <p className="text-white/[0.38] text-[14px] font-sans font-light leading-[1.7] max-w-[220px] mt-4">
+            <p className="text-white/[0.38] text-[16px] font-serif font-medium leading-[1.7] max-w-[220px] mt-4">
               Credible solutions and timely results for real estate valuation across Hawai&#8216;i and the Pacific.
             </p>
             <div className="mt-5">
@@ -44,7 +46,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-gold text-[11px] tracking-[0.2em] uppercase font-sans font-medium mb-5">
+            <h4 className="text-gold text-[12px] tracking-[0.2em] uppercase font-serif font-medium mb-5">
               Navigation
             </h4>
             <ul className="space-y-2.5">
@@ -52,7 +54,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/45 hover:text-white text-[14px] font-sans transition-colors duration-300"
+                    className="text-white/45 hover:text-white text-[15px] font-serif font-medium transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -63,22 +65,22 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-gold text-[11px] tracking-[0.2em] uppercase font-sans font-medium mb-5">
+            <h4 className="text-gold text-[12px] tracking-[0.2em] uppercase font-serif font-medium mb-5">
               Contact
             </h4>
             <div className="space-y-4">
               <div>
-                <span className="text-[10px] text-gold uppercase tracking-[0.2em] font-sans block">Office</span>
-                <span className="text-white/45 text-[14px] font-sans block mt-1">Pauahi Tower, 1003 Bishop St</span>
-                <span className="text-white/45 text-[14px] font-sans block">Honolulu, HI 96813</span>
+                <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Office</span>
+                <span className="text-white/45 text-[15px] font-serif font-medium block mt-1">Pauahi Tower, 1003 Bishop St</span>
+                <span className="text-white/45 text-[15px] font-serif font-medium block">Honolulu, HI 96813</span>
               </div>
               <div>
-                <span className="text-[10px] text-gold uppercase tracking-[0.2em] font-sans block">Phone</span>
-                <span className="text-white/45 text-[14px] font-sans block mt-1">(808) 784-4320</span>
+                <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Phone</span>
+                <span className="text-white/45 text-[15px] font-serif font-medium block mt-1">(808) 784-4320</span>
               </div>
               <div>
-                <span className="text-[10px] text-gold uppercase tracking-[0.2em] font-sans block">Email</span>
-                <span className="text-white/45 text-[14px] font-sans block mt-1">Mail@BenaventeGroup.com</span>
+                <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Email</span>
+                <span className="text-white/45 text-[15px] font-serif font-medium block mt-1">Mail@BenaventeGroup.com</span>
               </div>
             </div>
           </div>
@@ -86,10 +88,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/5 mt-11 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <span className="text-white/[0.22] text-[12px] font-sans">
+          <span className="text-white/[0.22] text-[13px] font-serif font-medium">
             &copy; 2026 The Benavente Group. All Rights Reserved.
           </span>
-          <div className="flex items-center gap-4 text-white/[0.22] text-[12px] font-sans">
+          <div className="flex items-center gap-4 text-white/[0.22] text-[13px] font-serif font-medium">
             <span>Privacy Policy</span>
             <span>&middot;</span>
             <span>Disclaimer</span>
