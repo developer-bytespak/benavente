@@ -5,15 +5,15 @@ import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 
 const videos = [
-  'https://06muo7mgariygms2.public.blob.vercel-storage.com/video-1.mp4',
-  'https://06muo7mgariygms2.public.blob.vercel-storage.com/video-3.mp4',
-  'https://06muo7mgariygms2.public.blob.vercel-storage.com/video-4.mp4',
-  'https://06muo7mgariygms2.public.blob.vercel-storage.com/video-2.mp4',
+  'https://res.cloudinary.com/djqmhkla6/video/upload/video-1_b1dhpi.mp4',
+  'https://res.cloudinary.com/djqmhkla6/video/upload/video-3_pficky.mp4',
+  'https://res.cloudinary.com/djqmhkla6/video/upload/video-4_nlyktc.mp4',
+  'https://res.cloudinary.com/djqmhkla6/video/upload/video-2_u7oohe.mp4',
 ]
 
 function getPlaybackRate(src: string) {
-  if (src.includes('video-3')) return 1.5
-  if (src.includes('video-4')) return 1.5
+  if (src.includes('video-3')) return 1
+  if (src.includes('video-4')) return 1
   return 2
 }
 
