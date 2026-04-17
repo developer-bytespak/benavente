@@ -1,8 +1,18 @@
 'use client'
 
+import Image from 'next/image'
 import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import { posts } from '@/lib/data/posts'
+
+const postImages: Record<string, string> = {
+  'hawaii-commercial-cap-rate-trends-2025': '/images/regions/oahu-skyline.webp',
+  'understanding-property-tax-appeals-hawaii': '/images/gallery/office/dji_0912.webp',
+  'pacific-island-markets-valuation-challenges': '/images/regions/guam.webp',
+  'litigation-support-what-attorneys-need': '/images/gallery/cbd/dji_0347.webp',
+  'guam-real-estate-emerging-dynamics': '/images/regions/guam-2.webp',
+  'what-is-a-cap-rate': '/images/gallery/retail/dji_0083-large.webp',
+}
 
 export default function FeaturedPost() {
   const featured = posts[0]
@@ -14,10 +24,18 @@ export default function FeaturedPost() {
         {/* Featured */}
         <RevealOnScroll>
           <div className="group cursor-pointer">
-            <div className="aspect-[16/10] bg-navy rounded-[2px] overflow-hidden relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-light/80 to-gold/20" />
+            <div className="aspect-[16/10] rounded-[2px] overflow-hidden relative flex items-center justify-center">
+              <Image
+                src={postImages[featured.slug] || '/images/regions/oahu-skyline.webp'}
+                alt={featured.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                priority
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-navy/80 via-navy/50 to-navy/30" />
               <div className="relative text-center px-8">
-                <span className="text-gold/80 text-[12px] uppercase tracking-[0.3em] font-serif">
+                <span className="text-gold/90 text-[12px] uppercase tracking-[0.3em] font-serif">
                   Featured Article
                 </span>
                 <h3 className="font-serif text-[clamp(22px,2.5vw,32px)] text-white mt-3 leading-[1.25]">

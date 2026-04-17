@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
@@ -16,7 +17,15 @@ export default function StorySection() {
     <section className="bg-white py-[108px] px-[4.5%]">
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
         <RevealOnScroll>
-          <div className="aspect-[3/4] bg-gradient-to-br from-cream-deeper to-cream-dark rounded-[2px]" />
+          <div className="relative aspect-[3/4] rounded-[2px] overflow-hidden">
+            <Image
+              src="/images/regions/oahu-valley.webp"
+              alt="Nuuanu Valley, Oahu"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
         </RevealOnScroll>
 
         <RevealOnScroll delay={0.15}>

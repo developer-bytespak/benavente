@@ -1,11 +1,38 @@
 'use client'
 
+import Image from 'next/image'
+import Link from 'next/link'
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
-import { projects } from '@/lib/data/projects'
 
-const previewProjects = projects.slice(0, 5)
+const previewCategories = [
+  {
+    slug: 'retail',
+    label: 'Retail',
+    image: '/images/gallery/retail/dji_0083-large.webp',
+  },
+  {
+    slug: 'vacant-land',
+    label: 'Vacant / Development Land',
+    image: '/images/gallery/vacant-land/dji_0111-large.webp',
+  },
+  {
+    slug: 'hotel-hospitality',
+    label: 'Hotel & Hospitality',
+    image: '/images/gallery/hotel-hospitality/dji_0861-large.webp',
+  },
+  {
+    slug: 'industrial',
+    label: 'Industrial',
+    image: '/images/gallery/industrial/dji_0889.webp',
+  },
+  {
+    slug: 'special-use',
+    label: 'Special Use',
+    image: '/images/gallery/special-use/dji_0675-large.webp',
+  },
+]
 
 export default function GalleryPreview() {
   return (
@@ -23,20 +50,30 @@ export default function GalleryPreview() {
 
       {/* Grid */}
       <RevealOnScroll>
-        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2" style={{ gridTemplateRows: 'auto auto' }}>
-          {previewProjects.map((project, i) => (
-            <div
-              key={project.id}
+        <div
+          className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
+          style={{ gridTemplateRows: 'auto auto' }}
+        >
+          {previewCategories.map((cat, i) => (
+            <Link
+              key={cat.slug}
+              href={`/gallery?cat=${cat.slug}`}
               className={`group relative overflow-hidden rounded-[2px] cursor-pointer ${
                 i === 0 ? 'md:row-span-2 min-h-[300px] lg:min-h-0' : 'min-h-[220px]'
               }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-cream-deeper to-cream-dark" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">{project.type}</span>
-                <span className="text-white font-serif text-[22px] mt-1">{project.title}</span>
+              <Image
+                src={cat.image}
+                alt={cat.label}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/25 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">Category</span>
+                <span className="text-white font-serif text-[22px] mt-1">{cat.label}</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </RevealOnScroll>

@@ -1,14 +1,26 @@
 'use client'
 
+import Image from 'next/image'
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 
 export default function PageHero() {
   return (
-    <section className="bg-navy pt-[160px] pb-[80px] px-[4.5%]">
+    <section className="relative bg-navy pt-[160px] pb-[80px] px-[4.5%] overflow-hidden">
+      {/* Background image with overlay */}
+      <Image
+        src="/images/regions/oahu-lanikai.webp"
+        alt="Aerial view of Oahu coastline"
+        fill
+        sizes="100vw"
+        priority
+        className="object-cover opacity-30"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/50" />
+
       <RevealOnScroll>
-        <div className="max-w-[1280px] mx-auto">
+        <div className="relative max-w-[1280px] mx-auto">
           <SectionLabel variant="light">About the Firm</SectionLabel>
           <h1 className="font-serif text-[clamp(44px,6vw,72px)] text-white leading-[1.08]">
             Experts Rooted in<br />

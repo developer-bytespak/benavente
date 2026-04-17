@@ -1,18 +1,41 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import GalleryFilters from '@/components/sections/gallery/GalleryFilters'
-import GalleryGrid from '@/components/sections/gallery/GalleryGrid'
+import GalleryGrid, { GalleryItem } from '@/components/sections/gallery/GalleryGrid'
 import CtaBand from '@/components/sections/home/CtaBand'
-import { projects } from '@/lib/data/projects'
+import { galleryCategories } from '@/lib/data/gallery'
+
+function GalleryContent() {
+  const searchParams = useSearchParams()
+  const initial = searchParams.get('cat') || 'all'
+  const [active, setActive] = useState(initial)
+
+  useEffect(() => {
+    const cat = searchParams.get('cat')
+    if (cat) setActive(cat)
+  }, [searchParams])
+
+  const items: GalleryItem[] = useMemo(() => {
+    const source = active === 'all'
+      ? galleryCategories
+      : galleryCategories.filter((c) => c.slug === active)
+    return source.flatMap((c) => c.images.map((src) => ({ src, category: c.label })))
+  }, [active])
+
+  return (
+    <>
+      <GalleryFilters active={active} onFilter={setActive} />
+      <GalleryGrid items={items} />
+    </>
+  )
+}
 
 export default function GalleryPage() {
-  const [active, setActive] = useState('all')
-  const filtered = active === 'all' ? projects : projects.filter((p) => p.category === active)
-
   return (
     <>
       {/* Page Hero */}
@@ -35,8 +58,10 @@ export default function GalleryPage() {
         </RevealOnScroll>
       </section>
 
-      <GalleryFilters active={active} onFilter={setActive} />
-      <GalleryGrid projects={filtered} />
+      <Suspense fallback={<div className="h-[200px]" />}>
+        <GalleryContent />
+      </Suspense>
+
       <CtaBand />
     </>
   )

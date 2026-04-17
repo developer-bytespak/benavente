@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
@@ -18,9 +19,18 @@ export default function IntroSplit() {
         {/* Left — Image */}
         <RevealOnScroll>
           <div className="relative">
-            <div className="aspect-[4/5] bg-gradient-to-br from-cream-deeper to-cream-dark rounded-[2px] overflow-hidden" />
+            <div className="relative aspect-[4/5] rounded-[2px] overflow-hidden">
+              <Image
+                src="/images/regions/oahu-skyline.webp"
+                alt="Waikiki and Diamond Head, Oahu"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                priority
+              />
+            </div>
             <div className="absolute -bottom-[18px] -right-[18px] w-[55%] h-[55%] border border-gold/30 -z-[1]" />
-            <div className="absolute -top-4 -right-4 bg-navy rounded-full w-[110px] h-[110px] flex flex-col items-center justify-center">
+            <div className="absolute -top-4 -right-4 bg-navy rounded-full w-[110px] h-[110px] flex flex-col items-center justify-center shadow-lg shadow-navy/20">
               <CountUp target={50} suffix="+" className="text-white font-serif text-[30px] font-light leading-none" />
               <span className="text-gold text-[10px] uppercase tracking-[0.15em] font-serif mt-1">Years of Trust</span>
             </div>
