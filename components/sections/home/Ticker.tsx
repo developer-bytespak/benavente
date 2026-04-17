@@ -31,7 +31,7 @@ function TickerRow() {
 export default function Ticker() {
   return (
     <section className="bg-cream border-b border-gold/15 py-[18px] overflow-hidden">
-      <div className="flex" style={{ animation: 'ticker 30s linear infinite' }}>
+      <div className="flex w-max will-change-transform" style={{ animation: 'ticker 40s linear infinite' }}>
         <TickerRow />
         <TickerRow />
       </div>

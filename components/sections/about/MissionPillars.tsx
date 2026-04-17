@@ -22,7 +22,7 @@ export default function MissionPillars() {
               Credible Solutions.<br />Timely Results.
             </p>
             <div className="mt-8">
-              <MicroCTA href="/about">Discover Our Approach</MicroCTA>
+              <MicroCTA href="/contact">Discover Our Approach</MicroCTA>
             </div>
           </div>
         </RevealOnScroll>

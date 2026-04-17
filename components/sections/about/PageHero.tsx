@@ -7,7 +7,7 @@ import RevealOnScroll from '@/components/ui/RevealOnScroll'
 
 export default function PageHero() {
   return (
-    <section className="relative bg-navy pt-[160px] pb-[80px] px-[4.5%] overflow-hidden">
+    <section className="relative bg-navy min-h-screen flex items-center pt-[120px] pb-[60px] px-[4.5%] overflow-hidden">
       {/* Background image with overlay */}
       <Image
         src="/images/regions/oahu-lanikai.webp"

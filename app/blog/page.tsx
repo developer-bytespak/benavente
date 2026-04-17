@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
@@ -15,9 +16,18 @@ export default function BlogPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-navy pt-[160px] pb-[80px] px-[4.5%]">
+      <section className="relative bg-navy min-h-screen flex items-center pt-[120px] pb-[60px] px-[4.5%] overflow-hidden">
+        <Image
+          src="/images/regions/oahu-skyline.webp"
+          alt="Honolulu skyline"
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/50" />
         <RevealOnScroll>
-          <div className="max-w-[1280px] mx-auto">
+          <div className="relative max-w-[1280px] mx-auto">
             <SectionLabel variant="light">Market Insights</SectionLabel>
             <h1 className="font-serif text-[clamp(44px,6vw,72px)] text-white leading-[1.08]">
               Real Estate <span className="italic text-gold-light">Analysis</span><br />

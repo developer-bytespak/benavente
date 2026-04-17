@@ -14,13 +14,13 @@ const stats = [
 
 export default function StorySection() {
   return (
-    <section className="bg-white py-[108px] px-[4.5%]">
-      <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
-        <RevealOnScroll>
-          <div className="relative aspect-[3/4] rounded-[2px] overflow-hidden">
+    <section className="bg-white min-h-screen flex items-center py-16 px-[4.5%]">
+      <div className="max-w-[1280px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <RevealOnScroll className="self-stretch">
+          <div className="relative h-full min-h-[420px] lg:min-h-[600px] rounded-[2px] overflow-hidden">
             <Image
-              src="/images/regions/oahu-valley.webp"
-              alt="Nuuanu Valley, Oahu"
+              src="/images/regions/maui.webp"
+              alt="Maui coastline with West Maui mountains"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -28,21 +28,21 @@ export default function StorySection() {
           </div>
         </RevealOnScroll>
 
-        <RevealOnScroll delay={0.15}>
+        <RevealOnScroll delay={0.15} className="self-center">
           <div>
             <SectionLabel>Our Story</SectionLabel>
             <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
               Built on Integrity,<br />
               <span className="italic text-gold">Driven by Expertise</span>
             </h2>
-            <p className="text-navy/100 text-[18px] font-light leading-[1.85] mt-5">
+            <p className="text-navy/100 text-[17px] font-light leading-[1.75] mt-4">
               The Benavente Group was founded to bring professional-grade real estate economics and valuation services to Hawai&#8216;i and the broader Pacific region. Our principals bring decades of hands-on experience across all major property types — from Class A office buildings to luxury resort properties, from industrial subdivisions to Pacific island hospitality assets.
             </p>
-            <p className="text-navy/100 text-[18px] font-light leading-[1.85] mt-4">
+            <p className="text-navy/100 text-[17px] font-light leading-[1.75] mt-3">
               We understand that our clients — attorneys, lenders, developers, and government agencies — depend on defensible, accurate valuations delivered on schedule. That trust drives everything we do.
             </p>
 
-            <div className="flex gap-8 mt-8">
+            <div className="flex gap-8 mt-6">
               {stats.map((stat) => (
                 <div key={stat.label} className="border-l-2 border-gold pl-4">
                   <div className="font-serif text-[28px] text-navy font-light leading-none"><CountUp target={stat.number} suffix={stat.suffix} /></div>
@@ -51,7 +51,7 @@ export default function StorySection() {
               ))}
             </div>
 
-            <div className="mt-8">
+            <div className="mt-6">
               <MicroCTA href="/contact">Work With Us</MicroCTA>
             </div>
           </div>

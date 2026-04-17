@@ -30,9 +30,17 @@ export default function ContactInfo() {
         ))}
       </div>
 
-      {/* Map Placeholder */}
-      <div className="mt-8 h-[240px] bg-cream border border-gold/15 rounded-[2px] flex items-center justify-center">
-        <span className="text-slate-light text-[16px] font-serif">Map &mdash; 1003 Bishop Street, Honolulu, HI 96813</span>
+      {/* Map */}
+      <div className="mt-8 h-[280px] rounded-[2px] overflow-hidden border border-gold/15">
+        <iframe
+          title="The Benavente Group office location"
+          src="https://www.google.com/maps?q=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
       </div>
 
       <div className="mt-8 flex flex-col gap-3">
