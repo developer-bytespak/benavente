@@ -5,7 +5,6 @@ import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import FeaturedPost from '@/components/sections/insights/FeaturedPost'
 import AllPostsGrid from '@/components/sections/insights/AllPostsGrid'
-import NewsletterCta from '@/components/sections/insights/NewsletterCta'
 
 export const metadata: Metadata = {
   title: 'Insights',
@@ -46,7 +45,6 @@ export default function BlogPage() {
 
       <FeaturedPost />
       <AllPostsGrid />
-      <NewsletterCta />
     </>
   )
 }

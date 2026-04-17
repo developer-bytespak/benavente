@@ -58,8 +58,8 @@ export default function GalleryPreview() {
             <Link
               key={cat.slug}
               href={`/gallery?cat=${cat.slug}`}
-              className={`group relative overflow-hidden rounded-[2px] cursor-pointer ${
-                i === 0 ? 'md:row-span-2 min-h-[300px] lg:min-h-0' : 'min-h-[220px]'
+              className={`group relative overflow-hidden rounded-[2px] cursor-pointer min-h-[220px] ${
+                i === 0 ? 'md:row-span-2 md:min-h-[300px] lg:min-h-0' : ''
               }`}
             >
               <Image

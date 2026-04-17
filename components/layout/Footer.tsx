@@ -76,11 +76,11 @@ export default function Footer() {
               </div>
               <div>
                 <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Phone</span>
-                <span className="text-white/45 text-[15px] font-serif font-medium block mt-1">(808) 784-4320</span>
+                <a href="tel:+18087844320" className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300">(808) 784-4320</a>
               </div>
               <div>
                 <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Email</span>
-                <span className="text-white/45 text-[15px] font-serif font-medium block mt-1">Mail@BenaventeGroup.com</span>
+                <a href="mailto:Mail@BenaventeGroup.com" className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300 break-all">Mail@BenaventeGroup.com</a>
               </div>
             </div>
           </div>

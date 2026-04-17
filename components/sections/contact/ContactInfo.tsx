@@ -1,10 +1,17 @@
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 
-const contactDetails = [
+interface ContactDetail {
+  label: string
+  value: string
+  sub?: string
+  href?: string
+}
+
+const contactDetails: ContactDetail[] = [
   { label: 'Office Location', value: 'Pauahi Tower, 1003 Bishop Street, Honolulu, HI 96813', sub: 'Serving Hawai\u2018i, Guam, Saipan & the Pacific Islands' },
-  { label: 'Phone', value: '(808) 784-4320' },
-  { label: 'Email', value: 'Mail@BenaventeGroup.com' },
+  { label: 'Phone', value: '(808) 784-4320', href: 'tel:+18087844320' },
+  { label: 'Email', value: 'Mail@BenaventeGroup.com', href: 'mailto:Mail@BenaventeGroup.com' },
   { label: 'Hours', value: 'Monday \u2013 Friday, 8:00 AM \u2013 5:00 PM HST' },
   { label: 'Service Regions', value: 'Hawai\u2018i \u00B7 Guam \u00B7 Saipan \u00B7 Marshall Islands \u00B7 Pacific Islands' },
 ]
@@ -24,7 +31,11 @@ export default function ContactInfo() {
         {contactDetails.map((item) => (
           <div key={item.label}>
             <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif block">{item.label}</span>
-            <span className="text-navy text-[18px] font-serif block mt-1">{item.value}</span>
+            {item.href ? (
+              <a href={item.href} className="text-navy hover:text-gold text-[18px] font-serif block mt-1 transition-colors duration-300 break-all">{item.value}</a>
+            ) : (
+              <span className="text-navy text-[18px] font-serif block mt-1">{item.value}</span>
+            )}
             {item.sub && <span className="text-navy text-[16px] font-serif block">{item.sub}</span>}
           </div>
         ))}

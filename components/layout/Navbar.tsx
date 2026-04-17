@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Button from '@/components/ui/Button'
 
 const navLinks: { label: string; href: string; children?: { label: string; href: string }[] }[] = [
   { label: 'Home', href: '/' },
@@ -186,7 +185,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Dropdown Box */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -194,50 +193,32 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-navy/40 z-40 md:hidden"
+              className="fixed inset-0 bg-navy/30 z-40 md:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="fixed top-0 right-0 bottom-0 w-[280px] bg-white z-50 md:hidden shadow-2xl"
+              initial={{ opacity: 0, y: -12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
+              style={{ top: isTransparent ? 108 : 92 }}
+              className="fixed right-[4.5%] w-[220px] bg-white z-50 md:hidden shadow-xl shadow-navy/15 border border-gold/20 rounded-[4px] origin-top-right overflow-hidden"
             >
-              <div className="pt-20 px-6">
+              <ul className="py-2">
                 {navLinks.map((link) => (
-                  <div key={link.label} className="mb-1">
+                  <li key={link.label}>
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className={`block py-3 text-[14px] font-serif font-medium tracking-[0.06em] uppercase text-navy hover:text-gold transition-colors border-b border-gold/10 ${
-                        pathname === link.href ? 'text-gold' : ''
+                      className={`block px-5 py-3 text-[14px] font-serif font-medium tracking-[0.08em] uppercase transition-colors hover:bg-cream hover:text-gold ${
+                        pathname === link.href ? 'text-gold bg-cream/50' : 'text-navy'
                       }`}
                     >
                       {link.label}
                     </Link>
-                    {link.children && (
-                      <div className="pl-4 pb-2">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.label}
-                            href={child.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1.5 text-[14px] font-serif text-slate hover:text-gold transition-colors"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  </li>
                 ))}
-                <div className="mt-6">
-                  <Button href="/about" variant="gold" className="w-full">
-                    Who We Are
-                  </Button>
-                </div>
-              </div>
+              </ul>
             </motion.div>
           </>
         )}
