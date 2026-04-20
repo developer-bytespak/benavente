@@ -71,8 +71,14 @@ export default function Footer() {
             <div className="space-y-4">
               <div>
                 <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Office</span>
-                <span className="text-white/45 text-[15px] font-serif font-medium block mt-1">Pauahi Tower, 1003 Bishop St</span>
-                <span className="text-white/45 text-[15px] font-serif font-medium block">Honolulu, HI 96813</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300"
+                >
+                  Pauahi Tower, 1003 Bishop St<br />Honolulu, HI 96813
+                </a>
               </div>
               <div>
                 <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Phone</span>
@@ -91,13 +97,9 @@ export default function Footer() {
           <span className="text-white/[0.22] text-[13px] font-serif font-medium">
             &copy; 2026 The Benavente Group. All Rights Reserved.
           </span>
-          <div className="flex items-center gap-4 text-white/[0.22] text-[13px] font-serif font-medium">
-            <span>Privacy Policy</span>
-            <span>&middot;</span>
-            <span>Disclaimer</span>
-            <span>&middot;</span>
-            <span>Accessibility</span>
-          </div>
+          <span className="text-white/[0.22] text-[13px] font-serif font-medium">
+            Developed by Bytes Platform Inc.
+          </span>
         </div>
       </div>
     </footer>
