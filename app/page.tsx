@@ -7,8 +7,12 @@ import GalleryPreview from '@/components/sections/home/GalleryPreview'
 import TestimonialPull from '@/components/sections/home/TestimonialPull'
 import BlogPreview from '@/components/sections/home/BlogPreview'
 import CtaBand from '@/components/sections/home/CtaBand'
+import { getLatestPosts } from '@/lib/sanity/queries'
 
-export default function HomePage() {
+export const revalidate = 30
+
+export default async function HomePage() {
+  const latestPosts = await getLatestPosts(3)
   return (
     <>
       <Hero />
@@ -18,7 +22,7 @@ export default function HomePage() {
       <StatsRow />
       <GalleryPreview />
       <TestimonialPull />
-      <BlogPreview />
+      <BlogPreview posts={latestPosts} />
       <CtaBand />
     </>
   )

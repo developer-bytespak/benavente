@@ -1,23 +1,33 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
+import MicroCTAStatic from '@/components/ui/MicroCTAStatic'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
-import { posts } from '@/lib/data/posts'
+import { urlFor } from '@/lib/sanity/image'
+import { fallbackImageForSlug } from '@/lib/sanity/fallbackImages'
+import {
+  type SanityPostCard,
+  displayCategory,
+  displayDate,
+} from '@/lib/sanity/types'
 
-const postImages: Record<string, string> = {
-  'hawaii-commercial-cap-rate-trends-2025': '/images/regions/oahu-skyline.webp',
-  'understanding-property-tax-appeals-hawaii': '/images/gallery/office/dji_0912.webp',
-  'pacific-island-markets-valuation-challenges': '/images/regions/guam.webp',
-  'litigation-support-what-attorneys-need': '/images/gallery/cbd/dji_0347.webp',
-  'guam-real-estate-emerging-dynamics': '/images/regions/guam-2.webp',
-  'what-is-a-cap-rate': '/images/gallery/retail/dji_0083-large.webp',
+interface Props {
+  posts: SanityPostCard[]
 }
 
-const previewPosts = posts.slice(0, 3)
+function coverSrc(post: SanityPostCard): string {
+  if (post.coverImage?.asset) {
+    return urlFor(post.coverImage).width(900).height(600).fit('crop').url()
+  }
+  return fallbackImageForSlug(post.slug)
+}
 
-export default function BlogPreview() {
+export default function BlogPreview({ posts }: Props) {
+  if (posts.length === 0) return null
+
   return (
     <section className="bg-white py-[108px] px-[4.5%]">
       {/* Header */}
@@ -33,19 +43,26 @@ export default function BlogPreview() {
 
       {/* Grid */}
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {previewPosts.map((post, index) => (
-          <RevealOnScroll key={post.id} delay={index * 0.08}>
-            <div className="group cursor-pointer">
+        {posts.map((post, index) => (
+          <RevealOnScroll key={post._id} delay={index * 0.08}>
+            <Link href={`/blog/${post.slug}`} className="block group">
               <div className="relative aspect-video rounded-[2px] overflow-hidden mb-5">
                 <Image
-                  src={postImages[post.slug] || '/images/regions/oahu-skyline.webp'}
-                  alt={post.title}
+                  src={coverSrc(post)}
+                  alt={post.coverImage?.alt || post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">{post.date}</span>
+              <div className="flex items-center gap-3">
+                <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">
+                  {displayDate(post.publishedAt)}
+                </span>
+                <span className="text-[11px] uppercase tracking-[0.12em] font-serif text-slate-light/70">
+                  {displayCategory(post)}
+                </span>
+              </div>
               <h3 className="font-serif text-[22px] text-navy mt-2 group-hover:text-gold transition-colors duration-300 leading-[1.25]">
                 {post.title}
               </h3>
@@ -53,9 +70,9 @@ export default function BlogPreview() {
                 {post.excerpt}
               </p>
               <div className="mt-4">
-                <MicroCTA href="/blog">Read More</MicroCTA>
+                <MicroCTAStatic>Read More</MicroCTAStatic>
               </div>
-            </div>
+            </Link>
           </RevealOnScroll>
         ))}
       </div>
