@@ -35,3 +35,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local tooling
+.claude/
+
+# large source assets / archives (kept locally only)
+Website Development/
+Website Development_updated.zip
+
+# sanity
+/dist

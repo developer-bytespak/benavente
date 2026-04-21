@@ -1,33 +1,50 @@
 'use client'
 
 import Image from 'next/image'
-import MicroCTA from '@/components/ui/MicroCTA'
+import Link from 'next/link'
+import MicroCTAStatic from '@/components/ui/MicroCTAStatic'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
-import { posts } from '@/lib/data/posts'
+import { urlFor } from '@/lib/sanity/image'
+import { fallbackImageForSlug } from '@/lib/sanity/fallbackImages'
+import {
+  type SanityPostCard,
+  displayCategory,
+  displayDate,
+} from '@/lib/sanity/types'
 
-const postImages: Record<string, string> = {
-  'hawaii-commercial-cap-rate-trends-2025': '/images/regions/oahu-skyline.webp',
-  'understanding-property-tax-appeals-hawaii': '/images/gallery/office/dji_0912.webp',
-  'pacific-island-markets-valuation-challenges': '/images/regions/guam.webp',
-  'litigation-support-what-attorneys-need': '/images/gallery/cbd/dji_0347.webp',
-  'guam-real-estate-emerging-dynamics': '/images/regions/guam-2.webp',
-  'what-is-a-cap-rate': '/images/gallery/retail/dji_0083-large.webp',
+interface Props {
+  featured: SanityPostCard | null
+  recent: SanityPostCard[]
 }
 
-export default function FeaturedPost() {
-  const featured = posts[0]
-  const sidebar = posts.slice(1, 4)
+function coverSrc(post: SanityPostCard): string {
+  if (post.coverImage?.asset) {
+    return urlFor(post.coverImage).width(1400).height(900).fit('crop').url()
+  }
+  return fallbackImageForSlug(post.slug)
+}
+
+export default function FeaturedPost({ featured, recent }: Props) {
+  if (!featured) {
+    return (
+      <section className="max-w-[1280px] mx-auto py-[80px] px-[4.5%]">
+        <p className="font-serif text-slate-light text-center">
+          No articles have been published yet. Check back soon.
+        </p>
+      </section>
+    )
+  }
 
   return (
     <section className="max-w-[1280px] mx-auto py-[80px] px-[4.5%]">
       <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-20">
         {/* Featured */}
         <RevealOnScroll>
-          <div className="group cursor-pointer">
+          <Link href={`/blog/${featured.slug}`} className="group block">
             <div className="aspect-[16/10] rounded-[2px] overflow-hidden relative flex items-center justify-center">
               <Image
-                src={postImages[featured.slug] || '/images/regions/oahu-skyline.webp'}
-                alt={featured.title}
+                src={coverSrc(featured)}
+                alt={featured.coverImage?.alt || featured.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 priority
@@ -44,9 +61,11 @@ export default function FeaturedPost() {
               </div>
             </div>
             <div className="flex items-center gap-3 mt-5">
-              <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">{featured.date}</span>
+              <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">
+                {displayDate(featured.publishedAt)}
+              </span>
               <span className="text-[12px] uppercase tracking-[0.12em] font-serif text-slate-light border border-slate-light/20 px-2 py-0.5 rounded-[2px]">
-                {featured.category}
+                {displayCategory(featured)}
               </span>
             </div>
             <h2 className="font-serif text-[clamp(26px,3vw,36px)] text-navy mt-3 leading-[1.2] group-hover:text-gold transition-colors duration-300">
@@ -56,9 +75,9 @@ export default function FeaturedPost() {
               {featured.excerpt}
             </p>
             <div className="mt-5">
-              <MicroCTA href="/blog">Read Full Article</MicroCTA>
+              <MicroCTAStatic>Read Full Article</MicroCTAStatic>
             </div>
-          </div>
+          </Link>
         </RevealOnScroll>
 
         {/* Sidebar */}
@@ -67,24 +86,34 @@ export default function FeaturedPost() {
             <h3 className="font-serif font-medium text-[12px] uppercase tracking-[0.25em] text-slate-light mb-6 pb-3 border-b border-gold/20">
               Recent Articles
             </h3>
-            {sidebar.map((post, i) => (
-              <div
-                key={post.id}
-                className={`pb-6 mb-6 group cursor-pointer ${i < sidebar.length - 1 ? 'border-b border-gold/10' : ''}`}
+            {recent.length === 0 && (
+              <p className="font-serif text-slate-light text-[15px]">
+                More articles coming soon.
+              </p>
+            )}
+            {recent.map((post, i) => (
+              <Link
+                key={post._id}
+                href={`/blog/${post.slug}`}
+                className={`block pb-6 mb-6 group ${
+                  i < recent.length - 1 ? 'border-b border-gold/10' : ''
+                }`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">{post.date}</span>
+                  <span className="text-gold text-[12px] uppercase tracking-[0.2em] font-serif">
+                    {displayDate(post.publishedAt)}
+                  </span>
                   <span className="text-[11px] uppercase tracking-[0.12em] font-serif text-slate-light/70">
-                    {post.category}
+                    {displayCategory(post)}
                   </span>
                 </div>
                 <h4 className="font-serif text-[16px] text-navy mt-1.5 leading-[1.3] group-hover:text-gold transition-colors duration-300">
                   {post.title}
                 </h4>
                 <div className="mt-2">
-                  <MicroCTA href="/blog">Read More</MicroCTA>
+                  <MicroCTAStatic>Read More</MicroCTAStatic>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </RevealOnScroll>
