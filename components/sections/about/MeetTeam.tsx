@@ -74,6 +74,8 @@ const team: TeamMember[] = [
     name: 'Anthony',
     role: 'Team Member',
     image: '/images/team/anthony.webp',
+    cv: '/cv/AC.pdf',
+    cvFilename: 'Anthony-CV.pdf',
   },
 ]
 
