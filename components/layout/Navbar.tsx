@@ -105,7 +105,7 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-[4.5%] h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4">
-            <span className="flex items-center justify-center w-[69px] h-[69px] rounded-full border border-white/30 transition-colors duration-500">
+            <span className="flex items-center justify-center w-[69px] h-[69px] transition-colors duration-500">
               <Image
                 src="/images/hero/logo.png"
                 alt="The Benavente Group"
