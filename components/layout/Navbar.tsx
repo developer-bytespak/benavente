@@ -105,13 +105,13 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-[4.5%] h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4">
-            <span className="flex items-center justify-center w-[69px] h-[69px] transition-colors duration-500">
+            <span className="flex items-center justify-center w-[72px] h-[72px] md:w-[78px] md:h-[78px] transition-colors duration-500">
               <Image
                 src="/images/hero/logo.png"
                 alt="The Benavente Group"
-                width={52}
-                height={52}
-                className="w-[52px] h-[52px] object-contain"
+                width={66}
+                height={66}
+                className="w-[60px] h-[60px] md:w-[66px] md:h-[66px] object-contain"
               />
             </span>
             <div className="flex flex-col">
