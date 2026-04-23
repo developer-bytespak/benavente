@@ -20,17 +20,17 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-4">
-              <span className="flex items-center justify-center w-[72px] h-[72px] rounded-full border border-white/30 shrink-0">
+              <span className="flex items-center justify-center w-[88px] h-[88px] shrink-0">
                 <Image
                   src="/images/hero/logo.png"
-                  alt="The Benavente Group"
-                  width={48}
-                  height={48}
-                  className="w-[48px] h-[48px] object-contain"
+                  alt="The Benavente Group LLC"
+                  width={72}
+                  height={72}
+                  className="w-[72px] h-[72px] object-contain"
                 />
               </span>
               <div>
-                <h3 className="font-serif text-[24px] text-white leading-tight">The Benavente Group</h3>
+                <h3 className="font-serif text-[24px] text-white leading-tight">The Benavente Group LLC</h3>
                 <p className="text-gold text-[12.5px] tracking-[0.2em] uppercase font-serif mt-0.5">
                   Real Estate Appraisers &amp; Consultants
                 </p>
@@ -95,7 +95,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/5 mt-11 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <span className="text-white/[0.22] text-[13px] font-serif font-medium">
-            &copy; 2026 The Benavente Group. All Rights Reserved.
+            &copy; 2026 The Benavente Group LLC. All Rights Reserved.
           </span>
           <span className="text-white/[0.22] text-[13px] font-serif font-medium">
             Developed by Bytes Platform Inc.
