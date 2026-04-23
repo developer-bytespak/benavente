@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     default: "The Benavente Group",
     template: "%s | The Benavente Group",
   },
+  icons: {
+    icon: "/images/hero/logo.png",
+    shortcut: "/images/hero/logo.png",
+    apple: "/images/hero/logo.png",
+  },
   description:
     "Hawaii-based real estate appraisers and consultants specializing in valuation, market analysis, and litigation support across Hawai'i and the Pacific.",
   keywords: [
