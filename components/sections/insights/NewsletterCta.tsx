@@ -24,7 +24,7 @@ export default function NewsletterCta() {
             <Button variant="gold" type="submit">Subscribe</Button>
           </form>
           <div className="flex flex-wrap justify-center gap-8 mt-10">
-            <MicroCTA href="/contact" variant="light">Request Consultation</MicroCTA>
+            <MicroCTA href="/contact" variant="light">Contact Us</MicroCTA>
             <MicroCTA href="/gallery" variant="light">View Our Work</MicroCTA>
           </div>
         </div>

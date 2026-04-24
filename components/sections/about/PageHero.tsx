@@ -30,7 +30,7 @@ export default function PageHero() {
             A team of credentialed professionals with over 50 years of combined experience in real estate economics, valuation, and market analysis.
           </p>
           <div className="flex flex-wrap gap-5 mt-7">
-            <MicroCTA href="/contact" variant="light">Request Consultation</MicroCTA>
+            <MicroCTA href="/contact" variant="light">Contact Us</MicroCTA>
             <MicroCTA href="/gallery" variant="light">View Our Work</MicroCTA>
           </div>
         </div>

@@ -71,8 +71,8 @@ const team: TeamMember[] = [
     cvFilename: 'Asiimwe-Miriam-CV.pdf',
   },
   {
-    name: 'Anthony',
-    role: 'Team Member',
+    name: 'Anthony Chang',
+    role: 'Market Analyst',
     image: '/images/team/anthony.webp',
     cv: '/cv/AC.pdf',
     cvFilename: 'Anthony-CV.pdf',
@@ -102,7 +102,7 @@ export default function MeetTeam() {
         </RevealOnScroll>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {team.map((member, i) => {
             const Avatar = (
               <div className="relative mx-auto w-[180px] h-[180px] mb-6">
@@ -144,12 +144,10 @@ export default function MeetTeam() {
               </div>
             )
 
-            const isLastAlone = i === team.length - 1 && team.length % 4 === 1
             return (
               <RevealOnScroll
                 key={i}
                 delay={i * 0.08}
-                className={isLastAlone ? 'sm:col-span-2 lg:col-start-2 lg:col-span-2' : ''}
               >
                 <div className="group relative text-center">
                   {member.cv ? (

@@ -5,7 +5,7 @@ import MicroCTA from '@/components/ui/MicroCTA'
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Gallery', href: '/gallery' },
+  { label: 'Portfolio', href: '/gallery' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -40,7 +40,7 @@ export default function Footer() {
               Credible solutions and timely results for real estate valuation across Hawai&#8216;i and the Pacific.
             </p>
             <div className="mt-5">
-              <MicroCTA href="/contact" variant="gold">Request Consultation</MicroCTA>
+              <MicroCTA href="/contact" variant="gold">Contact Us</MicroCTA>
             </div>
           </div>
 

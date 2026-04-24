@@ -16,7 +16,7 @@ export default function ContactForm() {
       <div className="text-center py-16">
         <h3 className="font-serif text-[28px] text-navy">Thank You</h3>
         <p className="text-slate text-[14px] font-light mt-3">
-          Your inquiry has been received. We typically respond within one business day.
+          Your inquiry has been received. We typically provide a prompt response.
         </p>
       </div>
     )
@@ -36,7 +36,7 @@ export default function ContactForm() {
         <Button type="submit" variant="solid" className="w-full mt-2">Submit Inquiry</Button>
       </form>
       <p className="text-[13px] text-slate-light mt-3">
-        We typically respond within one business day. All inquiries treated with strict confidentiality.
+        We typically provide a prompt response. All inquiries are treated with strict confidentiality.
       </p>
     </div>
   )

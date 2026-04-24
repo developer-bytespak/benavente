@@ -28,7 +28,7 @@ const navLinks: { label: string; href: string; children?: { label: string; href:
   //   ],
   // },
   {
-    label: 'Gallery', href: '/gallery',
+    label: 'Portfolio', href: '/gallery',
     // children: [
     //   { label: 'All Projects', href: '/gallery' },
     //   { label: 'Commercial', href: '/gallery' },

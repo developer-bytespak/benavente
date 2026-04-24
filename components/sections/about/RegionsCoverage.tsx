@@ -13,7 +13,7 @@ const regionImages: Record<string, string> = {
   "Maui": '/images/regions/maui.webp',
   "Hawai'i Is.": '/images/regions/big-island.webp',
   "Guam & Saipan": '/images/regions/guam.webp',
-  "Marshall Is.": '/images/regions/kauai.webp',
+  "Kauai": '/images/regions/kauai.webp',
   "Other Pacific": '/images/regions/guam-2.webp',
 }
 
@@ -22,7 +22,7 @@ const regionToBrollSlug: Record<string, string> = {
   "Maui": 'maui',
   "Hawai'i Is.": 'big-island',
   "Guam & Saipan": 'guam-saipan',
-  "Marshall Is.": 'kauai',
+  "Kauai": 'kauai',
   "Other Pacific": 'kauai',
 }
 
@@ -71,7 +71,6 @@ export default function RegionsCoverage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-navy/10 transition-opacity duration-500" />
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <div className="font-serif text-[24px] text-white leading-tight">{region.name}</div>
-                    <div className="font-serif font-light text-[15px] text-white/75 mt-1">{region.note}</div>
                     <div className="flex items-center gap-2 mt-3">
                       <div className="w-8 h-px bg-gold transition-all duration-500 group-hover:w-14" />
                       <span className="text-gold text-[11px] uppercase tracking-[0.2em] font-serif opacity-0 group-hover:opacity-100 transition-opacity duration-300">

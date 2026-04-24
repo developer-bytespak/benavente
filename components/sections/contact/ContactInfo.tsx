@@ -9,7 +9,7 @@ interface ContactDetail {
 }
 
 const contactDetails: ContactDetail[] = [
-  { label: 'Office Location', value: 'Pauahi Tower, 1003 Bishop Street, Honolulu, HI 96813', sub: 'Serving Hawai\u2018i, Guam, Saipan & the Pacific Islands', href: 'https://www.google.com/maps/search/?api=1&query=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813' },
+  { label: 'Office Location', value: 'Pauahi Tower, 1003 Bishop Street, Honolulu, HI 96813', href: 'https://www.google.com/maps/search/?api=1&query=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813' },
   { label: 'Phone', value: '(808) 784-4320', href: 'tel:+18087844320' },
   { label: 'Email', value: 'Mail@BenaventeGroup.com', href: 'mailto:Mail@BenaventeGroup.com' },
   { label: 'Hours', value: 'Monday \u2013 Friday, 8:00 AM \u2013 5:00 PM HST' },
@@ -24,7 +24,7 @@ export default function ContactInfo() {
         Let&apos;s Start a <span className="italic text-gold">Conversation</span>
       </h2>
       <p className="text-navy text-[18px] font-light leading-[1.85] mt-5">
-        Whether your project is a single-family home or a large commercial complex, we&apos;re here to help.
+        Whether your project is residential, commercial, or mixed-use, we&apos;re here to help.
       </p>
 
       <div className="mt-8 flex flex-col gap-5">
