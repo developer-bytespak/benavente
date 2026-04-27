@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     default: "The Benavente Group",
     template: "%s | The Benavente Group",
   },
+  verification: {
+    google: "pEBRNt738_gJ8YrbooCW-LJPuayEUxoqz7PNYT6ea5Q",
+  },
   icons: {
     icon: "/images/hero/logo.png",
     shortcut: "/images/hero/logo.png",
