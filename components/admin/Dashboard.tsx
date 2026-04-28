@@ -12,7 +12,6 @@ import {
   mockLeads,
   mockActivity,
   STATUS_LABEL,
-  formatDate,
   relativeTime,
   workloadHeatmap,
   revenuePipeline,
@@ -536,7 +535,7 @@ export default function Dashboard({ onNavigate }: Props) {
           </div>
           <ol className="relative">
             <span className="absolute top-3 bottom-3 left-[19px] w-px bg-gold/15" />
-            {mockActivity.slice(0, 7).map((entry, i) => (
+            {mockActivity.slice(0, 7).map((entry) => (
               <li key={entry.id} className="relative flex items-start gap-4 pb-4 last:pb-0">
                 <span
                   className={`relative z-10 w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${ACTIVITY_TINT[entry.type]} ring-4 ring-white`}

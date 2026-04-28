@@ -1,7 +1,6 @@
 'use client'
 
-import Icon from './Icon'
-import { leadFunnel, mockCvDownloads, sourceAttribution, formatDate, relativeTime } from '@/lib/admin/mockData'
+import { leadFunnel, mockCvDownloads, sourceAttribution, relativeTime } from '@/lib/admin/mockData'
 
 export default function Analytics() {
   const topConvert = leadFunnel[0].count
