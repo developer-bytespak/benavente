@@ -9,20 +9,20 @@ import { brollRegions } from '@/lib/data/broll'
 import RegionModal from './RegionModal'
 
 const regionImages: Record<string, string> = {
-  "O'ahu": '/images/regions/oahu-skyline.webp',
-  "Maui": '/images/regions/maui.webp',
-  "Hawai'i Is.": '/images/regions/big-island.webp',
+  "City and County of Honolulu": '/images/regions/oahu-skyline.webp',
+  "Maui County": '/images/regions/maui.webp',
+  "Hawai'i County": '/images/regions/big-island.webp',
   "Guam & Saipan": '/images/regions/guam.webp',
-  "Kauai": '/images/regions/kauai.webp',
+  "Kauai County": '/images/regions/kauai.webp',
   "Other Pacific": '/images/regions/guam-2.webp',
 }
 
 const regionToBrollSlug: Record<string, string> = {
-  "O'ahu": 'oahu',
-  "Maui": 'maui',
-  "Hawai'i Is.": 'big-island',
+  "City and County of Honolulu": 'oahu',
+  "Maui County": 'maui',
+  "Hawai'i County": 'big-island',
   "Guam & Saipan": 'guam-saipan',
-  "Kauai": 'kauai',
+  "Kauai County": 'kauai',
   "Other Pacific": 'kauai',
 }
 

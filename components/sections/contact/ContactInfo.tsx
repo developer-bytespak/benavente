@@ -9,7 +9,7 @@ interface ContactDetail {
 }
 
 const contactDetails: ContactDetail[] = [
-  { label: 'Office Location', value: 'Pauahi Tower, 1003 Bishop Street, Honolulu, HI 96813', href: 'https://www.google.com/maps/search/?api=1&query=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813' },
+  { label: 'Office Location', value: 'Pauahi Tower, Suite 2140, 1003 Bishop Street, Honolulu, HI 96813', href: 'https://www.google.com/maps/search/?api=1&query=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813' },
   { label: 'Phone', value: '(808) 784-4320', href: 'tel:+18087844320' },
   { label: 'Email', value: 'Mail@BenaventeGroup.com', href: 'mailto:Mail@BenaventeGroup.com' },
   { label: 'Hours', value: 'Monday \u2013 Friday, 8:00 AM \u2013 5:00 PM HST' },

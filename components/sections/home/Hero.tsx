@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Button from '@/components/ui/Button'
 
 const videos = [
@@ -23,7 +24,6 @@ function getSkipDuration(): number {
 
 export default function Hero() {
   const [active, setActive] = useState(0)
-  const [ready, setReady] = useState(false)
   const ref0 = useRef<HTMLVideoElement>(null)
   const ref1 = useRef<HTMLVideoElement>(null)
   const ref2 = useRef<HTMLVideoElement>(null)
@@ -36,38 +36,36 @@ export default function Hero() {
     setActive((prev) => (prev + 1) % videos.length)
   }, [])
 
-  // When active changes, play current + preload next
   useEffect(() => {
-    let timer: NodeJS.Timeout
     const vid = refs[active].current
     if (!vid) return
 
     vid.playbackRate = getPlaybackRate(videos[active])
-    vid.currentTime = 0
+    try { vid.currentTime = 0 } catch {}
 
-    const play = () => {
-      vid.play().catch(() => {})
-      setReady(true)
-      timer = setTimeout(advance, getSkipDuration())
+    const tryPlay = () => {
+      const p = vid.play()
+      if (p && typeof p.catch === 'function') p.catch(() => {})
     }
 
-    // If enough data is buffered, play immediately; otherwise wait
-    if (vid.readyState >= 3) {
-      play()
-    } else {
-      vid.addEventListener('canplay', play, { once: true })
+    tryPlay()
+    if (vid.readyState < 3) {
+      vid.addEventListener('canplay', tryPlay, { once: true })
+      vid.addEventListener('loadeddata', tryPlay, { once: true })
     }
 
-    // Preload the next video
+    const timer = setTimeout(advance, getSkipDuration())
+
     const nextVid = refs[next].current
     if (nextVid) {
       nextVid.preload = 'auto'
-      nextVid.load()
+      try { nextVid.load() } catch {}
     }
 
     return () => {
       clearTimeout(timer)
-      vid.removeEventListener('canplay', play)
+      vid.removeEventListener('canplay', tryPlay)
+      vid.removeEventListener('loadeddata', tryPlay)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, advance])
@@ -79,27 +77,40 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative h-screen overflow-hidden">
-      {/* Videos — only active and next have src loaded, crossfade via opacity */}
-      {videos.map((src, i) => {
-        const shouldLoad = i === active || i === next
-        return (
-          <video
-            key={src}
-            ref={refs[i]}
-            src={shouldLoad ? src : undefined}
-            preload={i === active ? 'auto' : i === next ? 'auto' : 'none'}
-            muted
-            playsInline
-            onEnded={() => handleEnded(i)}
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              opacity: i === active && ready ? 1 : 0,
-              transition: 'opacity 1.5s ease-in-out',
-            }}
-          />
-        )
-      })}
+    <section className="relative h-screen overflow-hidden bg-navy">
+      {/* Poster fallback — shown beneath videos on iOS while frames decode */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/regions/oahu-skyline.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+
+      {/* Videos — all mounted with src so iOS can preload; crossfade via opacity */}
+      {videos.map((src, i) => (
+        <video
+          key={src}
+          ref={refs[i]}
+          preload={i === active || i === next ? 'auto' : 'metadata'}
+          muted
+          autoPlay
+          playsInline
+          {...({ 'webkit-playsinline': 'true' } as Record<string, string>)}
+          poster="/images/regions/oahu-skyline.webp"
+          onEnded={() => handleEnded(i)}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            opacity: i === active ? 1 : 0,
+            transition: 'opacity 1.5s ease-in-out',
+          }}
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+      ))}
 
       {/* Subtle gradient for text readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />

@@ -77,7 +77,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300"
                 >
-                  Pauahi Tower, 1003 Bishop St<br />Honolulu, HI 96813
+                  Pauahi Tower, Suite 2140<br />1003 Bishop St, Honolulu, HI 96813
                 </a>
               </div>
               <div>

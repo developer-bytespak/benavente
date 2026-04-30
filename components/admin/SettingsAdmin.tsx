@@ -66,7 +66,7 @@ export default function SettingsAdmin() {
           <div className="p-6 grid grid-cols-1 gap-4">
             <FieldRow
               label="Office Address"
-              value="Pauahi Tower, 1003 Bishop Street, Honolulu, HI 96813"
+              value="Pauahi Tower, Suite 2140, 1003 Bishop Street, Honolulu, HI 96813"
               icon="pin"
             />
             <FieldRow label="Phone" value="(808) 784-4320" icon="phone" />
