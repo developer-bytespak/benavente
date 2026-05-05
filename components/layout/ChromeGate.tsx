@@ -1,22 +1,28 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import Navbar from './Navbar'
-import Footer from './Footer'
 
 function isChromeless(pathname: string | null): boolean {
   if (!pathname) return false
   return pathname.startsWith('/studio') || pathname.startsWith('/admin')
 }
 
-export function ChromeNavbar() {
+export function ChromeShell({
+  navbar,
+  footer,
+  children,
+}: {
+  navbar: React.ReactNode
+  footer: React.ReactNode
+  children: React.ReactNode
+}) {
   const pathname = usePathname()
-  if (isChromeless(pathname)) return null
-  return <Navbar />
-}
-
-export function ChromeFooter() {
-  const pathname = usePathname()
-  if (isChromeless(pathname)) return null
-  return <Footer />
+  const hide = isChromeless(pathname)
+  return (
+    <>
+      {!hide && navbar}
+      <main>{children}</main>
+      {!hide && footer}
+    </>
+  )
 }

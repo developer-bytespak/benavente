@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import MicroCTA from '@/components/ui/MicroCTA'
+import type { SiteSettingsRow, ContactInfoRow } from '@/lib/supabase/types'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -10,19 +11,33 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ]
 
+interface Props {
+  settings: SiteSettingsRow | null
+  contact: ContactInfoRow | null
+}
 
-export default function Footer() {
+export default function Footer({ settings, contact }: Props) {
+  const logo = settings?.logo_url || '/images/hero/logo.png'
+  const description = settings?.footer_text
+  const copyright =
+    settings?.copyright_text ?? `© ${new Date().getFullYear()} The Benavente Group LLC. All Rights Reserved.`
+
+  const address = contact?.address
+  const phone = contact?.phone
+  const email = contact?.email
+  const mapsUrl = address
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+    : undefined
+
   return (
     <footer className="bg-navy border-t border-gold/10">
       <div className="max-w-[1400px] mx-auto pt-16 pb-7 px-[4.5%]">
-        {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr] gap-10 lg:gap-13">
-          {/* Brand */}
           <div>
             <div className="flex items-center gap-4">
               <span className="flex items-center justify-center w-[88px] h-[88px] shrink-0">
                 <Image
-                  src="/images/hero/logo.png"
+                  src={logo}
                   alt="The Benavente Group LLC"
                   width={72}
                   height={72}
@@ -36,15 +51,16 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-            <p className="text-white/[0.38] text-[16px] font-serif font-medium leading-[1.7] max-w-[220px] mt-4">
-              Credible solutions and timely results for real estate valuation across Hawai&#8216;i and the Pacific.
-            </p>
+            {description && (
+              <p className="text-white/[0.38] text-[16px] font-serif font-medium leading-[1.7] max-w-[280px] mt-4">
+                {description}
+              </p>
+            )}
             <div className="mt-5">
               <MicroCTA href="/contact" variant="gold">Contact Us</MicroCTA>
             </div>
           </div>
 
-          {/* Navigation */}
           <div>
             <h4 className="text-gold text-[12px] tracking-[0.2em] uppercase font-serif font-medium mb-5">
               Navigation
@@ -63,40 +79,58 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="text-gold text-[12px] tracking-[0.2em] uppercase font-serif font-medium mb-5">
               Contact
             </h4>
             <div className="space-y-4">
-              <div>
-                <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Office</span>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300"
-                >
-                  Pauahi Tower, Suite 2140<br />1003 Bishop St, Honolulu, HI 96813
-                </a>
-              </div>
-              <div>
-                <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Phone</span>
-                <a href="tel:+18087844320" className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300">(808) 784-4320</a>
-              </div>
-              <div>
-                <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">Email</span>
-                <a href="mailto:Mail@BenaventeGroup.com" className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300 break-all">Mail@BenaventeGroup.com</a>
-              </div>
+              {address && (
+                <div>
+                  <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">
+                    Office
+                  </span>
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300"
+                  >
+                    {address}
+                  </a>
+                </div>
+              )}
+              {phone && (
+                <div>
+                  <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">
+                    Phone
+                  </span>
+                  <a
+                    href={`tel:${phone.replace(/[^+\d]/g, '')}`}
+                    className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300"
+                  >
+                    {phone}
+                  </a>
+                </div>
+              )}
+              {email && (
+                <div>
+                  <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif font-semibold block">
+                    Email
+                  </span>
+                  <a
+                    href={`mailto:${email}`}
+                    className="text-white/45 hover:text-white text-[15px] font-serif font-medium block mt-1 transition-colors duration-300 break-all"
+                  >
+                    {email}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-white/5 mt-11 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <span className="text-white/[0.22] text-[13px] font-serif font-medium">
-            &copy; 2026 The Benavente Group LLC. All Rights Reserved.
-          </span>
+          <span className="text-white/[0.22] text-[13px] font-serif font-medium">{copyright}</span>
           <span className="text-white/[0.22] text-[13px] font-serif font-medium">
             Developed by Bytes Platform Inc.
           </span>

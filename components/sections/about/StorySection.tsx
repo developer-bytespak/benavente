@@ -5,14 +5,40 @@ import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import CountUp from '@/components/ui/CountUp'
+import type { StatItem } from '@/lib/supabase/types'
 
-const stats = [
-  { number: 50, suffix: '+', label: 'Yrs. Experience' },
-  { number: 500, suffix: '+', label: 'Assignments' },
-  { number: 6, suffix: '', label: 'Pacific Regions' },
-]
+interface Props {
+  heading: string | null
+  paragraphs: string[]
+  stats: StatItem[]
+}
 
-export default function StorySection() {
+// _word_ → italic + gold accent. \n → <br/>.
+function renderMultiline(text: string) {
+  const lines = text.split('\n')
+  return lines.map((line, lineIdx) => {
+    const parts = line.split(/(_[^_]+_)/g)
+    return (
+      <span key={lineIdx}>
+        {parts.map((part, partIdx) => {
+          if (part.length > 2 && part.startsWith('_') && part.endsWith('_')) {
+            return (
+              <span key={partIdx} className="italic text-gold">
+                {part.slice(1, -1)}
+              </span>
+            )
+          }
+          return <span key={partIdx}>{part}</span>
+        })}
+        {lineIdx < lines.length - 1 && <br />}
+      </span>
+    )
+  })
+}
+
+export default function StorySection({ heading, paragraphs, stats }: Props) {
+  if (!heading && paragraphs.length === 0) return null
+
   return (
     <section className="bg-white min-h-screen flex items-center py-16 px-[4.5%]">
       <div className="max-w-[1280px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
@@ -31,25 +57,31 @@ export default function StorySection() {
         <RevealOnScroll delay={0.15} className="self-center">
           <div>
             <SectionLabel>Our Story</SectionLabel>
-            <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
-              Built on Integrity,<br />
-              <span className="italic text-gold">Driven by Expertise</span>
-            </h2>
-            <p className="text-navy/100 text-[17px] font-light leading-[1.75] mt-4">
-              The Benavente Group was founded to bring professional-grade real estate economics and valuation services to Hawai&#8216;i and the broader Pacific region. Our principals bring decades of hands-on experience across all major property types — from Class A office buildings to luxury resort properties, from industrial subdivisions to Pacific island hospitality assets.
-            </p>
-            <p className="text-navy/100 text-[17px] font-light leading-[1.75] mt-3">
-              We understand that our clients — attorneys, lenders, developers, and government agencies — depend on defensible, accurate valuations delivered on schedule. That trust drives everything we do.
-            </p>
+            {heading && (
+              <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
+                {renderMultiline(heading)}
+              </h2>
+            )}
+            {paragraphs.map((p, i) => (
+              <p key={i} className="text-navy text-[17px] font-light leading-[1.75] mt-4">
+                {p}
+              </p>
+            ))}
 
-            <div className="flex gap-8 mt-6">
-              {stats.map((stat) => (
-                <div key={stat.label} className="border-l-2 border-gold pl-4">
-                  <div className="font-serif text-[28px] text-navy font-light leading-none"><CountUp target={stat.number} suffix={stat.suffix} /></div>
-                  <div className="text-[13px] text-slate uppercase tracking-[0.15em] font-serif mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+            {stats.length > 0 && (
+              <div className="flex gap-8 mt-6 flex-wrap">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="border-l-2 border-gold pl-4">
+                    <div className="font-serif text-[28px] text-navy font-light leading-none">
+                      <CountUp target={stat.number} suffix={stat.suffix} />
+                    </div>
+                    <div className="text-[13px] text-slate uppercase tracking-[0.15em] font-serif mt-1">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
 
             <div className="mt-6">
               <MicroCTA href="/contact">Work With Us</MicroCTA>
