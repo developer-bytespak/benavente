@@ -5,13 +5,17 @@ import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import ContactForm from '@/components/sections/contact/ContactForm'
 import ContactInfo from '@/components/sections/contact/ContactInfo'
+import { getContactInfo } from '@/lib/cms/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
   description: 'Request a consultation with The Benavente Group for real estate appraisal, valuation, and consulting services across Hawaii and the Pacific.',
 }
 
-export default function ContactPage() {
+export const revalidate = 30
+
+export default async function ContactPage() {
+  const info = await getContactInfo()
   return (
     <>
       {/* Page Hero */}
@@ -49,7 +53,7 @@ export default function ContactPage() {
             <ContactForm />
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
-            <ContactInfo />
+            <ContactInfo info={info} />
           </RevealOnScroll>
         </div>
       </section>

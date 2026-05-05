@@ -1,7 +1,10 @@
-import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
-import "./globals.css";
-import { ChromeNavbar, ChromeFooter } from "@/components/layout/ChromeGate";
+import type { Metadata } from "next"
+import { Cormorant_Garamond, DM_Sans } from "next/font/google"
+import "./globals.css"
+import { ChromeShell } from "@/components/layout/ChromeGate"
+import Navbar from "@/components/layout/Navbar"
+import Footer from "@/components/layout/Footer"
+import { getSiteSettings, getContactInfo } from "@/lib/cms/site"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -9,16 +12,16 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
-});
+})
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
   variable: "--font-dm-sans",
   display: "swap",
-});
+})
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://benaventegroup.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://benaventegroup.com"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -48,22 +51,27 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "The Benavente Group",
   },
-};
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
+  const [settings, contact] = await Promise.all([getSiteSettings(), getContactInfo()])
+
   return (
     <html lang="en">
       <body
         className={`${cormorant.variable} ${dmSans.variable} font-serif antialiased`}
       >
-        <ChromeNavbar />
-        <main>{children}</main>
-        <ChromeFooter />
+        <ChromeShell
+          navbar={<Navbar logoUrl={settings?.logo_url ?? null} />}
+          footer={<Footer settings={settings} contact={contact} />}
+        >
+          {children}
+        </ChromeShell>
       </body>
     </html>
-  );
+  )
 }
