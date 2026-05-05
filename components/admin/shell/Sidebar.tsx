@@ -31,7 +31,7 @@ const NAV_GROUPS: { heading: string; items: NavItem[] }[] = [
     items: [
       { href: '/admin/team', label: 'Team Members', icon: 'team' },
       { href: '/admin/regions', label: 'Regions', icon: 'pin' },
-      { href: '/admin/gallery', label: 'Gallery', icon: 'gallery' },
+      { href: '/admin/gallery', label: 'Portfolio', icon: 'gallery' },
       { href: '/admin/testimonials', label: 'Testimonials', icon: 'testimonials' },
       { href: '/studio', label: 'Blog', icon: 'blog', external: true },
     ],
