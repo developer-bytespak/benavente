@@ -50,7 +50,7 @@ export default function ContactInfo({ info }: Props) {
 
   return (
     <div>
-      <SectionLabel>Contact Info</SectionLabel>
+      <SectionLabel>Hawaii Appraiser Contact</SectionLabel>
       <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
         Let&apos;s Start a <span className="italic text-gold">Conversation</span>
       </h2>
