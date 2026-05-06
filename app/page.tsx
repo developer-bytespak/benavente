@@ -9,8 +9,15 @@ import CtaBand from '@/components/sections/home/CtaBand'
 import { getLatestPosts } from '@/lib/sanity/queries'
 import { getHomePage } from '@/lib/cms/home'
 import { getVisibleTestimonials } from '@/lib/cms/testimonials'
+import type { Metadata } from 'next'
 
 export const revalidate = 30
+
+export const metadata: Metadata = {
+  title: 'Hawaii Commercial Real Estate Appraisers & Consultants',
+  description:
+    'Hawaii commercial real estate appraisers offering valuation, litigation support, and market analysis across Honolulu and the Pacific.',
+}
 
 export default async function HomePage() {
   const [home, latestPosts, testimonials] = await Promise.all([

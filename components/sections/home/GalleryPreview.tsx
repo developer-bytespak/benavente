@@ -17,7 +17,7 @@ export default async function GalleryPreview() {
     <section className="bg-white py-[108px] px-[4.5%]">
       <div className="max-w-[1280px] mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-end border-b border-gold/20 pb-5 mb-10 gap-4">
         <div>
-          <SectionLabel>Portfolio</SectionLabel>
+          <SectionLabel>Commercial Real Estate Appraisal Work</SectionLabel>
           <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
             Selected <span className="italic text-gold">Projects</span>
           </h2>
