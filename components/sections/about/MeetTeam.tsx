@@ -19,7 +19,7 @@ export default async function MeetTeam() {
               Meet the <span className="italic text-gold">Team</span>
             </h2>
             <p className="text-white/[0.52] text-[18px] font-light leading-[1.85] mt-4">
-              Experienced professionals dedicated to delivering credible valuations across Hawai&#8216;i and the Pacific.
+              Our MAI certified appraisers and SRA designated appraisers serve as certified real estate appraisers in Hawaii, delivering credible valuations across Hawai&#8216;i and the Pacific.
             </p>
             {team.some((m) => m.cv_url) && (
               <p className="text-gold/70 text-[13px] tracking-[0.15em] uppercase font-serif mt-4">

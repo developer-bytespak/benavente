@@ -52,7 +52,7 @@ export default function PageHero({ bannerUrl, headline, subtitle }: Props) {
 
       <RevealOnScroll>
         <div className="relative max-w-[1280px] mx-auto">
-          <SectionLabel variant="light">About the Firm</SectionLabel>
+          <SectionLabel variant="light">Hawaii Commercial Appraisal Firm</SectionLabel>
           <h1 className="font-serif text-[clamp(44px,6vw,72px)] text-white leading-[1.08]">
             {renderMultiline(heading)}
           </h1>

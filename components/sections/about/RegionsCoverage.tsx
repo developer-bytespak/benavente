@@ -26,7 +26,7 @@ export default function RegionsCoverage({ regions }: Props) {
             Serving <span className="italic text-gold">Hawai&#8216;i</span> &amp; the Pacific
           </h2>
           <p className="text-slate text-[15px] font-serif mt-3">
-            Click a location to view imagery from the region.
+            As a Pacific real estate valuation firm, we cover commercial appraisal across the major Hawaiian Islands and the broader Pacific. Click a location to view imagery from the region.
           </p>
         </RevealOnScroll>
 

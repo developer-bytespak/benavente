@@ -9,9 +9,9 @@ import { getAboutPage } from '@/lib/cms/about'
 import { getRegions } from '@/lib/cms/regions'
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'About The Benavente Group | MAI Appraisers Hawaii',
   description:
-    "Learn about The Benavente Group — Hawaii-based real estate appraisers with over 50 years of combined experience across the Pacific.",
+    'Meet The Benavente Group, MAI and SRA certified appraisers delivering credible real estate valuations across Hawaii and the Pacific.',
 }
 
 export const revalidate = 30
