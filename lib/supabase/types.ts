@@ -76,6 +76,7 @@ export type TeamMemberRow = {
   id: string
   name: string
   role: string
+  bio: string | null
   photo_url: string | null
   cv_url: string | null
   cv_filename: string | null
@@ -246,6 +247,7 @@ export type Database = {
           id?: string
           name: string
           role: string
+          bio?: string | null
           photo_url?: string | null
           cv_url?: string | null
           cv_filename?: string | null
@@ -258,6 +260,7 @@ export type Database = {
           id?: string
           name?: string
           role?: string
+          bio?: string | null
           photo_url?: string | null
           cv_url?: string | null
           cv_filename?: string | null

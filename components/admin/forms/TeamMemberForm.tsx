@@ -69,7 +69,18 @@ export default function TeamMemberForm({ member }: Props) {
         />
       </FormCard>
 
-      <FormCard title="CV (optional)" description="PDF visitors can download from the team grid">
+      <FormCard title="Bio (optional)" description="Short personal description shown in the team modal">
+        <Field
+          name="bio"
+          label="Bio"
+          type="textarea"
+          rows={5}
+          defaultValue={member?.bio ?? ''}
+          placeholder="A short paragraph about this team member's background, interests, and experience."
+        />
+      </FormCard>
+
+      <FormCard title="CV (optional)" description="PDF visitors can download from the team modal">
         <FileDropzone
           urlName="cv_url"
           filenameName="cv_filename"

@@ -11,6 +11,7 @@ function readPayload(formData: FormData) {
   return {
     name: String(formData.get('name') ?? '').trim(),
     role: String(formData.get('role') ?? '').trim(),
+    bio: String(formData.get('bio') ?? '').trim() || null,
     photo_url: String(formData.get('photo_url') ?? '').trim() || null,
     cv_url: String(formData.get('cv_url') ?? '').trim() || null,
     cv_filename: String(formData.get('cv_filename') ?? '').trim() || null,
