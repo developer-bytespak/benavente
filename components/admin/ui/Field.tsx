@@ -8,7 +8,7 @@ interface BaseProps {
 }
 
 interface InputProps extends BaseProps {
-  type?: 'text' | 'email' | 'url' | 'tel' | 'number'
+  type?: 'text' | 'email' | 'url' | 'tel' | 'number' | 'password'
   rows?: never
 }
 
