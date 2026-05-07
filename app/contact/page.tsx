@@ -5,13 +5,17 @@ import MicroCTA from '@/components/ui/MicroCTA'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import ContactForm from '@/components/sections/contact/ContactForm'
 import ContactInfo from '@/components/sections/contact/ContactInfo'
+import { getContactInfo } from '@/lib/cms/site'
 
 export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Request a consultation with The Benavente Group for real estate appraisal, valuation, and consulting services across Hawaii and the Pacific.',
+  title: 'Contact The Benavente Group | Hawaii Appraisers',
+  description: 'Contact The Benavente Group for commercial real estate appraisal and valuation services in Honolulu, Hawaii, and the Pacific region.',
 }
 
-export default function ContactPage() {
+export const revalidate = 30
+
+export default async function ContactPage() {
+  const info = await getContactInfo()
   return (
     <>
       {/* Page Hero */}
@@ -27,9 +31,9 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/50" />
         <RevealOnScroll>
           <div className="relative max-w-[1280px] mx-auto">
-            <SectionLabel variant="light">Get in Touch</SectionLabel>
+            <SectionLabel variant="light">Contact The Benavente Group</SectionLabel>
             <h1 className="font-serif text-[clamp(44px,6vw,72px)] text-white leading-[1.08]">
-              Request a <span className="italic text-gold-light">Consultation</span>
+              Request a Real Estate Appraisal <span className="italic text-gold-light">Consultation</span>
             </h1>
             <p className="text-white/[0.58] text-[18px] font-light leading-[1.85] max-w-[560px] mt-5">
               Our team is ready to discuss your real estate appraisal, valuation, or consulting needs. Let&apos;s talk.
@@ -49,7 +53,7 @@ export default function ContactPage() {
             <ContactForm />
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
-            <ContactInfo />
+            <ContactInfo info={info} />
           </RevealOnScroll>
         </div>
       </section>

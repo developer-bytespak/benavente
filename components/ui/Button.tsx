@@ -7,6 +7,7 @@ interface ButtonProps {
   className?: string
   type?: 'button' | 'submit'
   onClick?: () => void
+  disabled?: boolean
 }
 
 const variantStyles = {
@@ -18,11 +19,11 @@ const variantStyles = {
   ghost: 'bg-transparent text-navy hover:text-gold',
 }
 
-export default function Button({ href, variant = 'solid', children, className = '', type = 'button', onClick }: ButtonProps) {
-  const styles = `inline-flex items-center justify-center px-7 py-3 text-[14px] font-serif font-medium tracking-[0.1em] uppercase transition-all duration-300 ease-smooth rounded-[2px] ${variantStyles[variant]} ${className}`
+export default function Button({ href, variant = 'solid', children, className = '', type = 'button', onClick, disabled }: ButtonProps) {
+  const styles = `inline-flex items-center justify-center px-7 py-3 text-[14px] font-serif font-medium tracking-[0.1em] uppercase transition-all duration-300 ease-smooth rounded-[2px] ${variantStyles[variant]} ${disabled ? 'opacity-60 cursor-not-allowed' : ''} ${className}`
 
   if (href) {
     return <Link href={href} className={styles}>{children}</Link>
   }
-  return <button type={type} onClick={onClick} className={styles}>{children}</button>
+  return <button type={type} onClick={onClick} disabled={disabled} className={styles}>{children}</button>
 }

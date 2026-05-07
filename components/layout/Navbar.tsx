@@ -42,8 +42,13 @@ const navLinks: { label: string; href: string; children?: { label: string; href:
   { label: 'Contact', href: '/contact' },
 ]
 
-export default function Navbar() {
+interface NavbarProps {
+  logoUrl?: string | null
+}
+
+export default function Navbar({ logoUrl }: NavbarProps = {}) {
   const pathname = usePathname()
+  const logo = logoUrl || '/images/hero/logo.png'
   // const isHome = pathname === '/'
   const hasDarkHero = ['/', '/about', '/gallery', '/blog', '/contact'].includes(pathname)
   const [scrolled, setScrolled] = useState(false)
@@ -107,7 +112,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-4">
             <span className="flex items-center justify-center w-[80px] h-[80px] transition-colors duration-500">
               <Image
-                src="/images/hero/logo.png"
+                src={logo}
                 alt="The Benavente Group LLC"
                 width={80}
                 height={80}

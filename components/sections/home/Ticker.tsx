@@ -1,19 +1,8 @@
-const items = [
-  'Commercial Appraisal',
-  'Market Analysis',
-  'Litigation Support',
-  'Property Tax Appeal',
-  'Consulting',
-  'Pacific Region',
-  'Residential Valuation',
-  'Expert Testimony',
-  'Feasibility Studies',
-  'Eminent Domain',
-  'Portfolio Analysis',
-  'Arbitration Support',
-]
+interface Props {
+  items: string[]
+}
 
-function TickerRow() {
+function TickerRow({ items }: { items: string[] }) {
   return (
     <div className="flex items-center gap-6 shrink-0">
       {items.map((item, i) => (
@@ -28,12 +17,16 @@ function TickerRow() {
   )
 }
 
-export default function Ticker() {
+export default function Ticker({ items }: Props) {
+  if (items.length === 0) return null
   return (
     <section className="bg-cream border-b border-gold/15 py-[18px] overflow-hidden">
-      <div className="flex w-max will-change-transform" style={{ animation: 'ticker 40s linear infinite' }}>
-        <TickerRow />
-        <TickerRow />
+      <div
+        className="flex w-max will-change-transform"
+        style={{ animation: 'ticker 40s linear infinite' }}
+      >
+        <TickerRow items={items} />
+        <TickerRow items={items} />
       </div>
     </section>
   )

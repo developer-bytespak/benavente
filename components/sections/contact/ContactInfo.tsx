@@ -1,25 +1,56 @@
 import SectionLabel from '@/components/ui/SectionLabel'
 import MicroCTA from '@/components/ui/MicroCTA'
+import type { ContactInfoRow } from '@/lib/supabase/types'
 
-interface ContactDetail {
+interface Detail {
   label: string
   value: string
-  sub?: string
   href?: string
 }
 
-const contactDetails: ContactDetail[] = [
-  { label: 'Office Location', value: 'Pauahi Tower, 1003 Bishop Street, Honolulu, HI 96813', href: 'https://www.google.com/maps/search/?api=1&query=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813' },
-  { label: 'Phone', value: '(808) 784-4320', href: 'tel:+18087844320' },
-  { label: 'Email', value: 'Mail@BenaventeGroup.com', href: 'mailto:Mail@BenaventeGroup.com' },
-  { label: 'Hours', value: 'Monday \u2013 Friday, 8:00 AM \u2013 5:00 PM HST' },
-  { label: 'Service Regions', value: 'Hawai\u2018i \u00B7 Guam \u00B7 Saipan \u00B7 Marshall Islands \u00B7 Pacific Islands' },
-]
+interface Props {
+  info: ContactInfoRow | null
+}
 
-export default function ContactInfo() {
+export default function ContactInfo({ info }: Props) {
+  const details: Detail[] = []
+
+  if (info?.address) {
+    details.push({
+      label: 'Office Location',
+      value: info.address,
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(info.address)}`,
+    })
+  }
+  if (info?.phone) {
+    details.push({
+      label: 'Phone',
+      value: info.phone,
+      href: `tel:${info.phone.replace(/[^+\d]/g, '')}`,
+    })
+  }
+  if (info?.email) {
+    details.push({
+      label: 'Email',
+      value: info.email,
+      href: `mailto:${info.email}`,
+    })
+  }
+  if (info?.hours) {
+    details.push({ label: 'Hours', value: info.hours })
+  }
+  if (info?.service_regions && info.service_regions.length > 0) {
+    details.push({
+      label: 'Service Regions',
+      value: info.service_regions.join(' · '),
+    })
+  }
+
+  const mapSrc = info?.map_embed_url
+
   return (
     <div>
-      <SectionLabel>Contact Info</SectionLabel>
+      <SectionLabel>Hawaii Appraiser Contact</SectionLabel>
       <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
         Let&apos;s Start a <span className="italic text-gold">Conversation</span>
       </h2>
@@ -28,31 +59,38 @@ export default function ContactInfo() {
       </p>
 
       <div className="mt-8 flex flex-col gap-5">
-        {contactDetails.map((item) => (
+        {details.map((item) => (
           <div key={item.label}>
-            <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif block">{item.label}</span>
+            <span className="text-[11px] text-gold uppercase tracking-[0.2em] font-serif block">
+              {item.label}
+            </span>
             {item.href ? (
-              <a href={item.href} className="text-navy hover:text-gold text-[18px] font-serif block mt-1 transition-colors duration-300 break-all">{item.value}</a>
+              <a
+                href={item.href}
+                className="text-navy hover:text-gold text-[18px] font-serif block mt-1 transition-colors duration-300 break-all"
+              >
+                {item.value}
+              </a>
             ) : (
               <span className="text-navy text-[18px] font-serif block mt-1">{item.value}</span>
             )}
-            {item.sub && <span className="text-navy text-[16px] font-serif block">{item.sub}</span>}
           </div>
         ))}
       </div>
 
-      {/* Map */}
-      <div className="mt-8 h-[280px] rounded-[2px] overflow-hidden border border-gold/15">
-        <iframe
-          title="The Benavente Group office location"
-          src="https://www.google.com/maps?q=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813&output=embed"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
+      {mapSrc && (
+        <div className="mt-8 h-[280px] rounded-[2px] overflow-hidden border border-gold/15">
+          <iframe
+            title="The Benavente Group office location"
+            src={mapSrc}
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      )}
 
       <div className="mt-8 flex flex-col gap-3">
         <MicroCTA href="/about">Learn About Our Team</MicroCTA>

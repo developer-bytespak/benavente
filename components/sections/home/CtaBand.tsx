@@ -14,7 +14,7 @@ export default function CtaBand() {
             Timely Results?
           </h2>
           <p className="text-white/[0.52] text-[18px] font-light leading-[1.8] mt-5">
-            Whether you need a commercial appraisal, litigation support, or market analysis, our team is ready to deliver the expertise your project demands.
+            Whether you need commercial property valuation in Hawaii, litigation support appraisal, or a certified real estate appraiser in Honolulu, our team is ready to deliver the expertise your project demands.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             <Button href="/contact" variant="ocean">Contact Us</Button>

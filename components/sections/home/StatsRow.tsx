@@ -2,21 +2,23 @@
 
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import CountUp from '@/components/ui/CountUp'
+import type { StatItem } from '@/lib/supabase/types'
 
-const stats = [
-  { number: 50, suffix: '+', label: 'Years Combined Experience' },
-  { number: 500, suffix: '+', label: 'Completed Assignments' },
-  { number: 6, suffix: '', label: 'Pacific Island Regions' },
-  { number: 18, suffix: '+', label: 'Property Types Covered' },
-]
+interface Props {
+  stats: StatItem[]
+}
 
-export default function StatsRow() {
+export default function StatsRow({ stats }: Props) {
+  if (stats.length === 0) return null
   return (
     <section className="bg-navy py-16 px-[4.5%]">
       <RevealOnScroll>
         <div className="max-w-[1280px] mx-auto grid grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, i) => (
-            <div key={stat.label} className={`text-center py-6 ${i < stats.length - 1 ? 'border-r border-gold/12' : ''}`}>
+            <div
+              key={stat.label}
+              className={`text-center py-6 ${i < stats.length - 1 ? 'border-r border-gold/12' : ''}`}
+            >
               <div className="font-serif font-light text-[52px] text-white leading-none">
                 <CountUp target={stat.number} suffix={stat.suffix} />
               </div>
