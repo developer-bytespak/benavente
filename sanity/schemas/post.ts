@@ -113,15 +113,6 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'featured',
-      title: 'Featured post?',
-      type: 'boolean',
-      group: 'content',
-      description:
-        'Only one post should be featured at a time — it appears as the highlighted article on the Blog page.',
-      initialValue: false,
-    }),
-    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
@@ -158,10 +149,9 @@ export default defineType({
       category: 'category',
       customCategory: 'customCategory',
       media: 'coverImage',
-      featured: 'featured',
       publishedAt: 'publishedAt',
     },
-    prepare({ title, category, customCategory, media, featured, publishedAt }) {
+    prepare({ title, category, customCategory, media, publishedAt }) {
       const cat =
         category === '__custom__' ? customCategory : category
       const date = publishedAt
@@ -171,7 +161,7 @@ export default defineType({
           })
         : ''
       return {
-        title: `${featured ? '★ ' : ''}${title}`,
+        title,
         subtitle: [cat, date].filter(Boolean).join(' · '),
         media,
       }

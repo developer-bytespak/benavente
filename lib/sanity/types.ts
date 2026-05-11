@@ -11,7 +11,6 @@ export interface SanityPost {
   customCategory?: string
   author?: string
   publishedAt: string
-  featured?: boolean
   body?: PortableTextBlock[]
   seoTitle?: string
   seoDescription?: string
@@ -26,7 +25,6 @@ export interface SanityPostCard {
   category: string
   customCategory?: string
   publishedAt: string
-  featured?: boolean
 }
 
 export function displayCategory(

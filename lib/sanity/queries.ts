@@ -10,8 +10,7 @@ const POST_CARD_FIELDS = `
   coverImage,
   category,
   customCategory,
-  publishedAt,
-  featured
+  publishedAt
 `
 
 const POST_FULL_FIELDS = `
@@ -24,7 +23,6 @@ const POST_FULL_FIELDS = `
   customCategory,
   author,
   publishedAt,
-  featured,
   body,
   seoTitle,
   seoDescription
@@ -32,22 +30,18 @@ const POST_FULL_FIELDS = `
 
 const allPostsQuery = groq`
   *[_type == "post" && defined(slug.current)]
-    | order(featured desc, publishedAt desc) {
+    | order(publishedAt desc) {
     ${POST_CARD_FIELDS}
   }
 `
 
 const featuredPlusRecentQuery = groq`{
-  "featured": *[_type == "post" && featured == true && defined(slug.current)]
+  "featured": *[_type == "post" && defined(slug.current)]
     | order(publishedAt desc)[0] {
     ${POST_CARD_FIELDS}
   },
-  "recent": *[_type == "post" && featured != true && defined(slug.current)]
-    | order(publishedAt desc)[0...6] {
-    ${POST_CARD_FIELDS}
-  },
-  "fallbackLatest": *[_type == "post" && defined(slug.current)]
-    | order(publishedAt desc)[0] {
+  "recent": *[_type == "post" && defined(slug.current)]
+    | order(publishedAt desc)[1...4] {
     ${POST_CARD_FIELDS}
   }
 }`
@@ -90,15 +84,9 @@ export async function getFeaturedAndRecent(): Promise<{
   const data = await sanityClient.fetch<{
     featured: SanityPostCard | null
     recent: SanityPostCard[]
-    fallbackLatest: SanityPostCard | null
   }>(featuredPlusRecentQuery, {}, fetchOpts)
 
-  const featured = data.featured ?? data.fallbackLatest
-  const recent = featured
-    ? data.recent.filter((p) => p._id !== featured._id).slice(0, 3)
-    : data.recent.slice(0, 3)
-
-  return { featured, recent }
+  return { featured: data.featured, recent: data.recent }
 }
 
 export async function getLatestPosts(
