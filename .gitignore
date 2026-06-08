@@ -45,3 +45,7 @@ Website Development_updated.zip
 
 # sanity
 /dist
+
+# Local video backups (do not commit)
+backups/
+scripts/backup-hero-videos.mjs

@@ -31,18 +31,26 @@ export function cldImage(publicId: string, opts: Transform = {}) {
 }
 
 // Takes a full Cloudinary delivery URL (as stored in the DB) and injects
-// bandwidth-saving transforms after `/video/upload/`. f_auto picks the most
-// efficient codec, q_auto compresses without visible loss, and c_limit/w_ caps
-// resolution so we never serve a 4K original to a hero banner. Cuts video
-// delivery ~70-90%. Non-Cloudinary or already-optimized URLs are returned as-is.
-export function optimizeCldVideoUrl(url: string, width = 1920): string {
+// bandwidth-saving transforms after `/video/upload/`:
+//   f_auto        - most efficient codec the browser supports
+//   q_auto:eco    - aggressive (but still good-looking) compression
+//   w_1280,c_limit- caps width at 720p-grade; never upscales
+//   eo_<seconds>  - delivers ONLY the first N seconds. The hero auto-advances
+//                   every 5s (~10s of footage at 2x), so the rest of each clip
+//                   is never seen — no reason to download it.
+// Together these cut video delivery ~90%+. Non-Cloudinary or already-transformed
+// URLs are returned unchanged.
+export function optimizeCldVideoUrl(
+  url: string,
+  { width = 1280, maxSeconds = 15 }: { width?: number; maxSeconds?: number } = {}
+): string {
   const marker = '/video/upload/'
   if (!url.includes(marker)) return url
 
   const [prefix, rest] = url.split(marker)
   // Skip if a transform already appears to be applied.
-  if (/^(f_|q_|w_|c_|vc_)/.test(rest)) return url
+  if (/^(f_|q_|w_|c_|vc_|eo_|du_)/.test(rest)) return url
 
-  const transform = `f_auto,q_auto,w_${width},c_limit`
+  const transform = `f_auto,q_auto:eco,w_${width},c_limit,eo_${maxSeconds}`
   return `${prefix}${marker}${transform}/${rest}`
 }
