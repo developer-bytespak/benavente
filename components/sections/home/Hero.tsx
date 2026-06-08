@@ -4,6 +4,7 @@ import { useRef, useEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
+import { optimizeCldVideoUrl } from '@/lib/cloudinary/client'
 
 interface Props {
   videos: string[]
@@ -48,6 +49,10 @@ export default function Hero({ videos, headline, subhead }: Props) {
   const count = safeVideos.length
 
   const [active, setActive] = useState(0)
+  // Tracks which videos have actually been requested. We only attach a <source>
+  // for videos in this set, so a visitor who bounces after a few seconds never
+  // downloads the clips they didn't see — the main bandwidth saving.
+  const [loaded, setLoaded] = useState<Set<number>>(() => new Set([0]))
   const refs = useRef<(HTMLVideoElement | null)[]>([])
   const setRef = (i: number) => (el: HTMLVideoElement | null) => {
     refs.current[i] = el
@@ -59,6 +64,18 @@ export default function Hero({ videos, headline, subhead }: Props) {
     if (!count) return
     setActive((prev) => (prev + 1) % count)
   }, [count])
+
+  // Mark the current and upcoming clip as loaded so their <source> is rendered.
+  useEffect(() => {
+    if (!count) return
+    setLoaded((prev) => {
+      if (prev.has(active) && prev.has(next)) return prev
+      const updated = new Set(prev)
+      updated.add(active)
+      updated.add(next)
+      return updated
+    })
+  }, [active, next, count])
 
   useEffect(() => {
     if (!count) return
@@ -118,26 +135,32 @@ export default function Hero({ videos, headline, subhead }: Props) {
         />
       </div>
 
-      {safeVideos.map((src, i) => (
-        <video
-          key={src + i}
-          ref={setRef(i)}
-          preload={i === active || i === next ? 'auto' : 'metadata'}
-          muted
-          autoPlay
-          playsInline
-          {...({ 'webkit-playsinline': 'true' } as Record<string, string>)}
-          poster="/images/regions/oahu-skyline.webp"
-          onEnded={() => handleEnded(i)}
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: i === active ? 1 : 0,
-            transition: 'opacity 1.5s ease-in-out',
-          }}
-        >
-          <source src={src} type="video/mp4" />
-        </video>
-      ))}
+      {safeVideos.map((src, i) => {
+        // Only attach the source for clips that are active, queued next, or
+        // already seen — everything else stays unloaded until needed.
+        const shouldLoad = i === active || i === next || loaded.has(i)
+        return (
+          <video
+            key={src + i}
+            ref={setRef(i)}
+            preload={i === active || i === next ? 'auto' : 'none'}
+            muted
+            playsInline
+            {...({ 'webkit-playsinline': 'true' } as Record<string, string>)}
+            poster="/images/regions/oahu-skyline.webp"
+            onEnded={() => handleEnded(i)}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              opacity: i === active ? 1 : 0,
+              transition: 'opacity 1.5s ease-in-out',
+            }}
+          >
+            {shouldLoad && (
+              <source src={optimizeCldVideoUrl(src)} type="video/mp4" />
+            )}
+          </video>
+        )
+      })}
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
 
