@@ -1,5 +1,5 @@
 import { groq } from 'next-sanity'
-import { sanityClient } from './client'
+import { sanityClient, isSanityConfigured } from './client'
 import type { SanityPost, SanityPostCard } from './types'
 
 const POST_CARD_FIELDS = `
@@ -73,45 +73,73 @@ const relatedPostsQuery = groq`
 
 const fetchOpts = { next: { revalidate: 30 } } as const
 
+// Sanity outages, an unreachable dataset, or missing credentials shouldn't take
+// a whole page down — editorial content is supplementary on every route that
+// reads it. Mirrors the degrade-to-empty behaviour in lib/cms/*, which logs and
+// returns null rather than throwing.
+async function safeFetch<T>(
+  query: string,
+  params: Record<string, unknown>,
+  fallback: T
+): Promise<T> {
+  // No project configured — skip the request entirely rather than waiting on
+  // one that cannot succeed.
+  if (!isSanityConfigured) return fallback
+  try {
+    return await sanityClient.fetch<T>(query, params, fetchOpts)
+  } catch (err) {
+    console.error(
+      '[sanity]',
+      err instanceof Error ? err.message : String(err)
+    )
+    return fallback
+  }
+}
+
 export async function getAllPosts(): Promise<SanityPostCard[]> {
-  return sanityClient.fetch(allPostsQuery, {}, fetchOpts)
+  return safeFetch<SanityPostCard[]>(allPostsQuery, {}, [])
 }
 
 export async function getFeaturedAndRecent(): Promise<{
   featured: SanityPostCard | null
   recent: SanityPostCard[]
 }> {
-  const data = await sanityClient.fetch<{
+  const empty = { featured: null, recent: [] }
+  const data = await safeFetch<{
     featured: SanityPostCard | null
     recent: SanityPostCard[]
-  }>(featuredPlusRecentQuery, {}, fetchOpts)
+  } | null>(featuredPlusRecentQuery, {}, empty)
 
-  return { featured: data.featured, recent: data.recent }
+  // A dataset with no posts resolves to null rather than the shape above.
+  return {
+    featured: data?.featured ?? null,
+    recent: data?.recent ?? [],
+  }
 }
 
 export async function getLatestPosts(
   limit = 3
 ): Promise<SanityPostCard[]> {
-  return sanityClient.fetch(latestPostsQuery, { limit }, fetchOpts)
+  return safeFetch<SanityPostCard[]>(latestPostsQuery, { limit }, [])
 }
 
 export async function getPostBySlug(
   slug: string
 ): Promise<SanityPost | null> {
-  return sanityClient.fetch(postBySlugQuery, { slug }, fetchOpts)
+  return safeFetch<SanityPost | null>(postBySlugQuery, { slug }, null)
 }
 
 export async function getAllPostSlugs(): Promise<string[]> {
-  return sanityClient.fetch(postSlugsQuery, {}, fetchOpts)
+  return safeFetch<string[]>(postSlugsQuery, {}, [])
 }
 
 export async function getRelatedPosts(
   slug: string,
   category: string
 ): Promise<SanityPostCard[]> {
-  return sanityClient.fetch(
+  return safeFetch<SanityPostCard[]>(
     relatedPostsQuery,
     { slug, category },
-    fetchOpts
+    []
   )
 }

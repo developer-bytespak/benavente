@@ -4,9 +4,19 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr'
 export async function middleware(req: NextRequest) {
   let res = NextResponse.next({ request: req })
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  // Standalone mode: without credentials there is no auth to enforce, and
+  // createServerClient would throw. Let the request through — the admin pages
+  // themselves render empty and every write is already disabled.
+  if (!supabaseUrl || !anonKey) {
+    return res
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    anonKey,
     {
       cookies: {
         get(name) {

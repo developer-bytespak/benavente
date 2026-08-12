@@ -28,6 +28,8 @@ yarn-error.log*
 # local env files
 .env
 .env*.local
+# bare `env` — same secrets, but the patterns above don't catch it
+/env
 
 # vercel
 .vercel

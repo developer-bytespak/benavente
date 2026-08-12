@@ -179,7 +179,24 @@ export default function Hero({ videos, headline, subhead }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
-            className="text-white/70 text-[18px] font-light mt-5 max-w-[640px] leading-relaxed"
+            className="text-[18px] font-semibold mt-5 max-w-[600px] leading-[1.6] px-6 py-4 rounded-[12px] text-left backdrop-blur-[12px]"
+            style={{
+              // Liquid glass: a barely-there white tint doing the refraction
+              // work via backdrop-blur rather than opacity, so the footage
+              // stays visible through the panel.
+              backgroundColor: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.25)',
+              // Outer drop for lift off the video, plus an inset top highlight
+              // — the catch of light along the top edge that reads as glass
+              // rather than a flat translucent box.
+              boxShadow:
+                '0 8px 32px rgba(11,31,58,0.28), inset 0 1px 0 rgba(255,255,255,0.35)',
+              color: '#FFFFFF',
+              // With the tint down to 0.08 the halo carries most of the
+              // contrast; the blur still flattens the backdrop behind it.
+              textShadow:
+                '0 1px 2px rgba(11,31,58,0.62), 0 0 16px rgba(11,31,58,0.48)',
+            }}
           >
             {subhead}
           </motion.p>
