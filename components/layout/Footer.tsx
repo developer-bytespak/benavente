@@ -132,12 +132,12 @@ export default function Footer({ settings, contact }: Props) {
         <div className="border-t border-white/5 mt-11 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <span className="text-white/[0.22] text-[13px] font-serif font-medium">{copyright}</span>
           <a
-            href="https://bytesplatform.com/"
+            href="https://bytesandpartners.co/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/[0.22] hover:text-white/60 text-[13px] font-serif font-medium transition-colors duration-300"
           >
-            Developed by Bytes Platform Inc.
+            Developed by Bytes and Partners
           </a>
         </div>
       </div>
