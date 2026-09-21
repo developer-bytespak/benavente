@@ -21,7 +21,7 @@ Everything in the live demo (`/admin`, password `1234`) is **frontend mock-up**.
 
 | Detail | Notes |
 |---|---|
-| **Office** | Pauahi Tower, 1003 Bishop Street, Honolulu |
+| **Office** | Pioneer Plaza, 900 Fort Street Mall, Suite 1820, Honolulu |
 | **Team** | 9 members — 3 MAI/SRA designated appraisers, 2 Certified General appraisers, 2 market analysts, 1 associate, 1 admin |
 | **Decision-maker** | Fernando Benavente (Manager, MAI/SRA) |
 | **Coverage** | Hawai‘i + Guam + Saipan + CNMI + Marshall Islands |

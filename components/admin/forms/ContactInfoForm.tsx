@@ -26,7 +26,7 @@ export default function ContactInfoForm({ initial }: Props) {
           type="textarea"
           rows={2}
           defaultValue={initial?.address ?? ''}
-          placeholder="Pauahi Tower, Suite 2140, 1003 Bishop Street, Honolulu, HI 96813"
+          placeholder="Pioneer Plaza, 900 Fort Street Mall, Suite 1820, Honolulu, Hawaii 96813"
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field

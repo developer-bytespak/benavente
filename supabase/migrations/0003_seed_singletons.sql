@@ -17,12 +17,12 @@ on conflict (id) do nothing;
 insert into contact_info (id, address, phone, email, hours, service_regions, map_embed_url)
 values (
   1,
-  'Pauahi Tower, Suite 2140, 1003 Bishop Street, Honolulu, HI 96813',
+  'Pioneer Plaza, 900 Fort Street Mall, Suite 1820, Honolulu, Hawaii 96813',
   '(808) 784-4320',
   'Mail@BenaventeGroup.com',
   'Monday – Friday, 8:00 AM – 5:00 PM HST',
   array['Hawai‘i', 'Guam', 'Saipan', 'Marshall Islands', 'Pacific Islands'],
-  'https://www.google.com/maps?q=Pauahi+Tower+1003+Bishop+Street+Honolulu+HI+96813&output=embed'
+  'https://www.google.com/maps?q=Pioneer+Plaza%2C+900+Fort+Street+Mall%2C+Suite+1820%2C+Honolulu%2C+HI+96813&output=embed'
 )
 on conflict (id) do nothing;
 
