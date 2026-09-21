@@ -10,6 +10,9 @@ import { getContactInfo } from '@/lib/cms/site'
 export const metadata: Metadata = {
   title: 'Contact The Benavente Group | Hawaii Appraisers',
   description: 'Contact The Benavente Group for commercial real estate appraisal and valuation services in Honolulu, Hawaii, and the Pacific region.',
+  alternates: {
+    canonical: '/contact',
+  },
 }
 
 export const revalidate = 30

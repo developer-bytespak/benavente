@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Hawaii Real Estate Insights & Market Analysis Blog',
   description:
     'Hawaii real estate insights, valuation commentary, and Pacific market analysis from credentialed appraisers at The Benavente Group.',
+  alternates: {
+    canonical: '/blog',
+  },
 }
 
 export const revalidate = 30

@@ -27,7 +27,7 @@ values (
 on conflict (id) do nothing;
 
 insert into home_page (
-  id, hero_video_urls, hero_headline, ticker_items,
+  id, hero_video_urls, hero_headline, hero_subhead, ticker_items,
   intro_heading, intro_paragraphs, stats
 ) values (
   1,
@@ -38,15 +38,16 @@ insert into home_page (
     'https://res.cloudinary.com/djqmhkla6/video/upload/video-2_u7oohe.mp4'
   ],
   'Real Estate Valuation & Consultancy',
+  'The Benavente Group is a team of commercial real estate appraiser in Honolulu, serving Hawai''i, Guam, Saipan, the Marshall Islands, and the wider Pacific. Since 2017, our MAI and SRA designated appraisers have delivered defensible valuations, litigation support, and market analysis for attorneys, lenders, developers, and government agencies.',
   array[
-    'Commercial Appraisal','Market Analysis','Litigation Support','Property Tax Appeal',
-    'Consulting','Pacific Region','Residential Valuation','Expert Testimony',
-    'Feasibility Studies','Eminent Domain','Portfolio Analysis','Arbitration Support'
+    'Commercial Appraisal Reports','Commercial Property Valuation','Litigation Support','Property Tax Appeal',
+    'Lease Abstracts & Analysis','Pacific Region','Residential Appraisal','Expert Testimony',
+    'Feasibility Studies','Eminent Domain','MAI Appraisals','Arbitration Support',
+    'Types of Appraisal Reports'
   ],
   'A Trusted Name in Pacific Real Estate',
   array[
-    'The Benavente Group is a team of professionals specializing in real estate economics, valuation, and market analysis. We make it our business to understand the dynamics of market movements, motivations of buyers and sellers, and the specific needs of our clients.',
-    'With over 50 years of combined experience, we offer the professionalism, valuation expertise, and technical skills necessary to deliver credible solutions across Hawai‘i, Guam, Saipan, the Marshall Islands, and beyond.'
+    'The Benavente Group is a team of MAI real estate professionals specializing in valuation, economics, and market analysis. We understand the factors affecting commercial property values in island markets: thin comparable data, leasehold interests, and buyer motivations that differ sharply from the mainland. With over 50 years of combined experience, our MAI appraisers deliver the professionalism, technical skill, and credible appraisal reports our clients need across Hawai‘i, Guam, Saipan, the Marshall Islands, and beyond.'
   ],
   '[
     {"label":"Years Combined Experience","number":50,"suffix":"+"},

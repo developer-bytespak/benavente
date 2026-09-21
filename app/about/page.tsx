@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'About The Benavente Group | MAI Appraisers Hawaii',
   description:
     'Meet The Benavente Group, MAI and SRA certified appraisers delivering credible real estate valuations across Hawaii and the Pacific.',
+  alternates: {
+    canonical: '/about',
+  },
 }
 
 export const revalidate = 30

@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Hawaii Commercial Appraisal Portfolio | Benavente Group',
   description:
     'Explore our Hawaii commercial appraisal portfolio of featured projects across Honolulu, Guam, Saipan, and the broader Pacific region.',
+  alternates: {
+    canonical: '/gallery',
+  },
 }
 
 export const revalidate = 30

@@ -14,9 +14,12 @@ import type { Metadata } from 'next'
 export const revalidate = 30
 
 export const metadata: Metadata = {
-  title: 'Hawaii Commercial Real Estate Appraisers & Consultants',
+  title: 'Hawaii Commercial Real Estate Appraisers | MAI Certified',
   description:
-    'Hawaii commercial real estate appraisers offering valuation, litigation support, and market analysis across Honolulu and the Pacific.',
+    "MAI and SRA designated commercial real estate appraisers in Honolulu. Valuation, litigation support and market analysis across Hawai'i and the Pacific.",
+  alternates: {
+    canonical: '/',
+  },
 }
 
 export default async function HomePage() {
