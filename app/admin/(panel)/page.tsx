@@ -5,6 +5,8 @@ import Icon, { type IconName } from '@/components/admin/ui/Icon'
 import { supabaseServer } from '@/lib/supabase/server'
 import { sanityClient } from '@/lib/sanity/client'
 import type { ContactSubmissionRow } from '@/lib/supabase/types'
+import { submissionService } from '@/components/admin/lists/SubmissionsList'
+import { serviceLabel, parseServiceMarker } from '@/lib/serviceForms'
 
 export const dynamic = 'force-dynamic'
 
@@ -121,7 +123,10 @@ export default async function DashboardPage() {
                       </a>
                     </div>
                     <p className="text-slate text-[13px] font-serif mt-0.5 line-clamp-2">
-                      {s.message}
+                      {submissionService(s) && (
+                        <span className="text-gold-dark">{serviceLabel(submissionService(s))} · </span>
+                      )}
+                      {parseServiceMarker(s.message).message}
                     </p>
                   </div>
                   <span className="text-slate-light text-[12px] font-serif shrink-0 tabular-nums">

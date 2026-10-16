@@ -136,6 +136,12 @@ export type ContactSubmissionRow = {
   message: string
   read: boolean
   submitted_at: string
+  // Added by 0007_service_inquiries.sql; absent until that migration runs.
+  service?: string | null
+  phone?: string | null
+  company?: string | null
+  property?: string | null
+  details?: Record<string, string> | null
 }
 
 // ----- Database union (explicit Insert/Update shapes — matches generated output) -----
@@ -382,6 +388,11 @@ export type Database = {
           message: string
           read?: boolean
           submitted_at?: string
+          service?: string | null
+          phone?: string | null
+          company?: string | null
+          property?: string | null
+          details?: Json | null
         }
         Update: {
           id?: string

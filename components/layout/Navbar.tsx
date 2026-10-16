@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { services, serviceHref } from '@/lib/services'
 
 const navLinks: { label: string; href: string; children?: { label: string; href: string }[] }[] = [
   { label: 'Home', href: '/' },
@@ -16,17 +17,13 @@ const navLinks: { label: string; href: string; children?: { label: string; href:
     //   { label: 'Coverage Areas', href: '/about' },
     // ],
   },
-  // {
-  //   label: 'Services', href: '/contact',
-  //   children: [
-  //     { label: 'Commercial Appraisal', href: '/contact' },
-  //     { label: 'Residential Valuation', href: '/contact' },
-  //     { label: 'Market Analysis', href: '/contact' },
-  //     { label: 'Litigation Support', href: '/contact' },
-  //     { label: 'Consulting', href: '/contact' },
-  //     { label: 'Pacific Region', href: '/contact' },
-  //   ],
-  // },
+  {
+    label: 'Services', href: '/services',
+    children: [
+      { label: 'Services Overview', href: '/services' },
+      ...services.map((s) => ({ label: s.title, href: serviceHref(s.slug) })),
+    ],
+  },
   {
     label: 'Portfolio', href: '/gallery',
     // children: [
@@ -50,10 +47,15 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
   const pathname = usePathname()
   const logo = logoUrl || '/images/hero/logo.png'
   // const isHome = pathname === '/'
-  const hasDarkHero = ['/', '/about', '/gallery', '/blog', '/contact'].includes(pathname)
+  const hasDarkHero =
+    ['/', '/about', '/gallery', '/blog', '/contact'].includes(pathname) || pathname.startsWith('/services')
+  // Dropdown parents (Services) stay highlighted on their child routes.
+  const isActive = (link: (typeof navLinks)[number]) =>
+    pathname === link.href || (!!link.children && pathname.startsWith(`${link.href}/`))
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const lastScrollY = useRef(0)
   const dropdownTimeout = useRef<NodeJS.Timeout>()
@@ -107,41 +109,47 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
         }`}
         style={{ height: isTransparent ? 96 : 80 }}
       >
-        <div className="max-w-[1400px] mx-auto px-[4.5%] h-full flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-[4.5%] h-full flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-4">
-            <span className="flex items-center justify-center w-[80px] h-[80px] transition-colors duration-500">
+          <Link href="/" className="flex items-center gap-3 xl:gap-4 min-w-0">
+            <span className="flex items-center justify-center shrink-0 w-[52px] h-[52px] sm:w-[64px] sm:h-[64px] xl:w-[80px] xl:h-[80px] transition-colors duration-500">
               <Image
                 src={logo}
                 alt="The Benavente Group LLC"
                 width={80}
                 height={80}
-                className="w-[80px] h-[80px] object-contain"
+                className="w-full h-full object-contain"
               />
             </span>
-            <div className="flex flex-col">
-              <span className={`font-serif text-[26px] font-medium leading-tight ${logoColor} transition-colors duration-500`}>
+            {/* Name stays on one line; sizes step down so the block fits the bar. */}
+            <div className="flex flex-col min-w-0">
+              <span className={`font-serif text-[19px] sm:text-[22px] xl:text-[26px] font-medium leading-tight whitespace-nowrap ${logoColor} transition-colors duration-500`}>
                 The Benavente Group LLC
               </span>
-              <span className={`text-[12px] tracking-[0.18em] uppercase font-serif font-bold transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-navy/70'}`}>
+              <span className={`text-[9px] sm:text-[10px] xl:text-[12px] tracking-[0.12em] sm:tracking-[0.16em] xl:tracking-[0.18em] leading-snug mt-0.5 uppercase font-serif font-bold transition-colors duration-500 ${isTransparent ? 'text-white/60' : 'text-navy/70'}`}>
                 Hawaii Based Real Estate Appraisers &amp; Consultants
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <div
                 key={link.label}
                 className="relative"
                 onMouseEnter={() => link.children && handleDropdownEnter(link.label)}
                 onMouseLeave={handleDropdownLeave}
+                onFocus={() => link.children && handleDropdownEnter(link.label)}
+                onBlur={handleDropdownLeave}
+                onKeyDown={(e) => e.key === 'Escape' && setOpenDropdown(null)}
               >
                 <Link
                   href={link.href}
+                  aria-haspopup={link.children ? 'true' : undefined}
+                  aria-expanded={link.children ? openDropdown === link.label : undefined}
                   className={`text-[15px] font-serif font-bold tracking-[0.08em] uppercase transition-colors duration-300 ${textColor} hover:text-gold ${
-                    pathname === link.href ? 'text-gold' : ''
+                    isActive(link) ? 'text-gold' : ''
                   }`}
                 >
                   {link.label}
@@ -162,7 +170,10 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block px-5 py-2 text-[14px] font-serif text-navy/70 hover:text-gold hover:bg-cream transition-colors duration-200"
+                          onClick={() => setOpenDropdown(null)}
+                          className={`block px-5 py-2 text-[14px] font-serif whitespace-nowrap hover:text-gold hover:bg-cream transition-colors duration-200 ${
+                            pathname === child.href ? 'text-gold' : 'text-navy/70'
+                          }`}
                         >
                           {child.label}
                         </Link>
@@ -178,7 +189,7 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-4">
             <button
-              className="md:hidden flex flex-col gap-[5px] p-2"
+              className="lg:hidden flex flex-col gap-[5px] p-2 shrink-0"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -198,7 +209,7 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-navy/30 z-40 md:hidden"
+              className="fixed inset-0 bg-navy/30 z-40 lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -207,22 +218,69 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
               exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
               style={{ top: isTransparent ? 108 : 92 }}
-              className="fixed right-[4.5%] w-[220px] bg-white z-50 md:hidden shadow-xl shadow-navy/15 border border-gold/20 rounded-[4px] origin-top-right overflow-hidden"
+              className="fixed right-[4.5%] w-[220px] bg-white z-50 lg:hidden shadow-xl shadow-navy/15 border border-gold/20 rounded-[4px] origin-top-right overflow-hidden"
             >
-              <ul className="py-2">
-                {navLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`block px-5 py-3 text-[14px] font-serif font-medium tracking-[0.08em] uppercase transition-colors hover:bg-cream hover:text-gold ${
-                        pathname === link.href ? 'text-gold bg-cream/50' : 'text-navy'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+              <ul className="py-2 max-h-[calc(100vh-120px)] overflow-y-auto">
+                {navLinks.map((link) =>
+                  link.children ? (
+                    <li key={link.label}>
+                      <button
+                        type="button"
+                        onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
+                        aria-expanded={mobileExpanded === link.label}
+                        className={`w-full flex items-center justify-between px-5 py-3 text-[14px] font-serif font-medium tracking-[0.08em] uppercase transition-colors hover:bg-cream hover:text-gold ${
+                          isActive(link) ? 'text-gold bg-cream/50' : 'text-navy'
+                        }`}
+                      >
+                        {link.label}
+                        <span
+                          className={`text-[12px] transition-transform duration-300 ${
+                            mobileExpanded === link.label ? 'rotate-180' : ''
+                          }`}
+                        >
+                          &#9662;
+                        </span>
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {mobileExpanded === link.label && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.22 }}
+                            className="overflow-hidden border-l border-gold/30 ml-5 mb-1"
+                          >
+                            {link.children.map((child) => (
+                              <li key={child.label}>
+                                <Link
+                                  href={child.href}
+                                  onClick={() => setMobileOpen(false)}
+                                  className={`block pl-4 pr-4 py-2 text-[14px] font-serif leading-[1.35] transition-colors hover:text-gold ${
+                                    pathname === child.href ? 'text-gold' : 'text-navy/70'
+                                  }`}
+                                >
+                                  {child.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+                    </li>
+                  ) : (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className={`block px-5 py-3 text-[14px] font-serif font-medium tracking-[0.08em] uppercase transition-colors hover:bg-cream hover:text-gold ${
+                          pathname === link.href ? 'text-gold bg-cream/50' : 'text-navy'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             </motion.div>
           </>

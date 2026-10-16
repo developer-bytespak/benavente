@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import MicroCTA from '@/components/ui/MicroCTA'
+import { services, serviceHref } from '@/lib/services'
 import type { SiteSettingsRow, ContactInfoRow } from '@/lib/supabase/types'
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
   { label: 'Portfolio', href: '/gallery' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
@@ -32,7 +34,7 @@ export default function Footer({ settings, contact }: Props) {
   return (
     <footer className="bg-navy border-t border-gold/10">
       <div className="max-w-[1400px] mx-auto pt-16 pb-7 px-[4.5%]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr] gap-10 lg:gap-13">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_0.8fr_1.2fr_1fr] gap-10 lg:gap-13">
           <div>
             <div className="flex items-center gap-4">
               <span className="flex items-center justify-center w-[88px] h-[88px] shrink-0">
@@ -73,6 +75,24 @@ export default function Footer({ settings, contact }: Props) {
                     className="text-white/45 hover:text-white text-[15px] font-serif font-medium transition-colors duration-300"
                   >
                     {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-gold text-[12px] tracking-[0.2em] uppercase font-serif font-medium mb-5">
+              Services
+            </h4>
+            <ul className="space-y-2.5">
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={serviceHref(service.slug)}
+                    className="text-white/45 hover:text-white text-[15px] font-serif font-medium transition-colors duration-300"
+                  >
+                    {service.title}
                   </Link>
                 </li>
               ))}
