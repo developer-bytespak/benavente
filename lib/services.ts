@@ -75,9 +75,54 @@ export const services: Service[] = [
     image: '/images/gallery/residential-developments/dji_0406.webp',
     related: [
       'commercial-real-estate-appraisal',
-      'litigation-support-expert-testimony',
+      'feasibility-highest-and-best-use',
       'property-tax-appeal',
       'eminent-domain-condemnation',
+    ],
+  },
+  {
+    slug: 'feasibility-highest-and-best-use',
+    number: '06',
+    title: 'Feasibility & Highest and Best Use',
+    shortTitle: 'Feasibility & HBU',
+    summary:
+      'Highest and best use studies and financial feasibility analysis that test what a Hawaiʻi site should become before capital is committed.',
+    image: '/images/gallery/vacant-land/dji_0515-large.webp',
+    related: [
+      'market-studies',
+      'commercial-real-estate-appraisal',
+      'eminent-domain-condemnation',
+      'property-tax-appeal',
+    ],
+  },
+  {
+    slug: 'estate-trust-appraisal',
+    number: '07',
+    title: 'Estate & Trust Appraisal',
+    shortTitle: 'Estate & Trust',
+    summary:
+      'Date of death, probate, estate and trust appraisals for Hawaiʻi executors, trustees and estate attorneys, delivered on schedule for filing.',
+    image: '/images/gallery/luxury-residential/dji_0858.webp',
+    related: [
+      'commercial-real-estate-appraisal',
+      'property-tax-appeal',
+      'feasibility-highest-and-best-use',
+      'market-studies',
+    ],
+  },
+  {
+    slug: 'portfolio-valuation',
+    number: '08',
+    title: 'Portfolio Valuation',
+    shortTitle: 'Portfolio Valuation',
+    summary:
+      'Consistent valuations for lenders, institutions and landowners holding multiple properties across Hawaiʻi and the Pacific. One team, one method.',
+    image: '/images/gallery/cbd/dji_0344.webp',
+    related: [
+      'commercial-real-estate-appraisal',
+      'market-studies',
+      'feasibility-highest-and-best-use',
+      'property-tax-appeal',
     ],
   },
 ]

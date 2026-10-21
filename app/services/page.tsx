@@ -13,7 +13,7 @@ import JsonLd, { absoluteUrl, breadcrumbSchema } from '@/components/sections/ser
 import { services, serviceHref } from '@/lib/services'
 
 const description =
-  "Commercial real estate appraisal, litigation support, property tax appeal, eminent domain and market study services across Hawai'i and the Pacific from MAI-designated appraisers."
+  "Commercial real estate appraisal, litigation support, property tax appeal, eminent domain, market study, feasibility, estate and portfolio valuation services across Hawai'i and the Pacific from MAI-designated appraisers."
 
 export const metadata: Metadata = {
   title: 'Real Estate Appraisal & Advisory Services in Hawaii',
@@ -61,7 +61,7 @@ export default function ServicesPage() {
         breadcrumb={crumbs}
         secondaryCta={{ label: 'Explore Services', href: '#services-index' }}
         footer={
-          <nav aria-label="Services" className="hidden md:grid grid-cols-5 border-t border-white/15">
+          <nav aria-label="Services" className="hidden md:grid grid-cols-4 lg:grid-cols-8 border-t border-white/15">
             {services.map((s) => (
               <Link
                 key={s.slug}

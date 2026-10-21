@@ -500,8 +500,8 @@ export default function MarketStudiesPage() {
                 </h2>
                 <Prose className="mt-5 !text-[16px]">
                   <p>
-                    A market study often comes at the start of a project&apos;s life. The same evidence later supports the
-                    highest and best use analysis, the{' '}
+                    A market study often comes at the start of a project&apos;s life. The same evidence later supports the{' '}
+                    <TextLink href="/services/feasibility-highest-and-best-use">highest and best use analysis</TextLink>, the{' '}
                     <TextLink href={guide('what-is-a-construction-loan-appraisal')}>construction loan appraisal</TextLink>{' '}
                     and, eventually, the stabilized valuation. Working with one firm across those stages keeps the
                     assumptions consistent.
