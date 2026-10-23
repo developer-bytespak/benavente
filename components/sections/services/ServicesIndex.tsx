@@ -15,7 +15,7 @@ export default function ServicesIndex() {
           <div>
             <SectionLabel>Core Services</SectionLabel>
             <h2 className="font-serif text-[clamp(34px,4vw,50px)] text-navy leading-[1.15]">
-              Eight Disciplines, <span className="italic text-gold">One Standard</span>
+              Nine Disciplines, <span className="italic text-gold">One Standard</span>
             </h2>
           </div>
           <p className="text-navy/70 text-[16px] font-light leading-[1.8] max-w-[420px]">

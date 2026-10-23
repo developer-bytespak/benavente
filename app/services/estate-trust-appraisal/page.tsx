@@ -18,6 +18,7 @@ import {
   ProcessSteps,
   Checklist,
   Quote,
+  IntroHeading,
   faqSchema,
   type FaqItem,
 } from '@/components/sections/services/Blocks'
@@ -253,20 +254,20 @@ export default function EstateTrustPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           <RevealOnScroll className="self-stretch">
             <div className="relative h-full min-h-[340px] lg:min-h-[460px]">
-              <div className="relative h-full min-h-[340px] lg:min-h-[460px] rounded-[2px] overflow-hidden">
+              <div className="relative h-full min-h-[340px] lg:min-h-[460px] rounded-[2px] overflow-hidden group">
                 <Image
                   src="/images/gallery/luxury-residential/dji_0514.webp"
                   alt="Drone view of a residence beside a golf course on Hawaiʻi Island"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
               </div>
               <div aria-hidden="true" className="absolute -bottom-[18px] -right-[18px] w-[45%] h-[45%] border border-gold/30 -z-[1]" />
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
-            <SectionLabel>MAI & SRA Designated</SectionLabel>
+            <IntroHeading label="MAI & SRA Designated" title={'One Team for _Every Asset_\nin the Estate'} />
             <p className="text-navy text-[17px] font-light leading-[1.75]">
               We understand that estate work comes at a difficult time for families. Our role is to make one part of it
               straightforward: a clear, well-supported value, delivered on schedule to the attorney or representative
@@ -285,19 +286,13 @@ export default function EstateTrustPage() {
           title={'Executors, Trustees\nand _Estate Counsel_'}
           className="max-w-[760px]"
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-12 border-t border-gold/25">
-          {clientGroups.map((c, i) => (
-            <RevealOnScroll key={c.title} delay={i * 0.08}>
-              <div
-                className={`h-full py-7 lg:px-7 border-b lg:border-b-0 border-gold/25 ${
-                  i > 0 ? 'lg:border-l' : 'lg:pl-0'
-                } ${i % 2 === 1 ? 'sm:pl-7' : 'sm:pr-7'}`}
-              >
-                <h3 className="font-serif text-[24px] text-navy leading-[1.2]">{c.title}</h3>
-                <p className="text-navy/75 text-[16px] font-light leading-[1.75] mt-3">{c.desc}</p>
-              </div>
-            </RevealOnScroll>
-          ))}
+        <div className="mt-12">
+          <EditorialTable
+            caption="Who we work with and how we help"
+            columns={['Client', 'How we help']}
+            rows={clientGroups.map((c) => [c.title, c.desc])}
+            numbered
+          />
         </div>
         <RevealOnScroll>
           <div className="relative bg-white border border-gold/25 rounded-[2px] px-8 py-7 mt-12">
@@ -402,11 +397,11 @@ export default function EstateTrustPage() {
         </div>
         <ol className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gold/20 border border-gold/20">
           {consequences.map((c, i) => (
-            <li key={c.title} className="bg-white">
+            <li key={c.title} className="group bg-white transition-colors duration-500 hover:bg-cream">
               <RevealOnScroll delay={i * 0.1} className="h-full">
-                <div className="h-full p-8">
+                <div className="h-full p-8 transition-transform duration-500 ease-smooth group-hover:-translate-y-1">
                   <span className="font-serif text-[13px] tracking-[0.2em] text-gold">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="font-serif text-[24px] text-navy leading-[1.2] mt-3">{c.title}</h3>
+                  <h3 className="font-serif text-[24px] text-navy leading-[1.2] mt-3 transition-colors duration-500 group-hover:text-gold-dark">{c.title}</h3>
                   <p className="text-navy/75 text-[16px] font-light leading-[1.75] mt-2">{c.desc}</p>
                 </div>
               </RevealOnScroll>

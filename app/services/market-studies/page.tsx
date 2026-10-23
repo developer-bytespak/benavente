@@ -18,6 +18,7 @@ import {
   ProcessSteps,
   Checklist,
   Quote,
+  IntroHeading,
   faqSchema,
   type FaqItem,
 } from '@/components/sections/services/Blocks'
@@ -264,7 +265,7 @@ export default function MarketStudiesPage() {
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           <RevealOnScroll className="order-2 lg:order-1">
-            <SectionLabel>Appraisers & Market Analysts</SectionLabel>
+            <IntroHeading label="Appraisers & Market Analysts" title={'Studies Grounded in\n_Transaction Data_'} />
             <p className="text-navy text-[17px] font-light leading-[1.75]">
               Our studies are prepared by the same team of appraisers and market analysts that values Hawaiʻi commercial
               property. That gives them a direct line to transaction data, lease terms and on-the-ground knowledge that
@@ -273,13 +274,13 @@ export default function MarketStudiesPage() {
           </RevealOnScroll>
           <RevealOnScroll delay={0.15} className="order-1 lg:order-2 self-stretch">
             <div className="relative h-full min-h-[320px] lg:min-h-[420px]">
-              <div className="relative h-full min-h-[320px] lg:min-h-[420px] rounded-[2px] overflow-hidden">
+              <div className="relative h-full min-h-[320px] lg:min-h-[420px] rounded-[2px] overflow-hidden group">
                 <Image
                   src="/images/gallery/cbd/dji_0340.webp"
                   alt="Downtown Honolulu commercial district from above"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
               </div>
               <div aria-hidden="true" className="absolute -bottom-[18px] -left-[18px] w-[45%] h-[45%] border border-gold/30 -z-[1]" />
@@ -291,19 +292,13 @@ export default function MarketStudiesPage() {
       {/* Who */}
       <Section tone="cream">
         <SectionHeader label="Who We Work With" title={'Evidence for Decisions\n_Made Early_'} className="max-w-[760px]" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-12 border-t border-gold/25">
-          {clientGroups.map((c, i) => (
-            <RevealOnScroll key={c.title} delay={i * 0.08}>
-              <div
-                className={`h-full py-7 lg:px-7 border-b lg:border-b-0 border-gold/25 ${
-                  i > 0 ? 'lg:border-l' : 'lg:pl-0'
-                } ${i % 2 === 1 ? 'sm:pl-7' : 'sm:pr-7'}`}
-              >
-                <h3 className="font-serif text-[24px] text-navy leading-[1.2]">{c.title}</h3>
-                <p className="text-navy/75 text-[16px] font-light leading-[1.75] mt-3">{c.desc}</p>
-              </div>
-            </RevealOnScroll>
-          ))}
+        <div className="mt-12">
+          <EditorialTable
+            caption="Who we work with and how we help"
+            columns={['Client', 'How we help']}
+            rows={clientGroups.map((c) => [c.title, c.desc])}
+            numbered
+          />
         </div>
         <RevealOnScroll className="mt-14">
           <p className="text-gold text-[12px] tracking-[0.2em] uppercase font-serif font-medium">
@@ -311,7 +306,10 @@ export default function MarketStudiesPage() {
           </p>
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 mt-4 border-t border-gold/25">
             {exampleQuestions.map((q) => (
-              <li key={q} className="py-5 border-b border-gold/25 font-serif italic text-[20px] text-navy leading-[1.4]">
+              <li
+                key={q}
+                className="py-5 border-b border-gold/25 font-serif italic text-[20px] text-navy leading-[1.4] transition-all duration-500 ease-smooth hover:text-gold-dark hover:translate-x-2"
+              >
                 {q}
               </li>
             ))}

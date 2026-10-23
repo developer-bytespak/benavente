@@ -16,6 +16,8 @@ import {
   EditorialTable,
   ProcessSteps,
   Quote,
+  IntroHeading,
+  DotList,
   faqSchema,
   type FaqItem,
 } from '@/components/sections/services/Blocks'
@@ -271,20 +273,20 @@ export default function EminentDomainPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           <RevealOnScroll className="self-stretch">
             <div className="relative h-full min-h-[340px] lg:min-h-[460px]">
-              <div className="relative h-full min-h-[340px] lg:min-h-[460px] rounded-[2px] overflow-hidden">
+              <div className="relative h-full min-h-[340px] lg:min-h-[460px] rounded-[2px] overflow-hidden group">
                 <Image
                   src="/images/regions/oahu-valley.webp"
                   alt="Oʻahu valley land and surrounding development"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
               </div>
               <div aria-hidden="true" className="absolute -bottom-[18px] -right-[18px] w-[45%] h-[45%] border border-gold/30 -z-[1]" />
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
-            <SectionLabel>Condemnation Valuation</SectionLabel>
+            <IntroHeading label="Condemnation Valuation" title={'High Stakes,\n_Close Scrutiny_'} />
             <p className="text-navy text-[17px] font-light leading-[1.75]">
               Few appraisal assignments carry higher stakes or closer scrutiny. Condemnation valuation follows its own
               legal rules: a fixed valuation date, the larger parcel concept, severance damages and special benefits.
@@ -303,19 +305,13 @@ export default function EminentDomainPage() {
           title={'Agencies, Owners and\n_Condemnation Counsel_'}
           className="max-w-[760px]"
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 mt-12 border-t border-gold/25">
-          {clientGroups.map((c, i) => (
-            <RevealOnScroll key={c.title} delay={i * 0.08}>
-              <div
-                className={`h-full py-7 md:px-7 border-b md:border-b-0 border-gold/25 ${
-                  i > 0 ? 'md:border-l' : 'md:pl-0'
-                }`}
-              >
-                <h3 className="font-serif text-[24px] text-navy leading-[1.2]">{c.title}</h3>
-                <p className="text-navy/75 text-[16px] font-light leading-[1.75] mt-3">{c.desc}</p>
-              </div>
-            </RevealOnScroll>
-          ))}
+        <div className="mt-12">
+          <EditorialTable
+            caption="Who we work with and how we help"
+            columns={['Client', 'How we help']}
+            rows={clientGroups.map((c) => [c.title, c.desc])}
+            numbered
+          />
         </div>
         <RevealOnScroll>
           <div className="relative bg-white border border-gold/25 rounded-[2px] px-8 py-6 mt-10">
@@ -325,22 +321,12 @@ export default function EminentDomainPage() {
             </p>
           </div>
         </RevealOnScroll>
-        <RevealOnScroll className="mt-14">
-          <p className="text-gold text-[12px] tracking-[0.2em] uppercase font-serif font-medium">
-            Projects that commonly require acquisitions
-          </p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 mt-4 border-t border-gold/25">
-            {projects.map((p) => (
-              <li key={p} className="flex items-start gap-4 py-4 border-b border-gold/25 font-serif text-[19px] text-navy leading-[1.4]">
-                <span aria-hidden="true" className="mt-[11px] w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
-                {p}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-14">
+          <DotList label="Projects that commonly require acquisitions" items={projects} columns={4} />
           <Prose className="mt-8">
             <p>Each raises different questions about access, utility and the remainder&apos;s value.</p>
           </Prose>
-        </RevealOnScroll>
+        </div>
       </Section>
 
       {/* Assignment types */}

@@ -364,6 +364,63 @@ export const serviceForms: Record<string, ServiceFormConfig> = {
     ],
     note: 'All engagements are treated with strict confidentiality. We agree on secure data sharing at the outset.',
   },
+  'ground-lease-valuation': {
+    label: 'Ground Lease & Leased Fee Valuation',
+    propertyLabel: 'Property address or TMK',
+    fields: [
+      {
+        name: 'client_role',
+        label: 'You are',
+        type: 'select',
+        options: [
+          'A landowner or trust',
+          'A lessee or building owner',
+          'A buyer',
+          'A lender',
+          'An association of apartment owners',
+          'An attorney',
+          'Other',
+        ],
+        required: true,
+        quick: true,
+      },
+      {
+        name: 'interest',
+        label: 'Interest to be valued',
+        type: 'select',
+        options: ['Leased fee', 'Leasehold', 'Both leased fee and leasehold', 'Fee simple', 'Not sure'],
+        required: true,
+        quick: true,
+      },
+      {
+        name: 'purpose',
+        label: 'Purpose of the valuation',
+        type: 'select',
+        options: [
+          'Purchase',
+          'Sale',
+          'Lease-to-fee conversion',
+          'Financing',
+          'Reporting or portfolio planning',
+          'Other',
+        ],
+      },
+      {
+        name: 'property_type',
+        label: 'Property type',
+        type: 'select',
+        options: [
+          'Commercial building',
+          'Industrial',
+          'Hotel or resort',
+          'Condominium',
+          'Single-family home',
+          'Land',
+        ],
+      },
+      { name: 'lease_expiry', label: 'Lease expiration, if known', type: 'text', placeholder: 'e.g. 2055' },
+    ],
+  },
 }
 
 // Admin-facing label for a stored service slug; unknown or missing → General.

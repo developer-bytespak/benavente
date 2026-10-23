@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import SectionLabel from '@/components/ui/SectionLabel'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import ServiceHero from '@/components/sections/services/ServiceHero'
 import RelatedServices from '@/components/sections/services/RelatedServices'
@@ -19,6 +18,7 @@ import {
   ProcessSteps,
   Checklist,
   Quote,
+  IntroHeading,
   faqSchema,
   type FaqItem,
 } from '@/components/sections/services/Blocks'
@@ -258,7 +258,7 @@ export default function LitigationSupportPage() {
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           <RevealOnScroll className="order-2 lg:order-1">
-            <SectionLabel>Expert Credibility</SectionLabel>
+            <IntroHeading label="Expert Credibility" title={'Credibility That\n_Holds Up_ in Court'} />
             <p className="text-navy text-[17px] font-light leading-[1.75]">
               Attorneys vet experts carefully before they ever call, and they should. A valuation expert&apos;s credibility
               can carry a case or sink it. Our principals hold the MAI and SRA designations, write reports intended to be
@@ -268,13 +268,13 @@ export default function LitigationSupportPage() {
           </RevealOnScroll>
           <RevealOnScroll delay={0.15} className="order-1 lg:order-2 self-stretch">
             <div className="relative h-full min-h-[340px] lg:min-h-[440px]">
-              <div className="relative h-full min-h-[340px] lg:min-h-[440px] rounded-[2px] overflow-hidden">
+              <div className="relative h-full min-h-[340px] lg:min-h-[440px] rounded-[2px] overflow-hidden group">
                 <Image
                   src="/images/gallery/cbd/dji_0341.webp"
                   alt="Downtown Honolulu office towers above the Capitol District"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
               </div>
               <div aria-hidden="true" className="absolute -bottom-[18px] -left-[18px] w-[45%] h-[45%] border border-gold/30 -z-[1]" />

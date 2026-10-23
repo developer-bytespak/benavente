@@ -18,6 +18,8 @@ import {
   ImageRows,
   ProcessSteps,
   Checklist,
+  DotList,
+  IntroHeading,
   Quote,
   faqSchema,
   type FaqItem,
@@ -265,20 +267,20 @@ export default function CommercialAppraisalPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           <RevealOnScroll className="self-stretch">
             <div className="relative h-full min-h-[340px] lg:min-h-[480px]">
-              <div className="relative h-full min-h-[340px] lg:min-h-[480px] rounded-[2px] overflow-hidden">
+              <div className="relative h-full min-h-[340px] lg:min-h-[480px] rounded-[2px] overflow-hidden group">
                 <Image
                   src="/images/gallery/office/dji_0124.webp"
                   alt="Drone photograph of a multi-story commercial office building in Honolulu"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
               </div>
               <div aria-hidden="true" className="absolute -bottom-[18px] -right-[18px] w-[45%] h-[45%] border border-gold/30 -z-[1]" />
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
-            <SectionLabel>Island-Market Depth Since 2017</SectionLabel>
+            <IntroHeading label="Island-Market Depth Since 2017" title={'Local Knowledge of\n_Every Island Market_'} />
             <p className="text-navy text-[17px] font-light leading-[1.75]">
               Since 2017, our team has served commercial property owners, lenders and attorneys on Oʻahu, Maui, Kauaʻi and
               Hawaiʻi Island, and in Guam, Saipan and the Marshall Islands. Our appraisers know these markets first-hand:
@@ -296,19 +298,13 @@ export default function CommercialAppraisalPage() {
           title={'Valuations Relied On by\n_Lenders, Owners_ and Counsel'}
           className="max-w-[760px]"
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-12 border-t border-gold/25">
-          {clientGroups.map((c, i) => (
-            <RevealOnScroll key={c.title} delay={i * 0.08}>
-              <div
-                className={`h-full py-7 lg:px-7 border-b lg:border-b-0 border-gold/25 ${
-                  i > 0 ? 'lg:border-l' : 'lg:pl-0'
-                } ${i % 2 === 1 ? 'sm:pl-7' : 'sm:pr-7'}`}
-              >
-                <h3 className="font-serif text-[24px] text-navy leading-[1.2]">{c.title}</h3>
-                <p className="text-navy/75 text-[16px] font-light leading-[1.75] mt-3">{c.desc}</p>
-              </div>
-            </RevealOnScroll>
-          ))}
+        <div className="mt-12">
+          <EditorialTable
+            caption="Who we work with and how we help"
+            columns={['Client', 'How we help']}
+            rows={clientGroups.map((c) => [c.title, c.desc])}
+            numbered
+          />
         </div>
         <div className="mt-16">
           <RevealOnScroll>
@@ -322,19 +318,7 @@ export default function CommercialAppraisalPage() {
               </p>
             </Prose>
           </RevealOnScroll>
-          <RevealOnScroll delay={0.1} className="mt-12">
-            <p className="text-gold text-[12px] tracking-[0.2em] uppercase font-serif font-medium">
-              Common purposes include
-            </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 mt-4 border-t border-gold/25">
-              {purposes.map((p) => (
-                <li key={p} className="flex items-center gap-4 py-4 border-b border-gold/25 font-serif text-[19px] text-navy">
-                  <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </RevealOnScroll>
+          <DotList label="Common purposes include" items={purposes} columns={4} className="mt-12" />
         </div>
       </Section>
 
@@ -347,6 +331,7 @@ export default function CommercialAppraisalPage() {
           caption="Commercial property types we appraise"
           columns={['Property type', 'What we value']}
           rows={propertyTypes}
+          numbered
         />
         <RevealOnScroll>
           <Prose className="max-w-[820px] mt-10">
@@ -373,49 +358,46 @@ export default function CommercialAppraisalPage() {
             </Prose>
           </RevealOnScroll>
         </div>
-        <NumberedItems
+        <EditorialTable
           tone="navy"
-          items={[
-            {
-              title: 'Income capitalization approach',
-              body: (
-                <p>
-                  Value follows the income an investor can expect. We test the rent roll against market rent, estimate
-                  vacancy and expenses, and arrive at{' '}
-                  <TextLink tone="navy" href={guide('what-is-net-operating-income-in-real-estate')}>
-                    net operating income
-                  </TextLink>
-                  , capitalized at a cap rate from Hawaiʻi transactions or projected in a discounted cash flow. Ground
-                  rent, common area maintenance and percentage rent are modeled explicitly.
-                </p>
-              ),
-            },
-            {
-              title: 'Sales comparison approach',
-              body: (
-                <p>
-                  We compare the property with recent sales of similar properties, adjusting for location, size, age,
-                  condition, tenancy and property rights. Island markets rarely offer a deep set of perfect comparables,
-                  so we widen the search across time and submarkets, verify sales where possible, and explain every
-                  adjustment so a reviewer can trace it.
-                </p>
-              ),
-            },
-            {
-              title: 'Cost approach',
-              body: (
-                <p>
-                  For newer buildings, special-purpose property and insurance replacement cost, we estimate the cost to
-                  replace the improvements, deduct depreciation and add land value. Construction costs in Hawaiʻi run
-                  well above mainland averages, higher still on neighbor islands, so local data matters. See our guide
-                  to the{' '}
-                  <TextLink tone="navy" href={guide('what-is-the-cost-approach-in-real-estate')}>
-                    cost approach
-                  </TextLink>
-                  .
-                </p>
-              ),
-            },
+          numbered
+          caption="The three approaches to value and how we develop each"
+          columns={['Approach', 'How we develop it']}
+          rows={[
+            [
+              'Income capitalization approach',
+              <p key="income">
+                Value follows the income an investor can expect. We test the rent roll against market rent, estimate
+                vacancy and expenses, and arrive at{' '}
+                <TextLink tone="navy" href={guide('what-is-net-operating-income-in-real-estate')}>
+                  net operating income
+                </TextLink>
+                , capitalized at a cap rate from Hawaiʻi transactions or projected in a discounted cash flow. Ground
+                rent, common area maintenance and percentage rent are modeled explicitly.
+              </p>,
+            ],
+            [
+              'Sales comparison approach',
+              <p key="sales">
+                We compare the property with recent sales of similar properties, adjusting for location, size, age,
+                condition, tenancy and property rights. Island markets rarely offer a deep set of perfect comparables,
+                so we widen the search across time and submarkets, verify sales where possible, and explain every
+                adjustment so a reviewer can trace it.
+              </p>,
+            ],
+            [
+              'Cost approach',
+              <p key="cost">
+                For newer buildings, special-purpose property and insurance replacement cost, we estimate the cost to
+                replace the improvements, deduct depreciation and add land value. Construction costs in Hawaiʻi run
+                well above mainland averages, higher still on neighbor islands, so local data matters. See our guide
+                to the{' '}
+                <TextLink tone="navy" href={guide('what-is-the-cost-approach-in-real-estate')}>
+                  cost approach
+                </TextLink>
+                .
+              </p>,
+            ],
           ]}
         />
       </Section>
@@ -442,7 +424,9 @@ export default function CommercialAppraisalPage() {
           <Prose className="max-w-[820px] mt-10">
             <p>
               Where a building sits on ground leased land, we analyze the remaining lease term, rent reopening dates,
-              surrender clauses and reversion. These terms can move value significantly in either direction. Our guide to{' '}
+              surrender clauses and reversion. These terms can move value significantly in either direction. See our{' '}
+              <TextLink href="/services/ground-lease-valuation">ground lease and leased fee valuation</TextLink> services
+              for more. Our guide to{' '}
               <TextLink href={guide('free-simple-vs-leasehold')}>fee simple vs leasehold</TextLink> covers the basics.
             </p>
           </Prose>
@@ -458,14 +442,15 @@ export default function CommercialAppraisalPage() {
               <Prose className="mt-6">
                 <p>Commercial property in Hawaiʻi doesn&apos;t value like the mainland. Three issues come up in almost every assignment.</p>
               </Prose>
-              <div className="relative hidden lg:block h-[340px] mt-10 rounded-[2px] overflow-hidden">
+              <div className="group relative hidden lg:block h-[340px] mt-10 rounded-[2px] overflow-hidden">
                 <Image
                   src="/images/gallery/vacant-land/dji_0025.webp"
                   alt="Drone view of land parcels and a roadway above a Maui coastal community"
                   fill
                   sizes="40vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
+                <span aria-hidden="true" className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-700" />
               </div>
             </RevealOnScroll>
           </div>

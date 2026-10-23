@@ -125,6 +125,21 @@ export const services: Service[] = [
       'property-tax-appeal',
     ],
   },
+  {
+    slug: 'ground-lease-valuation',
+    number: '09',
+    title: 'Ground Lease & Leased Fee Valuation',
+    shortTitle: 'Ground Lease',
+    summary:
+      'Leased fee and leasehold valuation for Honolulu and Hawaiʻi ground leases: purchases, sales, lease-to-fee conversions and lender underwriting.',
+    image: '/images/gallery/hotel-hospitality/dji_0445-large.webp',
+    related: [
+      'commercial-real-estate-appraisal',
+      'portfolio-valuation',
+      'estate-trust-appraisal',
+      'litigation-support-expert-testimony',
+    ],
+  },
 ]
 
 export function getService(slug: string): Service | undefined {

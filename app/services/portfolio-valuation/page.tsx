@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import SectionLabel from '@/components/ui/SectionLabel'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
 import ServiceHero from '@/components/sections/services/ServiceHero'
 import RelatedServices from '@/components/sections/services/RelatedServices'
@@ -17,6 +16,7 @@ import {
   NumberedItems,
   ProcessSteps,
   Quote,
+  IntroHeading,
   faqSchema,
   type FaqItem,
 } from '@/components/sections/services/Blocks'
@@ -236,7 +236,7 @@ export default function PortfolioValuationPage() {
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           <RevealOnScroll className="order-2 lg:order-1">
-            <SectionLabel>One Team, One Methodology</SectionLabel>
+            <IntroHeading label="One Team, One Methodology" title={'Many Properties,\n_One Standard_'} />
             <p className="text-navy text-[17px] font-light leading-[1.75]">
               Valuing ten or fifty properties is not ten or fifty separate appraisals stapled together. The values must
               be comparable, the assumptions must be consistent, and the delivery must be coordinated so the client can act
@@ -246,31 +246,31 @@ export default function PortfolioValuationPage() {
           </RevealOnScroll>
           <RevealOnScroll delay={0.15} className="order-1 lg:order-2">
             <div className="grid grid-cols-2 grid-rows-[180px_180px] sm:grid-rows-[210px_210px] gap-2">
-              <div className="relative row-span-2 overflow-hidden rounded-[2px]">
+              <div className="group relative row-span-2 overflow-hidden rounded-[2px]">
                 <Image
                   src="/images/gallery/hotel-hospitality/dji_0061.webp"
                   alt="Resort hotel in Hawaiʻi"
                   fill
                   sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
               </div>
-              <div className="relative overflow-hidden rounded-[2px]">
+              <div className="group relative overflow-hidden rounded-[2px]">
                 <Image
                   src="/images/gallery/industrial/dji_0153.webp"
                   alt="Industrial warehouse on Hawaiʻi Island"
                   fill
                   sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
               </div>
-              <div className="relative overflow-hidden rounded-[2px]">
+              <div className="group relative overflow-hidden rounded-[2px]">
                 <Image
                   src="/images/gallery/retail/dji_0106.webp"
                   alt="Mixed-use commercial corridor on Maui"
                   fill
                   sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1400ms] ease-smooth group-hover:scale-105"
                 />
               </div>
             </div>
@@ -285,19 +285,13 @@ export default function PortfolioValuationPage() {
           title={'Institutions That Hold\n_More Than One Asset_'}
           className="max-w-[760px]"
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-12 border-t border-gold/25">
-          {clientGroups.map((c, i) => (
-            <RevealOnScroll key={c.title} delay={i * 0.08}>
-              <div
-                className={`h-full py-7 lg:px-7 border-b lg:border-b-0 border-gold/25 ${
-                  i > 0 ? 'lg:border-l' : 'lg:pl-0'
-                } ${i % 2 === 1 ? 'sm:pl-7' : 'sm:pr-7'}`}
-              >
-                <h3 className="font-serif text-[24px] text-navy leading-[1.2]">{c.title}</h3>
-                <p className="text-navy/75 text-[16px] font-light leading-[1.75] mt-3">{c.desc}</p>
-              </div>
-            </RevealOnScroll>
-          ))}
+        <div className="mt-12">
+          <EditorialTable
+            caption="Who we work with and how we help"
+            columns={['Client', 'How we help']}
+            rows={clientGroups.map((c) => [c.title, c.desc])}
+            numbered
+          />
         </div>
         <RevealOnScroll>
           <div className="relative bg-white border border-gold/25 rounded-[2px] p-8 sm:p-10 mt-12">
