@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getAllPosts } from '@/lib/sanity/queries'
-import { services } from '@/lib/services'
+import { clientPages, services, unlinkedServices } from '@/lib/services'
 
 export const revalidate = 30
 
@@ -34,8 +34,14 @@ export async function GET() {
     { loc: toAbsolute('/'), lastmod: nowIso, changefreq: 'weekly', priority: '1.0' },
     { loc: toAbsolute('/about'), lastmod: nowIso, changefreq: 'monthly', priority: '0.9' },
     { loc: toAbsolute('/services'), lastmod: nowIso, changefreq: 'monthly', priority: '0.9' },
-    ...services.map((s): Entry => ({
+    ...[...services, ...unlinkedServices].map((s): Entry => ({
       loc: toAbsolute(`/services/${s.slug}`),
+      lastmod: nowIso,
+      changefreq: 'monthly',
+      priority: '0.8',
+    })),
+    ...clientPages.map(({ href }): Entry => ({
+      loc: toAbsolute(href),
       lastmod: nowIso,
       changefreq: 'monthly',
       priority: '0.8',

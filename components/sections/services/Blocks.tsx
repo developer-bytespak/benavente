@@ -442,6 +442,40 @@ export function Quote({ heading, quote }: { heading: string; quote: string }) {
   )
 }
 
+// Visible stand-in for content the brief leaves to the firm. Replace or remove
+// each one before the page is published.
+export function EditorialPlaceholder({
+  note,
+  tone = 'white',
+  className = '',
+}: {
+  note: string
+  tone?: Tone
+  className?: string
+}) {
+  const dark = tone === 'navy'
+  return (
+    <RevealOnScroll className={className}>
+      <div
+        className={`border border-dashed rounded-[2px] p-6 sm:p-8 ${
+          dark ? 'border-gold-light/50 bg-white/[0.03]' : 'border-gold/60 bg-cream'
+        }`}
+      >
+        <p
+          className={`text-[12px] tracking-[0.2em] uppercase font-serif font-medium ${
+            dark ? 'text-gold-light' : 'text-gold-dark'
+          }`}
+        >
+          Editorial placeholder
+        </p>
+        <p className={`font-serif italic text-[18px] leading-[1.55] mt-2 ${dark ? 'text-white/70' : 'text-navy/75'}`}>
+          {note}
+        </p>
+      </div>
+    </RevealOnScroll>
+  )
+}
+
 export interface FaqItem {
   q: string
   a: React.ReactNode
