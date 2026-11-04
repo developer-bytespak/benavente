@@ -235,7 +235,7 @@ export default function ForLendersPage() {
                 <p>
                   Appraisals for federally regulated lenders must meet Title XI of FIRREA, the agencies&apos; appraisal
                   regulations and USPAP. The Interagency Appraisal and Evaluation Guidelines add expectations on
-                  independence, engagement and review. In practice, that means:
+                  independence, engagement and review (OCC summary). In practice, that means:
                 </p>
               </Prose>
             </RevealOnScroll>
@@ -275,7 +275,7 @@ export default function ForLendersPage() {
                 <p className="text-navy/80 text-[16px] font-light leading-[1.8] mt-3">
                   Hawaiʻi stopped licensing appraisal management companies on June 30, 2023. The Appraisal Subcommittee now
                   treats Hawaiʻi as a non-participating state for AMCs, which limits which AMCs may handle federally
-                  related transactions here. Many lenders now engage appraisers directly. We work either way.
+                  related transactions here (ASC notice). Many lenders now engage appraisers directly. We work either way.
                 </p>
               </div>
             </RevealOnScroll>

@@ -352,7 +352,7 @@ export default function ConstructionLoanAppraisalPage() {
               <Prose className="mt-6">
                 <p>
                   Construction appraisals for federally regulated lenders are prepared under Title XI of FIRREA, USPAP
-                  and the Interagency Appraisal and Evaluation Guidelines. Reviewers typically look for:
+                  and the Interagency Appraisal and Evaluation Guidelines (OCC summary). Reviewers typically look for:
                 </p>
               </Prose>
             </RevealOnScroll>
