@@ -7,14 +7,17 @@ import { getService, serviceHref, type Service } from '@/lib/services'
 
 export default function RelatedServices({
   service,
+  slugs,
   plainTitles = false,
 }: {
-  service: Service
+  service?: Service
+  // Pages that aren't services themselves name the services to show instead.
+  slugs?: string[]
   // Render card titles as text, not headings, where a page's brief rules out
   // other services' names as headings.
   plainTitles?: boolean
 }) {
-  const related = service.related.map(getService).filter((s): s is Service => Boolean(s))
+  const related = (slugs ?? service?.related ?? []).map(getService).filter((s): s is Service => Boolean(s))
   if (related.length === 0) return null
   const TitleTag = plainTitles ? 'p' : 'h3'
 

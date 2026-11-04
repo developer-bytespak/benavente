@@ -17,7 +17,7 @@ const config: Config = {
         ivory: '#FDFBF8',
       },
       fontFamily: {
-        serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
+        serif: ['BenaventeHyphen', 'var(--font-cormorant)', 'Georgia', 'serif'],
         sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {

@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Cormorant's hyphen is long and slanted, closer to a dash at headline sizes.
+   This face covers only the hyphen character (U+002D) and sits first in the
+   serif stack. If none of these fonts is installed, Cormorant's own is used. */
+@font-face {
+  font-family: 'BenaventeHyphen';
+  src: local('Georgia'), local('Times New Roman'), local('Liberation Serif'), local('Noto Serif');
+  unicode-range: U+002D;
+  size-adjust: 85%;
+}
+
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #F8F4EE; }
 ::-webkit-scrollbar-thumb { background: #B8935A; }
