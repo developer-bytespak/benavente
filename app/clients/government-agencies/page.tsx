@@ -13,7 +13,6 @@ import {
   Prose,
   TextLink,
   EditorialTable,
-  EditorialPlaceholder,
   Checklist,
   Quote,
   IntroHeading,
@@ -318,12 +317,6 @@ export default function ForGovernmentAgenciesPage() {
             </p>
           </Prose>
         </RevealOnScroll>
-      </Section>
-
-      {/* Agencies served */}
-      <Section tone="cream">
-        <SectionHeader label="Experience" title={'Agencies We\n_Have Served_'} className="mb-10" />
-        <EditorialPlaceholder note="Show this block only with written permission from each agency named. List agency, assignment type and year. Remove this note before publishing." />
       </Section>
 
       <Quote
