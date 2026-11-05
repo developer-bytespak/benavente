@@ -14,7 +14,6 @@ import {
   Prose,
   TextLink,
   EditorialTable,
-  EditorialPlaceholder,
   NumberedItems,
   Checklist,
   Quote,
@@ -274,11 +273,6 @@ export default function ForAttorneysPage() {
                 </p>
               </Prose>
             </RevealOnScroll>
-            <EditorialPlaceholder
-              tone="navy"
-              className="mt-8"
-              note="Add testimony history here once confirmed: courts, number of depositions and trials."
-            />
           </div>
         </div>
         <RevealOnScroll>
