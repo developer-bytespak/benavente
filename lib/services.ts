@@ -142,8 +142,97 @@ export const services: Service[] = [
   },
 ]
 
+// The navbar's "Specialist Services" pane. Services listed here leave the main
+// Services dropdown so they don't appear twice.
+export const specialistPages: { label: string; href: string }[] = [
+  { label: 'Ground Lease and Leased Fee Valuation', href: '/services/ground-lease-valuation' },
+  { label: 'Construction Loan Appraisal', href: '/services/construction-loan-appraisal' },
+  { label: 'Ground Rent Arbitration', href: '/services/ground-rent-arbitration' },
+  { label: 'Luxury Residential Valuation', href: '/services/luxury-home-appraisal' },
+  { label: 'Real Estate Consulting', href: '/services/real-estate-consulting' },
+]
+
+// The navbar's "Client Type Pages" pane.
+export const clientPages: { label: string; href: string }[] = [
+  { label: 'For Attorneys', href: '/clients/attorneys' },
+  { label: 'For Lenders and Financial Institutions', href: '/clients/lenders' },
+  { label: 'For Developers and Investors', href: '/clients/developers-investors' },
+  { label: 'For Government Agencies', href: '/clients/government-agencies' },
+]
+
+// Service pages linked only from "Specialist Services" in the navbar and listed
+// in the sitemap. They are kept out of `services` on purpose, so the footer and
+// services overview still show the core nine.
+export const unlinkedServices: Service[] = [
+  {
+    slug: 'construction-loan-appraisal',
+    number: '10',
+    title: 'Construction Loan Appraisal',
+    shortTitle: 'Construction Loan',
+    summary:
+      'As-is, as-complete and as-stabilized values for Honolulu and Hawaiʻi construction loans, prepared under FIRREA, USPAP and interagency guidelines.',
+    image: '/images/gallery/residential-developments/dji_0761.webp',
+    related: [
+      'commercial-real-estate-appraisal',
+      'feasibility-highest-and-best-use',
+      'market-studies',
+      'portfolio-valuation',
+    ],
+  },
+  {
+    slug: 'ground-rent-arbitration',
+    number: '11',
+    title: 'Ground Rent Arbitration & Rent Reset',
+    shortTitle: 'Ground Rent Arbitration',
+    summary:
+      'Party appraiser support for Honolulu and Hawaiʻi ground lease rent reopenings and arbitrations, with land value and rate of return that hold up.',
+    image: '/images/gallery/cbd/dji_0340.webp',
+    related: [
+      'ground-lease-valuation',
+      'litigation-support-expert-testimony',
+      'commercial-real-estate-appraisal',
+      'feasibility-highest-and-best-use',
+    ],
+  },
+  {
+    slug: 'luxury-home-appraisal',
+    number: '12',
+    title: 'Luxury Residential Valuation',
+    shortTitle: 'Luxury Residential',
+    summary:
+      'Private, non-lending appraisals of oceanfront and high-value Hawaiʻi homes for estates, divorce, tax appeals and sales, by SRA-designated appraisers.',
+    image: '/images/gallery/luxury-residential/dji_20260411115211_0058_d.webp',
+    related: [
+      'estate-trust-appraisal',
+      'property-tax-appeal',
+      'litigation-support-expert-testimony',
+      'ground-lease-valuation',
+    ],
+  },
+  {
+    slug: 'real-estate-consulting',
+    number: '13',
+    title: 'Real Estate Consulting',
+    shortTitle: 'Consulting',
+    summary:
+      'Independent advice for Honolulu and Hawaiʻi property decisions that need less than a full appraisal: appraisal reviews, lease abstracts, acquisition analysis.',
+    image: '/images/gallery/cbd/dji_0341.webp',
+    related: [
+      'commercial-real-estate-appraisal',
+      'ground-lease-valuation',
+      'litigation-support-expert-testimony',
+      'portfolio-valuation',
+    ],
+  },
+]
+
 export function getService(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug)
+}
+
+// Looks up linked and unlinked services alike (for the unlinked pages' own use).
+export function getAnyService(slug: string): Service | undefined {
+  return getService(slug) ?? unlinkedServices.find((s) => s.slug === slug)
 }
 
 export function serviceHref(slug: string): string {

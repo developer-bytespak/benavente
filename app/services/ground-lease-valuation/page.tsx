@@ -53,7 +53,7 @@ const crumbs = [
 ]
 
 const interests = [
-  ['Fee simple', 'Land and buildings, unencumbered', 'Market rent, market cap rates, highest and best use'],
+  ['Fee simple', 'Land and buildings, unencumbered', <>Market rent, market cap rates, <TextLink href="/services/feasibility-highest-and-best-use">highest and best use</TextLink></>],
   [
     'Leased fee',
     'Ground rent for the remaining term, plus the reversion at lease end',
@@ -90,7 +90,7 @@ const islands = [
 ]
 
 const clientGroups = [
-  { title: 'Landowners and trusts', desc: 'Leased fee values for sales, reporting and portfolio planning.' },
+  { title: 'Landowners and trusts', desc: <>Leased fee values for sales, reporting and <TextLink href="/services/portfolio-valuation">portfolio planning</TextLink>.</> },
   { title: 'Lessees and building owners', desc: 'Leasehold values for purchases, sales and refinancing.' },
   { title: 'Buyers of either interest', desc: 'Acquisition values before an offer.' },
   { title: 'Lenders', desc: 'Collateral values that reflect the remaining term and ground rent.' },
@@ -261,7 +261,7 @@ export default function GroundLeaseValuationPage() {
             <IntroHeading label="MAI & SRA Designated" title={'We Read _the Lease_\nFirst'} />
             <p className="text-navy text-[17px] font-light leading-[1.75]">
               The Benavente Group values leased fee, leasehold and fee simple interests from our Honolulu office for
-              landowners, trusts, lessees, buyers and lenders across Oʻahu, Maui, Hawaiʻi Island, Kauaʻi and the Pacific.
+              landowners, trusts, lessees, buyers and <TextLink href="/clients/lenders">lenders</TextLink> across Oʻahu, Maui, Hawaiʻi Island, Kauaʻi and the Pacific.
               Our MAI and SRA designated appraisers read the lease first, because in a ground lease the document decides
               the value as much as the land does.
             </p>
@@ -365,7 +365,7 @@ export default function GroundLeaseValuationPage() {
           <RevealOnScroll delay={0.1}>
             <Prose tone="navy">
               <p>
-                Many Hawaiʻi ground leases reset rent at fixed dates, often based on the land&apos;s fair market value and
+                Many Hawaiʻi ground leases <TextLink tone="navy" href="/services/ground-rent-arbitration">reset rent at fixed dates</TextLink>, often based on the land&apos;s fair market value and
                 a rate of return. A reopening changes both the leased fee and the leasehold value, so it belongs in any
                 valuation done within a few years of the date.
               </p>
