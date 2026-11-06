@@ -162,7 +162,14 @@ export default function Hero({ videos, headline, subhead }: Props) {
         )
       })}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+      <div className="absolute inset-0 bg-black/25" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(11,31,58,0.55) 0%, rgba(11,31,58,0.25) 60%, transparent 100%)',
+        }}
+      />
 
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-[4.5%]">
         <motion.h1
@@ -170,6 +177,10 @@ export default function Hero({ videos, headline, subhead }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
           className="font-serif font-medium text-[clamp(48px,6vw,84px)] leading-[1.05] text-white"
+          style={{
+            textShadow:
+              '0 2px 4px rgba(11,31,58,0.6), 0 4px 28px rgba(11,31,58,0.55)',
+          }}
         >
           {renderHeadline(headingText)}
         </motion.h1>

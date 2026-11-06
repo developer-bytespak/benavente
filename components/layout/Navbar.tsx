@@ -156,7 +156,7 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
           hidden ? '-translate-y-full' : 'translate-y-0'
         } ${
           isTransparent
-            ? 'bg-navy/10 backdrop-blur-sm'
+            ? 'bg-white/[0.08] backdrop-blur-[12px] border-b border-white/25'
             : 'bg-white/90 backdrop-blur-sm border-b border-gold/20'
         }`}
         style={{ height: isTransparent ? 96 : 80 }}

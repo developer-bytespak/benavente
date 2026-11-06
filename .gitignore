@@ -51,3 +51,4 @@ Website Development_updated.zip
 # Local video backups (do not commit)
 backups/
 scripts/backup-hero-videos.mjs
+.env*
