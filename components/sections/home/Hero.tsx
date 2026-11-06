@@ -49,6 +49,9 @@ export default function Hero({ videos, headline, subhead }: Props) {
   const count = safeVideos.length
 
   const [active, setActive] = useState(0)
+  const [subheadExpanded, setSubheadExpanded] = useState(false)
+  const [subheadFading, setSubheadFading] = useState(false)
+  const subheadTimer = useRef<ReturnType<typeof setTimeout>>()
   // Tracks which videos have actually been requested. We only attach a <source>
   // for videos in this set, so a visitor who bounces after a few seconds never
   // downloads the clips they didn't see — the main bandwidth saving.
@@ -116,14 +119,35 @@ export default function Hero({ videos, headline, subhead }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, advance, count])
 
+  useEffect(() => () => clearTimeout(subheadTimer.current), [])
+
+  // text-align can't animate, so the text fades out, changes alignment and size
+  // while hidden, and fades back in as the panel finishes resizing.
+  const toggleSubhead = () => {
+    clearTimeout(subheadTimer.current)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setSubheadExpanded((open) => !open)
+      return
+    }
+    setSubheadFading(true)
+    subheadTimer.current = setTimeout(() => {
+      setSubheadExpanded((open) => !open)
+      subheadTimer.current = setTimeout(() => setSubheadFading(false), 200)
+    }, 150)
+  }
+
   const handleEnded = (index: number) => {
     if (index === active) advance()
   }
 
   const headingText = headline?.trim() || 'Real Estate Valuation & Consultancy'
+  // Phones lead with the first sentence in larger text; "Read more" reveals the
+  // rest at the desktop size. Wider screens always show the full paragraph.
+  const subheadLead = subhead?.match(/^[\s\S]+?[.!?](?=\s|$)/)?.[0] ?? subhead ?? ''
+  const subheadRest = subhead?.slice(subheadLead.length) ?? ''
 
   return (
-    <section className="relative h-screen overflow-hidden bg-navy">
+    <section className="relative min-h-screen sm:h-screen overflow-hidden bg-navy">
       <div className="absolute inset-0">
         <Image
           src="/images/regions/oahu-skyline.webp"
@@ -171,7 +195,7 @@ export default function Hero({ videos, headline, subhead }: Props) {
         }}
       />
 
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-[4.5%]">
+      <div className="relative z-10 min-h-screen sm:min-h-0 sm:h-full flex flex-col items-center justify-center text-center px-[4.5%] pt-[116px] pb-20 sm:py-0">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -190,7 +214,9 @@ export default function Hero({ videos, headline, subhead }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
-            className="text-[18px] font-semibold mt-5 max-w-[600px] leading-[1.6] px-6 py-4 rounded-[12px] text-left backdrop-blur-[12px]"
+            className={`${
+              subheadExpanded ? 'text-[18px] leading-[1.6] text-left' : 'text-[21px] leading-[1.4] text-center'
+            } sm:text-[18px] sm:leading-[1.6] sm:text-left font-semibold mt-5 max-w-[600px] px-5 sm:px-6 py-4 rounded-[12px] backdrop-blur-[12px] transition-[font-size,line-height] duration-500 ease-out motion-reduce:transition-none`}
             style={{
               // Liquid glass: a barely-there white tint doing the refraction
               // work via backdrop-blur rather than opacity, so the footage
@@ -209,7 +235,53 @@ export default function Hero({ videos, headline, subhead }: Props) {
                 '0 1px 2px rgba(11,31,58,0.62), 0 0 16px rgba(11,31,58,0.48)',
             }}
           >
-            {subhead}
+            <span
+              className={`block sm:!opacity-100 transition-opacity duration-200 motion-reduce:transition-none ${
+                subheadFading ? 'opacity-0' : 'opacity-100'
+              }`}
+            >
+              {subheadLead}
+              {subheadRest && (
+                <>
+                  {/* Animating a grid row from 0fr to 1fr transitions to the text's natural height.
+                    Collapsed by height only, not display or visibility, so the full
+                    text stays in the HTML and the rendered page for crawlers. */}
+                  <span
+                    id="hero-subhead-more"
+                    className={`grid sm:inline transition-[grid-template-rows,opacity] duration-500 ease-out motion-reduce:transition-none ${
+                      subheadExpanded
+                        ? 'grid-rows-[1fr] opacity-100'
+                        : 'grid-rows-[0fr] opacity-0 sm:opacity-100'
+                    }`}
+                  >
+                    <span className="min-h-0 min-w-0 overflow-hidden sm:overflow-visible">
+                      {subheadRest}
+                    </span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={toggleSubhead}
+                    aria-expanded={subheadExpanded}
+                    aria-controls="hero-subhead-more"
+                    className={`sm:hidden ${subheadExpanded ? 'mr-auto' : 'mx-auto'} mt-1 -mb-2 flex min-h-[44px] items-center gap-1.5 text-[13px] font-bold uppercase tracking-[0.14em] text-white`}
+                  >
+                    {subheadExpanded ? 'Read less' : 'Read more'}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className={`w-3.5 h-3.5 transition-transform duration-500 ${subheadExpanded ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                </>
+              )}
+            </span>
           </motion.p>
         )}
 
