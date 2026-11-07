@@ -216,7 +216,7 @@ export default function Hero({ videos, headline, subhead }: Props) {
             transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
             className={`${
               subheadExpanded ? 'text-[18px] leading-[1.6] text-left' : 'text-[21px] leading-[1.4] text-center'
-            } sm:text-[18px] sm:leading-[1.6] sm:text-left font-semibold mt-5 max-w-[600px] px-5 sm:px-6 py-4 rounded-[12px] backdrop-blur-[12px] transition-[font-size,line-height] duration-500 ease-out motion-reduce:transition-none`}
+            } sm:text-[18px] sm:leading-[1.6] sm:text-left relative font-semibold mt-5 max-w-[600px] px-5 sm:px-6 py-4 rounded-[12px] backdrop-blur-[12px] transition-[font-size,line-height] duration-500 ease-out motion-reduce:transition-none`}
             style={{
               // Liquid glass: a barely-there white tint doing the refraction
               // work via backdrop-blur rather than opacity, so the footage
@@ -263,7 +263,7 @@ export default function Hero({ videos, headline, subhead }: Props) {
                     onClick={toggleSubhead}
                     aria-expanded={subheadExpanded}
                     aria-controls="hero-subhead-more"
-                    className={`sm:hidden ${subheadExpanded ? 'mr-auto' : 'mx-auto'} mt-1 -mb-2 flex min-h-[44px] items-center gap-1.5 text-[13px] font-bold uppercase tracking-[0.14em] text-white`}
+                    className="sm:hidden absolute right-[0.7rem] bottom-[-0.5rem] flex h-[44px] items-center gap-1.5 whitespace-nowrap text-[13px] font-bold uppercase tracking-[0.14em] text-ocean-light"
                   >
                     {subheadExpanded ? 'Read less' : 'Read more'}
                     <svg
