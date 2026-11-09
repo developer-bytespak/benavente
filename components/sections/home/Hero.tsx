@@ -216,7 +216,7 @@ export default function Hero({ videos, headline, subhead }: Props) {
             transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
             className={`${
               subheadExpanded ? 'text-[18px] leading-[1.6] text-left' : 'text-[21px] leading-[1.4] text-center'
-            } sm:text-[18px] sm:leading-[1.6] sm:text-left relative font-semibold mt-5 max-w-[600px] px-5 sm:px-6 pt-4 pb-[1.2rem] rounded-[12px] backdrop-blur-[12px] transition-[font-size,line-height] duration-500 ease-out motion-reduce:transition-none`}
+            } sm:text-[18px] sm:leading-[1.6] sm:text-left relative font-semibold mt-5 max-w-[600px] px-5 sm:px-6 pt-4 pb-[2.2rem] rounded-[12px] backdrop-blur-[12px] transition-[font-size,line-height] duration-500 ease-out motion-reduce:transition-none`}
             style={{
               // Liquid glass: a barely-there white tint doing the refraction
               // work via backdrop-blur rather than opacity, so the footage
