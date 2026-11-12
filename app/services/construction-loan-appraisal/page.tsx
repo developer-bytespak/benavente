@@ -98,7 +98,7 @@ const islands = [
     title: 'Hawaiʻi Island',
     image: '/images/regions/big-island.webp',
     imageAlt: 'Hawaiʻi Island landscape',
-    body: 'Residential, commercial and resort projects in Kailua-Kona, Waikoloa and Hilo.',
+    body: <>Residential, commercial and <TextLink tone="navy" href="/property-types/hotel-hospitality">resort projects</TextLink> in Kailua-Kona, Waikoloa and Hilo.</>,
   },
   {
     title: 'Kauaʻi',
@@ -394,7 +394,7 @@ export default function ConstructionLoanAppraisalPage() {
             <RevealOnScroll delay={0.1}>
               <Prose className="mt-6">
                 <p>
-                  Construction loans run to tight closing schedules. We confirm the delivery date in the engagement letter before work begins, keep the lender and borrower informed of any missing documents, and flag
+                  Construction loans run to tight closing schedules. We confirm the delivery date in the <TextLink href="/process">engagement letter</TextLink> before work begins, keep the lender and borrower informed of any missing documents, and flag
                   issues early, such as a budget gap or an entitlement question, rather than at delivery. Timing depends
                   on project size, the completeness of plans and budget, and location.
                 </p>

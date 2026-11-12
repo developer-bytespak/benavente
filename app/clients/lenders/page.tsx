@@ -77,7 +77,7 @@ const coverage = [
     title: 'Honolulu and Oʻahu',
     image: '/images/regions/oahu-skyline.webp',
     imageAlt: 'Honolulu high-rises with Diamond Head',
-    body: 'Downtown and Kakaʻako office, Waikīkī hotels and retail, Kalihi, Māpunapuna and Kapolei industrial, and neighborhood retail and medical office across Windward, Central and West Oʻahu.',
+    body: <><TextLink tone="navy" href="/property-types/office-retail">Downtown and Kakaʻako office</TextLink>, Waikīkī hotels and retail, Kalihi, Māpunapuna and Kapolei industrial, and neighborhood retail and medical office across Windward, Central and West Oʻahu.</>,
   },
   {
     title: 'Maui',
@@ -300,7 +300,7 @@ export default function ForLendersPage() {
             <RevealOnScroll delay={0.1}>
               <Prose tone="navy" className="mt-10">
                 <p>
-                  Delivery depends on property type, complexity and location, and is set in the engagement letter. Because
+                  Delivery depends on property type, complexity and location, and is set in the <TextLink tone="navy" href="/process">engagement letter</TextLink>. Because
                   we are based in downtown Honolulu, Oʻahu inspections can be scheduled quickly, and we travel regularly to
                   the neighbor islands and the Pacific.
                 </p>

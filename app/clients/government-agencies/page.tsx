@@ -75,7 +75,7 @@ const agencies = [
   ['State of Hawaiʻi', 'Land, transportation, housing and development agencies, and the Department of the Attorney General'],
   ['City and County of Honolulu', 'Acquisitions, dispositions and leases across Oʻahu, from downtown to Kapolei and the North Shore'],
   ['County of Maui', 'Maui, Molokaʻi and Lānaʻi'],
-  ['County of Hawaiʻi', 'Hilo, Kona and rural districts'],
+  ['County of Hawaiʻi', <>Hilo, Kona and <TextLink href="/property-types/agricultural-land">rural districts</TextLink></>],
   ['County of Kauaʻi', 'Līhuʻe and island-wide projects'],
   [
     'Federal agencies',

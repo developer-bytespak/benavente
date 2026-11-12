@@ -90,7 +90,7 @@ const markets = [
     title: 'Kapolei, Kalihi and Māpunapuna',
     image: '/images/gallery/industrial/dji_0787.webp',
     imageAlt: 'Mid-rise building with rooftop solar panels among low-rise warehouses',
-    body: 'Industrial and warehouse properties, many on ground-leased land.',
+    body: <><TextLink tone="navy" href="/property-types/industrial">Industrial and warehouse properties</TextLink>, many on ground-leased land.</>,
   },
   {
     title: 'Windward and Central Oʻahu',

@@ -384,7 +384,7 @@ export default function LuxuryHomeAppraisalPage() {
                 title: 'Research and analysis',
                 body: <p>Verified sales, land value and analysis of view, frontage and tenure.</p>,
               },
-              { title: 'Report', body: <p>A USPAP-compliant narrative report written for your purpose.</p> },
+              { title: 'Report', body: <p>A USPAP-compliant <TextLink href="/process">narrative report</TextLink> written for your purpose.</p> },
             ]}
           />
         </div>

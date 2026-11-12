@@ -62,8 +62,8 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
   const logo = logoUrl || '/images/hero/logo.png'
   // const isHome = pathname === '/'
   const hasDarkHero =
-    ['/', '/about', '/gallery', '/blog', '/contact'].includes(pathname) ||
-    ['/services', '/clients'].some((p) => pathname.startsWith(p))
+    ['/', '/about', '/gallery', '/blog', '/contact', '/process'].includes(pathname) ||
+    ['/services', '/clients', '/property-types'].some((p) => pathname.startsWith(p))
   // Dropdown parents (Services) stay highlighted on their child routes.
   const isActive = (link: (typeof navLinks)[number]) =>
     pathname === link.href ||

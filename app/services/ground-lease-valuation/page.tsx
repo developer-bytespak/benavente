@@ -78,7 +78,7 @@ const documents = [
 const islands = [
   [
     'Honolulu and Oʻahu',
-    'Leasehold commercial buildings downtown and in Kakaʻako, Waikīkī hotels and condominiums on leased land, industrial ground leases around Māpunapuna, the airport and Sand Island, and leasehold homes in Windward and East Oʻahu neighborhoods',
+    <>Leasehold commercial buildings downtown and in Kakaʻako, Waikīkī hotels and condominiums on leased land, <TextLink href="/property-types/industrial">industrial ground leases</TextLink> around Māpunapuna, the airport and Sand Island, and leasehold homes in Windward and East Oʻahu neighborhoods</>,
   ],
   ['Maui', 'Resort and commercial ground leases in Kāʻanapali, Wailea and Kahului'],
   ['Hawaiʻi Island', 'Commercial and resort ground leases in Kailua-Kona, Waikoloa and Hilo, including State-leased land'],
@@ -430,7 +430,7 @@ export default function GroundLeaseValuationPage() {
               <p>
                 Ground leases often limit what a property can be used for: a specific business, a building type, a maximum
                 density, or a use that made sense decades ago. Those restrictions bind the value. A parcel that could
-                support a high-rise under zoning may be worth far less if the lease limits it to a low-rise retail center
+                support a high-rise under zoning may be worth far less if the lease limits it to a <TextLink href="/property-types/office-retail">low-rise retail center</TextLink>{' '}
                 for another thirty years.
               </p>
               <p>

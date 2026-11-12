@@ -96,7 +96,7 @@ const markets = [
     title: 'Maui',
     image: '/images/regions/maui.webp',
     imageAlt: 'Maui coastline',
-    body: 'Residential and commercial projects in Kahului, Wailuku and Kīhei, resort-area development in Wailea and West Maui, and rebuilding in Lahaina.',
+    body: <>Residential and commercial projects in Kahului, Wailuku and Kīhei, <TextLink tone="navy" href="/property-types/hotel-hospitality">resort-area development</TextLink> in Wailea and West Maui, and rebuilding in Lahaina.</>,
   },
   {
     title: 'Hawaiʻi Island',

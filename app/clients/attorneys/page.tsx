@@ -329,7 +329,7 @@ export default function ForAttorneysPage() {
                 },
                 {
                   title: 'Engagement letter',
-                  body: <p>Scope, rates, retainer and deliverables are set out in writing.</p>,
+                  body: <p><TextLink href="/process">Scope, rates, retainer and deliverables</TextLink> are set out in writing.</p>,
                 },
                 {
                   title: 'Work and reporting',
