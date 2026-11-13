@@ -12,7 +12,7 @@ import {
   SectionHeader,
   Prose,
   EditorialTable,
-  EditorialPlaceholder,
+  PhotoRow,
   Quote,
   IntroHeading,
   faqSchema,
@@ -352,7 +352,13 @@ export default function AgriculturalLandPage() {
       {/* Selected assignments */}
       <Section tone="cream">
         <SectionHeader label="Experience" title={'Selected Agricultural\n_Assignments_'} className="mb-10" />
-        <EditorialPlaceholder note="Add two or more projects from /gallery?cat=agriculture. For each: land type, island, acreage range, assignment purpose, one line on the valuation issue. Name a property only with client permission. Remove this note before publishing." />
+        <PhotoRow
+          photos={[
+            { src: '/images/gallery/agriculture/dji_0306.webp', alt: 'Aerial view of an orchard farm with farm buildings' },
+            { src: '/images/gallery/agriculture/dji_0750-large.webp', alt: 'Aerial view of crop fields running down to the coast' },
+            { src: '/images/gallery/agriculture/dji_0771.webp', alt: 'Aerial view of agricultural ponds near the shoreline' },
+          ]}
+        />
       </Section>
 
       <Quote

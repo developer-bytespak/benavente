@@ -442,6 +442,29 @@ export function Quote({ heading, quote }: { heading: string; quote: string }) {
   )
 }
 
+// A row of uncaptioned portfolio photos from the public gallery.
+export function PhotoRow({ photos }: { photos: { src: string; alt: string }[] }) {
+  return (
+    <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+      {photos.map((photo, i) => (
+        <li key={photo.src}>
+          <RevealOnScroll delay={i * 0.08}>
+            <div className="group relative aspect-[4/3] overflow-hidden rounded-[2px] bg-cream-deeper">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(min-width: 640px) 33vw, 100vw"
+                className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+              />
+            </div>
+          </RevealOnScroll>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 // Visible stand-in for content the brief leaves to the firm. Replace or remove
 // each one before the page is published.
 export function EditorialPlaceholder({

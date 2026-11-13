@@ -12,7 +12,7 @@ import {
   SectionHeader,
   Prose,
   EditorialTable,
-  EditorialPlaceholder,
+  PhotoRow,
   NumberedItems,
   Quote,
   IntroHeading,
@@ -309,7 +309,13 @@ export default function HotelHospitalityPage() {
       {/* Selected assignments */}
       <Section>
         <SectionHeader label="Experience" title={'Selected Hospitality\n_Assignments_'} className="mb-10" />
-        <EditorialPlaceholder note="Add two or more projects from /gallery?cat=hotel-hospitality. For each: property type, island, assignment purpose, one line on the valuation issue. Name a property only with client permission. Remove this note before publishing." />
+        <PhotoRow
+          photos={[
+            { src: '/images/gallery/hotel-hospitality/dji_0061.webp', alt: 'Aerial view of an oceanfront resort hotel on a lava-rock shoreline' },
+            { src: '/images/gallery/hotel-hospitality/dji_0875-large.webp', alt: 'Aerial view of high-rise hotel towers near the beach' },
+            { src: '/images/gallery/hotel-hospitality/dji_0436.webp', alt: 'Aerial view of a beachfront resort beside a swimming lagoon' },
+          ]}
+        />
       </Section>
 
       <Quote

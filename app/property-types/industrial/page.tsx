@@ -12,7 +12,7 @@ import {
   SectionHeader,
   Prose,
   EditorialTable,
-  EditorialPlaceholder,
+  PhotoRow,
   Quote,
   IntroHeading,
   faqSchema,
@@ -288,7 +288,13 @@ export default function IndustrialPage() {
       {/* Selected assignments */}
       <Section>
         <SectionHeader label="Experience" title={'Selected Industrial\n_Assignments_'} className="mb-10" />
-        <EditorialPlaceholder note="Add two or more projects from /gallery?cat=industrial. For each: property type, submarket, assignment purpose, one line on the valuation issue. Name a property only with client permission. Remove this note before publishing." />
+        <PhotoRow
+          photos={[
+            { src: '/images/gallery/industrial/dji_0196.webp', alt: 'Aerial view of a pier warehouse in a harbor' },
+            { src: '/images/gallery/industrial/dji_0993.webp', alt: 'Aerial view of a multi-building industrial park' },
+            { src: '/images/gallery/industrial/dji_0412.webp', alt: 'Aerial view of a metal warehouse with loading doors and a truck yard' },
+          ]}
+        />
       </Section>
 
       <Quote

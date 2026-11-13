@@ -12,7 +12,7 @@ import {
   SectionHeader,
   Prose,
   EditorialTable,
-  EditorialPlaceholder,
+  PhotoRow,
   NumberedItems,
   Quote,
   IntroHeading,
@@ -311,7 +311,13 @@ export default function OfficeRetailPage() {
       {/* Selected assignments */}
       <Section>
         <SectionHeader label="Experience" title={'Selected Office and\n_Retail Assignments_'} className="mb-10" />
-        <EditorialPlaceholder note="Add two or more projects from /gallery?cat=cbd and any retail work. For each: property type, location, assignment purpose, one line on the valuation issue. Name a property only with client permission. Remove this note before publishing." />
+        <PhotoRow
+          photos={[
+            { src: '/images/gallery/cbd/dji_0341.webp', alt: 'Aerial view of office towers in downtown Honolulu' },
+            { src: '/images/gallery/office/img_7702-large.webp', alt: 'Glass office tower on a city street' },
+            { src: '/images/gallery/retail/dji_0861.webp', alt: 'Aerial view of a shopping center and its parking lot' },
+          ]}
+        />
       </Section>
 
       <Quote
