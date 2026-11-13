@@ -11,7 +11,6 @@ import {
   SectionHeader,
   Prose,
   EditorialTable,
-  EditorialPlaceholder,
   ImageRows,
   Checklist,
   Quote,
@@ -312,7 +311,6 @@ export default function OurProcessPage() {
             </p>
           </Prose>
         </RevealOnScroll>
-        <EditorialPlaceholder className="mt-8 max-w-[860px]" note="Link the downloadable checklist here." />
       </Section>
 
       {/* Step 4 */}
@@ -408,7 +406,6 @@ export default function OurProcessPage() {
             <p>We confirm the delivery date in the engagement letter before work begins.</p>
           </Prose>
         </RevealOnScroll>
-        <EditorialPlaceholder className="mt-8 max-w-[860px]" note="Add typical ranges once the firm confirms them." />
       </Section>
 
       <Quote
