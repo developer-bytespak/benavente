@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useCallback, useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { clientPages, services, serviceHref, specialistPages } from '@/lib/services'
+import { clientPages, processPage, propertyTypePages, services, serviceHref, specialistPages } from '@/lib/services'
 
 interface NavChild {
   label: string
@@ -31,11 +31,13 @@ const navLinks: { label: string; href: string; children?: NavChild[] }[] = [
     label: 'Services', href: '/services',
     children: [
       { label: 'Services Overview', href: '/services' },
+      processPage,
       ...services
         .filter((s) => !specialistPages.some((p) => p.href === serviceHref(s.slug)))
         .map((s) => ({ label: s.title, href: serviceHref(s.slug) })),
       { label: 'Specialist Services', children: specialistPages },
       { label: 'Client Type Pages', children: clientPages },
+      { label: 'Property Type Pages', children: propertyTypePages },
     ],
   },
   {
@@ -64,12 +66,15 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
   const hasDarkHero =
     ['/', '/about', '/gallery', '/blog', '/contact', '/process'].includes(pathname) ||
     ['/services', '/clients', '/property-types'].some((p) => pathname.startsWith(p))
-  // Dropdown parents (Services) stay highlighted on their child routes.
+  // Dropdown parents (Services) stay highlighted on their child routes,
+  // including direct links outside their path such as /process.
   const isActive = (link: (typeof navLinks)[number]) =>
     pathname === link.href ||
     (!!link.children &&
       (pathname.startsWith(`${link.href}/`) ||
-        link.children.some((child) => child.children?.some((item) => item.href === pathname))))
+        link.children.some(
+          (child) => child.href === pathname || child.children?.some((item) => item.href === pathname),
+        )))
   // Label of the open nested pane, if any. Only one is open at a time.
   const [flyoutOpen, setFlyoutOpen] = useState<string | null>(null)
   const [dropdownShift, setDropdownShift] = useState(0)

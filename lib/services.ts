@@ -160,18 +160,20 @@ export const clientPages: { label: string; href: string }[] = [
   { label: 'For Government Agencies', href: '/clients/government-agencies' },
 ]
 
-// Live at their routes and listed in the sitemap, but not linked from any menu yet.
-export const unlinkedPages: { label: string; href: string }[] = [
+// The navbar's "Property Type Pages" pane.
+export const propertyTypePages: { label: string; href: string }[] = [
   { label: 'Hotel & Hospitality', href: '/property-types/hotel-hospitality' },
   { label: 'Industrial & Warehouse', href: '/property-types/industrial' },
   { label: 'Agricultural & Conservation Land', href: '/property-types/agricultural-land' },
   { label: 'Office & Retail', href: '/property-types/office-retail' },
-  { label: 'Our Process', href: '/process' },
 ]
 
+// Linked from the Services dropdown in the navbar, after Services Overview.
+export const processPage = { label: 'Our Process', href: '/process' }
+
 // Service pages linked only from "Specialist Services" in the navbar and listed
-// in the sitemap. They are kept out of `services` on purpose, so the footer and
-// services overview still show the core nine.
+// in the sitemap. They are kept out of `services` on purpose, so the services
+// overview still shows the core nine.
 export const unlinkedServices: Service[] = [
   {
     slug: 'construction-loan-appraisal',

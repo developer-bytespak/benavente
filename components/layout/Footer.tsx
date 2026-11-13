@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import MicroCTA from '@/components/ui/MicroCTA'
-import { services, serviceHref } from '@/lib/services'
+import FooterSubmenu from './FooterSubmenu'
+import { clientPages, propertyTypePages, services, serviceHref, specialistPages } from '@/lib/services'
 import type { SiteSettingsRow, ContactInfoRow } from '@/lib/supabase/types'
 
 const navLinks = [
@@ -86,7 +87,9 @@ export default function Footer({ settings, contact }: Props) {
               Services
             </h4>
             <ul className="space-y-2.5">
-              {services.map((service) => (
+              {/* The last two services make room for the submenus below; Ground
+                  Lease is still reachable under Specialist Services. */}
+              {services.slice(0, -2).map((service) => (
                 <li key={service.slug}>
                   <Link
                     href={serviceHref(service.slug)}
@@ -96,6 +99,14 @@ export default function Footer({ settings, contact }: Props) {
                   </Link>
                 </li>
               ))}
+              {/* Sized to the longest label so the three arrows align. */}
+              <li>
+                <ul className="w-fit space-y-2.5">
+                  <FooterSubmenu label="Specialist Services" items={specialistPages} />
+                  <FooterSubmenu label="Client Type Pages" items={clientPages} />
+                  <FooterSubmenu label="Property Type Pages" items={propertyTypePages} />
+                </ul>
+              </li>
             </ul>
           </div>
 
