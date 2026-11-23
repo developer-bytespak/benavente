@@ -30,7 +30,6 @@ const navLinks: { label: string; href: string; children?: NavChild[] }[] = [
   {
     label: 'Services', href: '/services',
     children: [
-      { label: 'Services Overview', href: '/services' },
       processPage,
       ...services
         .filter((s) => !specialistPages.some((p) => p.href === serviceHref(s.slug)))
@@ -52,6 +51,7 @@ const navLinks: { label: string; href: string; children?: NavChild[] }[] = [
     // ],
   },
   { label: 'BLOG', href: '/blog' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -344,23 +344,33 @@ export default function Navbar({ logoUrl }: NavbarProps = {}) {
                 {navLinks.map((link) =>
                   link.children ? (
                     <li key={link.label}>
-                      <button
-                        type="button"
-                        onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
-                        aria-expanded={mobileExpanded === link.label}
-                        className={`w-full flex items-center justify-between px-5 py-3 text-[14px] font-serif font-medium tracking-[0.08em] uppercase transition-colors hover:bg-cream hover:text-gold ${
-                          isActive(link) ? 'text-gold bg-cream/50' : 'text-navy'
-                        }`}
+                      {/* The label opens the parent page; the arrow alone toggles the submenu. */}
+                      <div
+                        className={`flex items-stretch transition-colors ${isActive(link) ? 'text-gold bg-cream/50' : 'text-navy'}`}
                       >
-                        {link.label}
-                        <span
-                          className={`text-[12px] transition-transform duration-300 ${
-                            mobileExpanded === link.label ? 'rotate-180' : ''
-                          }`}
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex-1 pl-5 py-3 text-[14px] font-serif font-medium tracking-[0.08em] uppercase transition-colors hover:bg-cream hover:text-gold"
                         >
-                          &#9662;
-                        </span>
-                      </button>
+                          {link.label}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
+                          aria-expanded={mobileExpanded === link.label}
+                          aria-label={`${mobileExpanded === link.label ? 'Hide' : 'Show'} ${link.label} pages`}
+                          className="px-5 transition-colors hover:bg-cream hover:text-gold"
+                        >
+                          <span
+                            className={`block text-[12px] transition-transform duration-300 ${
+                              mobileExpanded === link.label ? 'rotate-180' : ''
+                            }`}
+                          >
+                            &#9662;
+                          </span>
+                        </button>
+                      </div>
                       <AnimatePresence initial={false}>
                         {mobileExpanded === link.label && (
                           <motion.ul
