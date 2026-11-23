@@ -46,6 +46,7 @@ export async function GET() {
       changefreq: 'monthly',
       priority: '0.8',
     })),
+    { loc: toAbsolute('/faq'), lastmod: nowIso, changefreq: 'monthly', priority: '0.7' },
     { loc: toAbsolute('/gallery'), lastmod: nowIso, changefreq: 'monthly', priority: '0.8' },
     { loc: toAbsolute('/blog'), lastmod: nowIso, changefreq: 'weekly', priority: '0.9' },
     { loc: toAbsolute('/contact'), lastmod: nowIso, changefreq: 'monthly', priority: '0.8' },

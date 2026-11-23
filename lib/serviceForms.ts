@@ -35,6 +35,20 @@ const PROPERTY_TYPES = [
   'Special purpose',
 ]
 
+const GENERAL_FIELDS: ServiceField[] = [
+  { name: 'property_type', label: 'Property type', type: 'select', options: [...PROPERTY_TYPES, 'Residential'], required: true, quick: true },
+  {
+    name: 'purpose',
+    label: 'What the appraisal is for',
+    type: 'text',
+    required: true,
+    quick: true,
+    placeholder: 'e.g. a loan, a tax appeal or an estate',
+  },
+  { name: 'intended_user', label: 'Who will rely on it', type: 'text', placeholder: 'e.g. a lender, a court or the IRS' },
+  { name: 'needed_by', label: 'Report needed by', type: 'date' },
+]
+
 export const serviceForms: Record<string, ServiceFormConfig> = {
   'commercial-real-estate-appraisal': {
     label: 'Commercial Real Estate Appraisal',
@@ -908,6 +922,18 @@ export const serviceForms: Record<string, ServiceFormConfig> = {
       },
       { name: 'deadline', label: 'Report needed by', type: 'date' },
     ],
+  },
+  // The services overview and FAQ pages ask the same four things: the
+  // property, what the appraisal is for, who will rely on it and when.
+  services: {
+    label: 'Services Overview',
+    propertyLabel: 'Property address or TMK',
+    fields: GENERAL_FIELDS,
+  },
+  faq: {
+    label: 'FAQ',
+    propertyLabel: 'Property address or TMK',
+    fields: GENERAL_FIELDS,
   },
 }
 
